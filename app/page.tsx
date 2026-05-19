@@ -8,6 +8,322 @@ import DrugDiscovery from "@/components/drug-discovery";
 import Projects from "@/components/projects";
 
 export default function Home() {
+  const data = {
+    hero: {
+      title: {
+        ru: "Проектируем будущее фармацевтики",
+        lines: ["ПРОЕКТИРУЕМ", "БУДУЩЕЕ", "ФАРМАЦЕВТИКИ"],
+      },
+      tags: [
+        { icon: "◆", label: "Drug Discovery" },
+        { icon: "◙", label: "Chemoinformatics" },
+        { icon: "⁞⁞", label: "CADD" },
+        { icon: "∴", label: "AI" },
+        { icon: "💊", label: "Medicinal Chemistry" },
+        { icon: "◘", label: "Software Development" },
+      ],
+    },
+    drugDiscovery: {
+      title: {
+        ru: "Создаем R&D-решения для Life Sciences",
+        lines: ["СОЗДАЕМ R&D-РЕШЕНИЯ", "ДЛЯ LIFE SCIENCES"],
+      },
+      icon: "◆",
+      description: {
+        ru: "Помогаем найти перспективные направления разработки, создать новые структуры малых молекул, провести патентно-конкурентный анализ или спроектировать цифровой инструмент для R&D.",
+      },
+      tags: [
+        { label: "PHARMA" },
+        { label: "AGROCHEM" },
+        { label: "ANIMAL CARE" },
+        { label: "VC FUNDS" },
+        { label: "IP-TEAMS" },
+      ],
+    },
+    slider: {
+      slides: [
+        {
+          marker: "А",
+          title: {
+            ru: "Разработка молекул",
+            lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
+          },
+          steps: [
+            {
+              number: 1,
+              title: {
+                ru: "Выбор мишени и патентный анализ",
+                lines: ["ВЫБОР МИШЕНИ", "И ПАТЕНТНЫЙ", "АНАЛИЗ"],
+              },
+              tags: ["TARGET ID", "COMPETITORS"],
+            },
+            {
+              number: 2,
+              title: {
+                ru: "Дизайн молекул",
+                lines: ["ДИЗАЙН", "МОЛЕКУЛ"],
+              },
+              tags: ["AIDD", "IN SILICO"],
+            },
+            {
+              number: 3,
+              title: {
+                ru: "Идентификация и оптимизация хита",
+                lines: ["ИДЕНТИФИКАЦИЯ", "И ОПТИМИЗАЦИЯ", "ХИТА"],
+              },
+              tags: ["HITID", "H2L"],
+            },
+            {
+              number: 4,
+              title: {
+                ru: "Оптимизация лидера",
+                lines: ["ОПТИМИЗАЦИЯ", "ЛИДЕРА"],
+              },
+              tags: ["LEADOPT", "ADMET"],
+            },
+            {
+              number: 5,
+              title: {
+                ru: "Разработка доклинического кандидата",
+                lines: ["РАЗРАБОТКА", "ДОКЛИНИЧЕСКОГО", "КАНДИДАТА"],
+              },
+              tags: ["PK", "PD"],
+            },
+          ],
+        },
+        {
+          marker: "Б",
+          title: {
+            ru: "Цифровые продукты",
+            lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
+          },
+          steps: [
+            {
+              number: 1,
+              title: {
+                ru: "Концептуализация продукта",
+                lines: ["КОНЦЕПТУАЛИЗАЦИЯ", "ПРОДУКТА"],
+              },
+              tags: ["PRODUCT CONCEPT", "ROADMAP"],
+            },
+            {
+              number: 2,
+              title: {
+                ru: "Создание R&D-модулей",
+                lines: ["СОЗДАНИЕ", "R&D-МОДУЛЕЙ"],
+              },
+              tags: ["CHEMINFORMATICS", "AI"],
+            },
+            {
+              number: 3,
+              title: {
+                ru: "Разработка прототипа и MVP",
+                lines: ["РАЗРАБОТКА", "ПРОТОТИПА", "И MVP"],
+              },
+              tags: ["PROTOTYPE", "POC"],
+            },
+            {
+              number: 4,
+              title: {
+                ru: "Построение R&D-платформы",
+                lines: ["ПОСТРОЕНИЕ", "R&D-", "ПЛАТФОРМЫ"],
+              },
+              tags: ["SOFTWARE DEVELOPMENT", "AI PLATFORM"],
+            },
+            {
+              number: 5,
+              title: {
+                ru: "Внедрение и поддержка",
+                lines: ["ВНЕДРЕНИЕ", "И ПОДДЕРЖКА"],
+              },
+              tags: ["ADOPTION", "SUPPORT"],
+            },
+          ],
+        },
+      ],
+    },
+    projects: {
+      title: {
+        ru: "Портфолио",
+        lines: ["ПОРТФОЛИО"],
+      },
+      tracks: [
+        {
+          title: {
+            ru: "Разработка молекул",
+            lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
+          },
+          items: [
+            {
+              title: "NS5A",
+              subtitle: "Phase I/II",
+              image: "",
+              tags: ["CHEMDIV"],
+            },
+            {
+              title: "DDR1",
+              subtitle: "Preclinical",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "IRAK4",
+              subtitle: "Preclinical",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "JAK3",
+              subtitle: "Preclinical",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "AR",
+              subtitle: "Phase I",
+              image: "",
+              tags: ["ALLA CHEM"],
+            },
+            {
+              title: "QPCTL",
+              subtitle: "Phase I",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "ATM/DNA-PK",
+              subtitle: "Preclinical",
+              image: "",
+              tags: ["РОСАТОМ", "НМИЦ РАДИОЛОГИИ"],
+            },
+            {
+              title: "MPRO",
+              subtitle: "Phase II",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "TNIK",
+              subtitle: "Phase II",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+          ],
+        },
+        {
+          title: {
+            ru: "Цифровые продукты",
+            lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
+          },
+          items: [
+            {
+              title: "XANTIR",
+              subtitle: "Patent Intelligence Platform",
+              image: "",
+              tags: ["EXPERTSYSTEMS"],
+            },
+            {
+              title: "CHEMISTRY42",
+              subtitle: "Generative Chemistry",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "INVENTUM.AI",
+              subtitle: "Generative Chemistry",
+              image: "",
+              tags: ["РОСАТОМ", "ИННОПОЛИС"],
+            },
+            {
+              title: "BIOLOGY42",
+              subtitle: "Generative Biology",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+            {
+              title: "GOLDEN CUBES",
+              subtitle: "AI-Assisted Workflow",
+              image: "",
+              tags: ["INSILICO MEDICINE"],
+            },
+          ],
+        },
+      ],
+    },
+    requestAccess: {
+      title: {
+        ru: "XANTIR",
+        lines: ["XANTIR"],
+      },
+      description: {
+        ru: "AI-платформа для патентного анализа, извлечения данных и разработки новых структур малых молекул",
+      },
+      audience: {
+        description: {
+          ru: "Для компаний в фармацевтике, агрохимии и ветеринарии, которые используют патентные данные для поиска новых направлений разработки.",
+        },
+        tags: [
+          { label: "PHARMA" },
+          { label: "AGROCHEM" },
+          { label: "ANIMAL CARE" },
+        ],
+      },
+    },
+    team: {
+      members: [
+        {
+          name: {
+            ru: "Ян Иваненков",
+            lines: ["ЯН", "ИВАНЕНКОВ"],
+          },
+          image: "",
+          shape: "square",
+          credentials: [
+            "PhD",
+            "20+ лет опыта",
+            "250+ научных публикаций",
+            "40 h-index",
+          ],
+          roles: [{ label: "ОСНОВАТЕЛЬ" }, { label: "ДИРЕКТОР ПО НАУКЕ" }],
+          links: [{ icon: "⊹", label: "SCHOLAR", url: "" }],
+        },
+        {
+          name: {
+            ru: "Александр Малышев",
+            lines: ["АЛЕКСАНДР", "МАЛЫШЕВ"],
+          },
+          image: "",
+          shape: "square",
+          credentials: ["PharmD", "9+ лет опыта"],
+          roles: [{ label: "ДИРЕКТОР ПО ПРОДУКТУ" }],
+          links: [],
+        },
+        {
+          name: {
+            ru: "Анастасия Корженевская",
+            lines: ["АНАСТАСИЯ", "КОРЖЕНЕВСКАЯ"],
+          },
+          image: "",
+          shape: "square",
+          credentials: ["MSc", "6+ лет опыта"],
+          roles: [{ label: "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР" }],
+          links: [],
+        },
+        {
+          name: {
+            ru: "Белладонна",
+            lines: ["БЕЛЛАДОННА"],
+          },
+          image: "",
+          shape: "circle",
+          credentials: ["Талантливая", "и поддерживающая"],
+          roles: [{ label: "ТАЛИСМАН КОМАНДЫ" }],
+          links: [],
+        },
+      ],
+    },
+  };
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center font-sans">
       <nav className="fixed top-0 left-0 w-full z-100 ">
@@ -129,12 +445,21 @@ function Slider() {
             <h2 className="text-title-1 uppercase font-aeonik-mono">
               разработка молекул
             </h2>
-            <div className="flex flex-col gap-0 text-subtitle-1 font-diatype">
-              <p>Поиск и выбор мишени</p>
-              <p>Валидация мишени</p>
-              <p>Поиск и оптимизация «хита»</p>
-              <p>Доклинические исследования</p>
-              <p>Клинические исследования</p>
+            <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+              <div className="flex flex-col">
+                <p className="text-subtitle-1">1</p>
+                <p className="text-hero-subtitle font-aeonik-mono uppercase mt-1">
+                  Выбор мишени и патентный анализ
+                </p>
+                <div className="mt-2 flex flex-row items-center gap-">
+                  <p className="text-caption-0 py-0.5 px-1 border-[0.5px] border-white w-fit">
+                    Target ID
+                  </p>
+                  <p className="text-caption-0 py-0.5 px-1 border-[0.5px] border-white w-fit rounded-full">
+                    Target ID
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
