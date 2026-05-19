@@ -55,7 +55,7 @@ function buildSizeClasses(sizes: ResponsiveSizes): string {
     Object.entries(sizes) as [keyof ResponsiveSizes, number | undefined][]
   )
     .filter(([, v]) => v !== undefined)
-    .map(([bp, v]) => `${breakpointPrefix[bp]} size-[${v}px]`)
+    .map(([bp, v]) => `${breakpointPrefix[bp]} size-[${v}px] relative`)
     .join(" ");
 }
 

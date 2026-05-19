@@ -32,7 +32,7 @@ export default function ProjectCard({
         <Tag icon="rectangle" size={6} />
       </div>
       <div
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 xl:gap-6"
         style={{
           alignItems:
             direction === "left" || direction === "up" ? "start" : "end",
@@ -53,7 +53,7 @@ export default function ProjectCard({
               icon="plus"
               sizes={{
                 base: 7,
-                xl: 14,
+                md: 14,
               }}
             />
           </button>
@@ -72,7 +72,7 @@ export default function ProjectCard({
             </h3>
           </div>
         </div>
-        <div className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap">
+        <div className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap xl:text-[12px] xl:font-light xl:not-italic xl:leading-[110%] xl:tracking-[0.12px]">
           {tag}
         </div>
       </div>
