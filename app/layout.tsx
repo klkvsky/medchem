@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +11,35 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const aeonikMono = localFont({
+  src: [
+    {
+      path: "../public/fonts/aeonik_mono_pro/aeonikmonopro-light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-aeonik-mono",
+  display: "swap",
+});
+
+const diatype = localFont({
+  src: [
+    {
+      path: "../public/fonts/diatype_cyrillic/ABCDiatypeCyrillic-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/diatype_cyrillic/ABCDiatypeCyrillic-LightItalic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+  ],
+  variable: "--font-diatype",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${aeonikMono.variable} ${diatype.variable} h-full antialiased overscroll-none`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

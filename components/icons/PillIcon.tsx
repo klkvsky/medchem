@@ -1,0 +1,21 @@
+import { SVGProps } from "react";
+
+export const PillIcon = ({
+  width = 11,
+  height = 11,
+  ...props
+}: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 11 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M5.5 0.943651C6.7582 -0.31455 8.79815 -0.31455 10.0563 0.943651C11.3146 2.20185 11.3146 4.2418 10.0563 5.5L5.5 10.0563C4.2418 11.3146 2.20185 11.3146 0.943651 10.0563C-0.31455 8.79815 -0.31455 6.7582 0.943651 5.5L5.5 0.943651Z"
+      fill="currentColor"
+    />
+  </svg>
+);
