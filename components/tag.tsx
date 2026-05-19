@@ -44,19 +44,19 @@ interface TagProps {
   sizes?: ResponsiveSizes;
 }
 
-const breakpointPrefix: Record<keyof ResponsiveSizes, string> = {
-  base: "",
-  md: "md:",
-  xl: "xl:",
+const sizeClass: Record<number, string> = {
+  6: "size-[6px]",
+  9: "size-[9px]",
+  11: "size-[11px]",
+  21: "size-[21px]",
 };
 
 function buildSizeClasses(sizes: ResponsiveSizes): string {
-  return (
-    Object.entries(sizes) as [keyof ResponsiveSizes, number | undefined][]
-  )
-    .filter(([, v]) => v !== undefined)
-    .map(([bp, v]) => `${breakpointPrefix[bp]} size-[${v}px] relative`)
-    .join(" ");
+  const parts: string[] = [];
+  if (sizes.base !== undefined) parts.push(sizeClass[sizes.base] ?? `size-[${sizes.base}px]`);
+  if (sizes.md !== undefined) parts.push(`md:${sizeClass[sizes.md] ?? `size-[${sizes.md}px]`}`);
+  if (sizes.xl !== undefined) parts.push(`xl:${sizeClass[sizes.xl] ?? `size-[${sizes.xl}px]`}`);
+  return parts.join(" ");
 }
 
 export const Tag = ({ icon, label, size, sizes }: TagProps) => {
@@ -66,7 +66,7 @@ export const Tag = ({ icon, label, size, sizes }: TagProps) => {
     const sizeClasses = buildSizeClasses(sizes);
     return (
       <div className="flex flex-row items-center gap-1.5">
-        <span className={sizeClasses}>
+        <span className={`relative ${sizeClasses}`}>
           <Icon width="100%" height="100%" />
         </span>
         {label && <p>{label}</p>}

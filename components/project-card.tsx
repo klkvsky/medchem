@@ -1,13 +1,13 @@
 import { Tag } from "./tag";
 export default function ProjectCard({
   title,
-  year,
-  tag,
+  subtitle,
+  tags,
   direction,
 }: {
   title: string;
-  year: number;
-  tag: string;
+  subtitle: string;
+  tags: readonly string[];
   direction: "left" | "right" | "up";
 }) {
   return (
@@ -52,7 +52,7 @@ export default function ProjectCard({
             <Tag
               icon="plus"
               sizes={{
-                base: 7,
+                base: 4,
                 md: 14,
               }}
             />
@@ -72,8 +72,18 @@ export default function ProjectCard({
             </h3>
           </div>
         </div>
-        <div className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap xl:text-[12px] xl:font-light xl:not-italic xl:leading-[110%] xl:tracking-[0.12px]">
-          {tag}
+        <p className="text-subtitle-1 font-diatype text-dark-gray opacity-60">
+          {subtitle}
+        </p>
+        <div className="flex flex-row flex-wrap gap-1">
+          {tags.map((t) => (
+            <div
+              key={t}
+              className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap xl:text-[12px] xl:font-light xl:not-italic xl:leading-[110%] xl:tracking-[0.12px]"
+            >
+              {t}
+            </div>
+          ))}
         </div>
       </div>
     </div>

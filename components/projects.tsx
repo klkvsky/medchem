@@ -4,6 +4,18 @@ import { useRef, useCallback, useEffect } from "react";
 import { Tag } from "@/components/tag";
 import ProjectCard from "@/components/project-card";
 
+type ProjectItem = {
+  title: string;
+  subtitle: string;
+  image: string;
+  tags: readonly string[];
+};
+
+type Track = {
+  title: { lines: readonly string[] };
+  items: readonly ProjectItem[];
+};
+
 function useDragScroll() {
   const scrollEl = useRef<HTMLDivElement>(null);
   const lineEl = useRef<HTMLDivElement>(null);
@@ -28,9 +40,7 @@ function useDragScroll() {
       const w = window.innerWidth;
       const l = leftTitle.current.getBoundingClientRect().left;
       const r = rightTitle.current.getBoundingClientRect().right;
-      // left title stops at 20% from the left edge
       minTx = 0.05 * w - l;
-      // right title stops at 95% from the right edge
       maxTx = 0.95 * w - r;
     };
 
@@ -89,8 +99,13 @@ function useDragScroll() {
   };
 }
 
-export default function Projects() {
+export default function Projects({
+  data,
+}: {
+  data: { title: { lines: readonly string[] }; tracks: readonly Track[] };
+}) {
   const drag = useDragScroll();
+  const [trackA, trackB] = data.tracks;
 
   return (
     <div className="min-h-dvh flex flex-col items-center pt-15">
@@ -103,10 +118,10 @@ export default function Projects() {
             ref={drag.leftTitle}
             className="xl:whitespace-nowrap xl:-translate-x-4"
           >
-            разработка <br className="xl:hidden" /> молекул
+            {trackA.title.lines.join("\n")}
           </p>
           <p ref={drag.rightTitle} className="xl:whitespace-nowrap">
-            цифровые <br className="xl:hidden" /> продукты
+            {trackB.title.lines.join("\n")}
           </p>
         </div>
         <div className="absolute top-0 left-1/2 -translate-1/2">
@@ -124,23 +139,23 @@ export default function Projects() {
       >
         <div className="shrink-0 w-1" />
         <div className="flex flex-row gap-15 -translate-y-1">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {trackA.items.map((item, index) => (
             <ProjectCard
               key={index}
-              title="YO"
-              year={2026}
-              tag="Second tag type"
+              title={item.title}
+              subtitle={item.subtitle}
+              tags={item.tags}
               direction="up"
             />
           ))}
         </div>
         <div className="flex flex-row gap-15 -translate-y-1">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {trackB.items.map((item, index) => (
             <ProjectCard
               key={index}
-              title="BO"
-              year={2026}
-              tag="Second tag type"
+              title={item.title}
+              subtitle={item.subtitle}
+              tags={item.tags}
               direction="up"
             />
           ))}
@@ -152,51 +167,27 @@ export default function Projects() {
         <div className="absolute top-0 left-13 w-[calc(100dvw-var(--spacing)*26)] h-px bg-dark-gray" />
         <div className="flex flex-col gap-15 relative pt-19.5 pb-15">
           <div className="absolute top-0 left-0 w-px h-full bg-dark-gray" />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="left"
-          />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="left"
-          />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="left"
-          />
+          {trackA.items.map((item, index) => (
+            <ProjectCard
+              key={index}
+              title={item.title}
+              subtitle={item.subtitle}
+              tags={item.tags}
+              direction="left"
+            />
+          ))}
         </div>
         <div className="flex flex-col gap-15 relative pt-19.5 pb-15">
           <div className="absolute top-0 right-0 w-px h-full bg-dark-gray" />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="right"
-          />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="right"
-          />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="right"
-          />
-          <ProjectCard
-            title={`TNIK.first\nin class`}
-            year={2026}
-            tag="Second tag type"
-            direction="right"
-          />
+          {trackB.items.map((item, index) => (
+            <ProjectCard
+              key={index}
+              title={item.title}
+              subtitle={item.subtitle}
+              tags={item.tags}
+              direction="right"
+            />
+          ))}
         </div>
       </div>
       {/* end of mobile */}

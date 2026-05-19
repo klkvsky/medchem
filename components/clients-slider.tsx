@@ -64,6 +64,9 @@ export default function ClientsSlider() {
           768: {
             slidesPerView: 8,
           },
+          1280: {
+            slidesPerView: 8,
+          },
         }}
         loop={true}
         autoplay={{ delay: 1500 }}

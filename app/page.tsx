@@ -7,335 +7,337 @@ import ClientsSlider from "@/components/clients-slider";
 import DrugDiscovery from "@/components/drug-discovery";
 import Projects from "@/components/projects";
 
-export default function Home() {
-  const data = {
-    hero: {
-      title: {
-        ru: "Проектируем будущее фармацевтики",
-        lines: ["ПРОЕКТИРУЕМ", "БУДУЩЕЕ", "ФАРМАЦЕВТИКИ"],
-      },
-      tags: [
-        { icon: "◆", label: "Drug Discovery" },
-        { icon: "◙", label: "Chemoinformatics" },
-        { icon: "⁞⁞", label: "CADD" },
-        { icon: "∴", label: "AI" },
-        { icon: "💊", label: "Medicinal Chemistry" },
-        { icon: "◘", label: "Software Development" },
-      ],
+const homeData = {
+  hero: {
+    title: {
+      ru: "Проектируем будущее фармацевтики",
+      lines: ["ПРОЕКТИРУЕМ", "БУДУЩЕЕ", "ФАРМАЦЕВТИКИ"],
     },
-    drugDiscovery: {
-      title: {
-        ru: "Создаем R&D-решения для Life Sciences",
-        lines: ["СОЗДАЕМ R&D-РЕШЕНИЯ", "ДЛЯ LIFE SCIENCES"],
+    tags: [
+      { icon: "◆", label: "Drug Discovery" },
+      { icon: "◙", label: "Chemoinformatics" },
+      { icon: "⁞⁞", label: "CADD" },
+      { icon: "∴", label: "AI" },
+      { icon: "💊", label: "Medicinal Chemistry" },
+      { icon: "◘", label: "Software Development" },
+    ],
+  },
+  drugDiscovery: {
+    title: {
+      ru: "Создаем R&D-решения для Life Sciences",
+      lines: ["СОЗДАЕМ R&D-РЕШЕНИЯ", "ДЛЯ LIFE SCIENCES"],
+    },
+    icon: "◆",
+    description: {
+      ru: "Помогаем найти перспективные направления разработки, создать новые структуры малых молекул, провести патентно-конкурентный анализ или спроектировать цифровой инструмент для R&D.",
+    },
+    tags: [
+      { label: "PHARMA" },
+      { label: "AGROCHEM" },
+      { label: "ANIMAL CARE" },
+      { label: "VC FUNDS" },
+      { label: "IP-TEAMS" },
+    ],
+  },
+  slider: {
+    slides: [
+      {
+        marker: "А",
+        title: {
+          ru: "Разработка молекул",
+          lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
+        },
+        steps: [
+          {
+            number: 1,
+            title: {
+              ru: "Выбор мишени и патентный анализ",
+              lines: ["ВЫБОР МИШЕНИ", "И ПАТЕНТНЫЙ", "АНАЛИЗ"],
+            },
+            tags: ["TARGET ID", "COMPETITORS"],
+          },
+          {
+            number: 2,
+            title: {
+              ru: "Дизайн молекул",
+              lines: ["ДИЗАЙН", "МОЛЕКУЛ"],
+            },
+            tags: ["AIDD", "IN SILICO"],
+          },
+          {
+            number: 3,
+            title: {
+              ru: "Идентификация и оптимизация хита",
+              lines: ["ИДЕНТИФИКАЦИЯ", "И ОПТИМИЗАЦИЯ", "ХИТА"],
+            },
+            tags: ["HITID", "H2L"],
+          },
+          {
+            number: 4,
+            title: {
+              ru: "Оптимизация лидера",
+              lines: ["ОПТИМИЗАЦИЯ", "ЛИДЕРА"],
+            },
+            tags: ["LEADOPT", "ADMET"],
+          },
+          {
+            number: 5,
+            title: {
+              ru: "Разработка доклинического кандидата",
+              lines: ["РАЗРАБОТКА", "ДОКЛИНИЧЕСКОГО", "КАНДИДАТА"],
+            },
+            tags: ["PK", "PD"],
+          },
+        ],
       },
-      icon: "◆",
+      {
+        marker: "Б",
+        title: {
+          ru: "Цифровые продукты",
+          lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
+        },
+        steps: [
+          {
+            number: 1,
+            title: {
+              ru: "Концептуализация продукта",
+              lines: ["КОНЦЕПТУАЛИЗАЦИЯ", "ПРОДУКТА"],
+            },
+            tags: ["PRODUCT CONCEPT", "ROADMAP"],
+          },
+          {
+            number: 2,
+            title: {
+              ru: "Создание R&D-модулей",
+              lines: ["СОЗДАНИЕ", "R&D-МОДУЛЕЙ"],
+            },
+            tags: ["CHEMINFORMATICS", "AI"],
+          },
+          {
+            number: 3,
+            title: {
+              ru: "Разработка прототипа и MVP",
+              lines: ["РАЗРАБОТКА", "ПРОТОТИПА", "И MVP"],
+            },
+            tags: ["PROTOTYPE", "POC"],
+          },
+          {
+            number: 4,
+            title: {
+              ru: "Построение R&D-платформы",
+              lines: ["ПОСТРОЕНИЕ", "R&D-", "ПЛАТФОРМЫ"],
+            },
+            tags: ["SOFTWARE DEVELOPMENT", "AI PLATFORM"],
+          },
+          {
+            number: 5,
+            title: {
+              ru: "Внедрение и поддержка",
+              lines: ["ВНЕДРЕНИЕ", "И ПОДДЕРЖКА"],
+            },
+            tags: ["ADOPTION", "SUPPORT"],
+          },
+        ],
+      },
+    ],
+  },
+  projects: {
+    title: {
+      ru: "Портфолио",
+      lines: ["ПОРТФОЛИО"],
+    },
+    tracks: [
+      {
+        title: {
+          ru: "Разработка молекул",
+          lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
+        },
+        items: [
+          {
+            title: "NS5A",
+            subtitle: "Phase I/II",
+            image: "",
+            tags: ["CHEMDIV"],
+          },
+          {
+            title: "DDR1",
+            subtitle: "Preclinical",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "IRAK4",
+            subtitle: "Preclinical",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "JAK3",
+            subtitle: "Preclinical",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "AR",
+            subtitle: "Phase I",
+            image: "",
+            tags: ["ALLA CHEM"],
+          },
+          {
+            title: "QPCTL",
+            subtitle: "Phase I",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "ATM/DNA-PK",
+            subtitle: "Preclinical",
+            image: "",
+            tags: ["РОСАТОМ", "НМИЦ РАДИОЛОГИИ"],
+          },
+          {
+            title: "MPRO",
+            subtitle: "Phase II",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "TNIK",
+            subtitle: "Phase II",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+        ],
+      },
+      {
+        title: {
+          ru: "Цифровые продукты",
+          lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
+        },
+        items: [
+          {
+            title: "XANTIR",
+            subtitle: "Patent Intelligence Platform",
+            image: "",
+            tags: ["EXPERTSYSTEMS"],
+          },
+          {
+            title: "CHEMISTRY42",
+            subtitle: "Generative Chemistry",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "INVENTUM.AI",
+            subtitle: "Generative Chemistry",
+            image: "",
+            tags: ["РОСАТОМ", "ИННОПОЛИС"],
+          },
+          {
+            title: "BIOLOGY42",
+            subtitle: "Generative Biology",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+          {
+            title: "GOLDEN CUBES",
+            subtitle: "AI-Assisted Workflow",
+            image: "",
+            tags: ["INSILICO MEDICINE"],
+          },
+        ],
+      },
+    ],
+  },
+  requestAccess: {
+    title: {
+      ru: "XANTIR",
+      lines: ["XANTIR"],
+    },
+    description: {
+      ru: "AI-платформа для патентного анализа, извлечения данных и разработки новых структур малых молекул",
+    },
+    audience: {
       description: {
-        ru: "Помогаем найти перспективные направления разработки, создать новые структуры малых молекул, провести патентно-конкурентный анализ или спроектировать цифровой инструмент для R&D.",
+        ru: "Для компаний в фармацевтике, агрохимии и ветеринарии, которые используют патентные данные для поиска новых направлений разработки.",
       },
       tags: [
         { label: "PHARMA" },
         { label: "AGROCHEM" },
         { label: "ANIMAL CARE" },
-        { label: "VC FUNDS" },
-        { label: "IP-TEAMS" },
       ],
     },
-    slider: {
-      slides: [
-        {
-          marker: "А",
-          title: {
-            ru: "Разработка молекул",
-            lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
-          },
-          steps: [
-            {
-              number: 1,
-              title: {
-                ru: "Выбор мишени и патентный анализ",
-                lines: ["ВЫБОР МИШЕНИ", "И ПАТЕНТНЫЙ", "АНАЛИЗ"],
-              },
-              tags: ["TARGET ID", "COMPETITORS"],
-            },
-            {
-              number: 2,
-              title: {
-                ru: "Дизайн молекул",
-                lines: ["ДИЗАЙН", "МОЛЕКУЛ"],
-              },
-              tags: ["AIDD", "IN SILICO"],
-            },
-            {
-              number: 3,
-              title: {
-                ru: "Идентификация и оптимизация хита",
-                lines: ["ИДЕНТИФИКАЦИЯ", "И ОПТИМИЗАЦИЯ", "ХИТА"],
-              },
-              tags: ["HITID", "H2L"],
-            },
-            {
-              number: 4,
-              title: {
-                ru: "Оптимизация лидера",
-                lines: ["ОПТИМИЗАЦИЯ", "ЛИДЕРА"],
-              },
-              tags: ["LEADOPT", "ADMET"],
-            },
-            {
-              number: 5,
-              title: {
-                ru: "Разработка доклинического кандидата",
-                lines: ["РАЗРАБОТКА", "ДОКЛИНИЧЕСКОГО", "КАНДИДАТА"],
-              },
-              tags: ["PK", "PD"],
-            },
-          ],
+  },
+  team: {
+    members: [
+      {
+        name: {
+          ru: "Ян Иваненков",
+          lines: ["ЯН", "ИВАНЕНКОВ"],
         },
-        {
-          marker: "Б",
-          title: {
-            ru: "Цифровые продукты",
-            lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
-          },
-          steps: [
-            {
-              number: 1,
-              title: {
-                ru: "Концептуализация продукта",
-                lines: ["КОНЦЕПТУАЛИЗАЦИЯ", "ПРОДУКТА"],
-              },
-              tags: ["PRODUCT CONCEPT", "ROADMAP"],
-            },
-            {
-              number: 2,
-              title: {
-                ru: "Создание R&D-модулей",
-                lines: ["СОЗДАНИЕ", "R&D-МОДУЛЕЙ"],
-              },
-              tags: ["CHEMINFORMATICS", "AI"],
-            },
-            {
-              number: 3,
-              title: {
-                ru: "Разработка прототипа и MVP",
-                lines: ["РАЗРАБОТКА", "ПРОТОТИПА", "И MVP"],
-              },
-              tags: ["PROTOTYPE", "POC"],
-            },
-            {
-              number: 4,
-              title: {
-                ru: "Построение R&D-платформы",
-                lines: ["ПОСТРОЕНИЕ", "R&D-", "ПЛАТФОРМЫ"],
-              },
-              tags: ["SOFTWARE DEVELOPMENT", "AI PLATFORM"],
-            },
-            {
-              number: 5,
-              title: {
-                ru: "Внедрение и поддержка",
-                lines: ["ВНЕДРЕНИЕ", "И ПОДДЕРЖКА"],
-              },
-              tags: ["ADOPTION", "SUPPORT"],
-            },
-          ],
-        },
-      ],
-    },
-    projects: {
-      title: {
-        ru: "Портфолио",
-        lines: ["ПОРТФОЛИО"],
-      },
-      tracks: [
-        {
-          title: {
-            ru: "Разработка молекул",
-            lines: ["РАЗРАБОТКА", "МОЛЕКУЛ"],
-          },
-          items: [
-            {
-              title: "NS5A",
-              subtitle: "Phase I/II",
-              image: "",
-              tags: ["CHEMDIV"],
-            },
-            {
-              title: "DDR1",
-              subtitle: "Preclinical",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "IRAK4",
-              subtitle: "Preclinical",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "JAK3",
-              subtitle: "Preclinical",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "AR",
-              subtitle: "Phase I",
-              image: "",
-              tags: ["ALLA CHEM"],
-            },
-            {
-              title: "QPCTL",
-              subtitle: "Phase I",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "ATM/DNA-PK",
-              subtitle: "Preclinical",
-              image: "",
-              tags: ["РОСАТОМ", "НМИЦ РАДИОЛОГИИ"],
-            },
-            {
-              title: "MPRO",
-              subtitle: "Phase II",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "TNIK",
-              subtitle: "Phase II",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-          ],
-        },
-        {
-          title: {
-            ru: "Цифровые продукты",
-            lines: ["ЦИФРОВЫЕ", "ПРОДУКТЫ"],
-          },
-          items: [
-            {
-              title: "XANTIR",
-              subtitle: "Patent Intelligence Platform",
-              image: "",
-              tags: ["EXPERTSYSTEMS"],
-            },
-            {
-              title: "CHEMISTRY42",
-              subtitle: "Generative Chemistry",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "INVENTUM.AI",
-              subtitle: "Generative Chemistry",
-              image: "",
-              tags: ["РОСАТОМ", "ИННОПОЛИС"],
-            },
-            {
-              title: "BIOLOGY42",
-              subtitle: "Generative Biology",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-            {
-              title: "GOLDEN CUBES",
-              subtitle: "AI-Assisted Workflow",
-              image: "",
-              tags: ["INSILICO MEDICINE"],
-            },
-          ],
-        },
-      ],
-    },
-    requestAccess: {
-      title: {
-        ru: "XANTIR",
-        lines: ["XANTIR"],
-      },
-      description: {
-        ru: "AI-платформа для патентного анализа, извлечения данных и разработки новых структур малых молекул",
-      },
-      audience: {
-        description: {
-          ru: "Для компаний в фармацевтике, агрохимии и ветеринарии, которые используют патентные данные для поиска новых направлений разработки.",
-        },
-        tags: [
-          { label: "PHARMA" },
-          { label: "AGROCHEM" },
-          { label: "ANIMAL CARE" },
+        image: "",
+        shape: "square",
+        credentials: [
+          "PhD",
+          "20+ лет опыта",
+          "250+ научных публикаций",
+          "40 h-index",
         ],
+        roles: [{ label: "ОСНОВАТЕЛЬ" }, { label: "ДИРЕКТОР ПО НАУКЕ" }],
+        links: [{ icon: "⊹", label: "SCHOLAR", url: "" }],
       },
-    },
-    team: {
-      members: [
-        {
-          name: {
-            ru: "Ян Иваненков",
-            lines: ["ЯН", "ИВАНЕНКОВ"],
-          },
-          image: "",
-          shape: "square",
-          credentials: [
-            "PhD",
-            "20+ лет опыта",
-            "250+ научных публикаций",
-            "40 h-index",
-          ],
-          roles: [{ label: "ОСНОВАТЕЛЬ" }, { label: "ДИРЕКТОР ПО НАУКЕ" }],
-          links: [{ icon: "⊹", label: "SCHOLAR", url: "" }],
+      {
+        name: {
+          ru: "Александр Малышев",
+          lines: ["АЛЕКСАНДР", "МАЛЫШЕВ"],
         },
-        {
-          name: {
-            ru: "Александр Малышев",
-            lines: ["АЛЕКСАНДР", "МАЛЫШЕВ"],
-          },
-          image: "",
-          shape: "square",
-          credentials: ["PharmD", "9+ лет опыта"],
-          roles: [{ label: "ДИРЕКТОР ПО ПРОДУКТУ" }],
-          links: [],
+        image: "",
+        shape: "square",
+        credentials: ["PharmD", "9+ лет опыта"],
+        roles: [{ label: "ДИРЕКТОР ПО ПРОДУКТУ" }],
+        links: [],
+      },
+      {
+        name: {
+          ru: "Анастасия Корженевская",
+          lines: ["АНАСТАСИЯ", "КОРЖЕНЕВСКАЯ"],
         },
-        {
-          name: {
-            ru: "Анастасия Корженевская",
-            lines: ["АНАСТАСИЯ", "КОРЖЕНЕВСКАЯ"],
-          },
-          image: "",
-          shape: "square",
-          credentials: ["MSc", "6+ лет опыта"],
-          roles: [{ label: "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР" }],
-          links: [],
+        image: "",
+        shape: "square",
+        credentials: ["MSc", "6+ лет опыта"],
+        roles: [{ label: "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР" }],
+        links: [],
+      },
+      {
+        name: {
+          ru: "Белладонна",
+          lines: ["БЕЛЛАДОННА"],
         },
-        {
-          name: {
-            ru: "Белладонна",
-            lines: ["БЕЛЛАДОННА"],
-          },
-          image: "",
-          shape: "circle",
-          credentials: ["Талантливая", "и поддерживающая"],
-          roles: [{ label: "ТАЛИСМАН КОМАНДЫ" }],
-          links: [],
-        },
-      ],
-    },
-  };
+        image: "",
+        shape: "circle",
+        credentials: ["Талантливая", "и поддерживающая"],
+        roles: [{ label: "ТАЛИСМАН КОМАНДЫ" }],
+        links: [],
+      },
+    ],
+  },
+} as const;
+
+export default function Home() {
+  const data = homeData;
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center font-sans">
-      <nav className="fixed top-0 left-0 w-full z-100 ">
+      <nav className="fixed top-0 left-0 w-full z-100">
         <div className="relative w-full h-full flex p-2">
           <Image
             src={logo}
             width={147}
             height={24}
             alt="MedChem logo"
-            className="absolute top-2 left-1/2 -translate-x-1/2 md:w-[88px]! md:h-[14px]!"
+            className="absolute top-2 left-1/2 -translate-x-1/2 md:w-[88px] md:h-auto xl:w-45 xl:h-auto"
           />
-          <div className="flex flex-col text-nav-link uppercase text-[#FAFAFA] max-md:ml-auto font-aeonik-mono md:mr-auto">
+          <div className="flex flex-col text-nav-link uppercase text-[#FAFAFA] font-aeonik-mono mr-auto">
             <Link href="/#">Услуги</Link>
             <Link href="/#">Проекты</Link>
             <Link href="/#">Команда</Link>
@@ -345,12 +347,12 @@ export default function Home() {
         </div>
       </nav>
       <main className="w-full h-full">
-        <Hero />
-        <DrugDiscovery />
-        <Slider />
-        <Projects />
-        <RequestAccess />
-        <Team />
+        <Hero data={data.hero} />
+        <DrugDiscovery data={data.drugDiscovery} />
+        <Slider data={data.slider} />
+        <Projects data={data.projects} />
+        <RequestAccess data={data.requestAccess} />
+        <Team data={data.team} />
         <Clients />
       </main>
       <Footer />
@@ -358,74 +360,85 @@ export default function Home() {
   );
 }
 
-function Hero() {
+function Hero({ data }: { data: typeof homeData.hero }) {
   return (
     <div
       id="hero"
-      className="w-full h-dvh text-[#FAFAFA] flex flex-col items-start justify-end pb-50 px-3 gap-3 max-w-dvw overflow-hidden md:items-end md:justify-end md:gap-0 md:pb-10 xl:pb-26"
+      className="w-full h-dvh text-[#FAFAFA] flex flex-col items-start justify-end pb-50 px-3 gap-3 max-w-dvw overflow-hidden md:items-end md:justify-end md:gap-0 md:pb-[15dvh] xl:pb-26"
       style={{
         background:
           "radial-gradient(160.91% 74.35% at 76.3% 74.35%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
       }}
     >
-      <h1 className="text-title-1 uppercase font-aeonik-mono md:text-center md:w-full md:flex md:flex-col md:mt-[50dvh]">
-        <span>проектируем</span>
-        <span className="md:translate-x-15 xl:translate-x-40"> будущее </span>
+      <h1 className="text-title-1 uppercase font-aeonik-mono md:text-center md:w-full md:flex md:flex-col md:mt-[50dvh] md:translate-x-0 xl:-translate-x-0">
+        <span>{data.title.lines[0]}</span>
+        <span className="md:translate-x-15 xl:translate-x-40">
+          {" "}
+          {data.title.lines[1]}{" "}
+        </span>
         <span className="md:translate-x-20 xl:translate-x-50">
-          фармацевтики
+          {data.title.lines[2]}
         </span>
       </h1>
       {/* mobile */}
-      <div className="flex flex-col text-hero-subtitle uppercase font-aeonik-mono md:hidden">
+      <div className="flex flex-col gap-1 text-hero-subtitle uppercase font-aeonik-mono md:hidden">
         <div className="flex flex-row gap-3">
           <div className="flex flex-row gap-1.5">
-            <Tag icon="rectangle" label="DRUG DISCOVERY" />
-            <Tag icon="coin" label="chemoinformatics" />
+            <Tag icon="rectangle" label={data.tags[0].label} />
+            <Tag icon="coin" label={data.tags[1].label} />
           </div>
         </div>
         <div className="flex flex-row gap-1.5">
-          <Tag icon="grid" label="CADD" />
-          <Tag icon="circles" label="AI" />
-          <Tag icon="pill" label="medicinal chemistry" />
+          <Tag icon="grid" label={data.tags[2].label} />
+          <Tag icon="circles" label={data.tags[3].label} />
+          <Tag icon="pill" label={data.tags[4].label} />
         </div>
         <div className="flex flex-row gap-1.5">
-          <Tag icon="subtract" label="software development" />
+          <Tag icon="subtract" label={data.tags[5].label} />
         </div>
       </div>
       {/* end of mobile */}
       {/* tablet */}
-      <div className="hidden md:flex flex-col text-hero-subtitle uppercase font-aeonik-mono -translate-x-17 gap-1">
+      <div className="hidden md:flex flex-col text-hero-subtitle uppercase font-aeonik-mono -translate-x-17 gap-1 xl:gap-2">
         <div className="ml-auto">
-          <Tag icon="grid" label="CADD" sizes={{ base: 11, xl: 21 }} />
+          <Tag
+            icon="grid"
+            label={data.tags[2].label}
+            sizes={{ base: 11, xl: 21 }}
+          />
         </div>
         <div className="flex flex-row gap-3 translate-x-17">
-          <div className="flex flex-row gap-1.5">
+          <div className="flex flex-row gap-4">
             <Tag
               icon="rectangle"
-              label="DRUG DISCOVERY"
+              label={data.tags[0].label}
               sizes={{ base: 11, xl: 21 }}
             />
             <Tag
               icon="subtract"
-              label="software development"
+              label={data.tags[5].label}
               sizes={{ base: 11, xl: 21 }}
             />
           </div>
         </div>
-        <div className="flex flex-row gap-1.5 translate-x-3">
+        <div className="flex flex-row gap-4 translate-x-4 xl:-translate-x-20">
           <Tag
             icon="pill"
-            label="medicinal chemistry"
+            label={data.tags[4].label}
             sizes={{ base: 11, xl: 21 }}
           />
           <Tag
             icon="coin"
-            label="chemoinformatics"
+            label={data.tags[1].label}
             sizes={{ base: 11, xl: 21 }}
           />
         </div>
         <div className="translate-x-16">
-          <Tag icon="circles" label="AI" sizes={{ base: 11, xl: 21 }} />
+          <Tag
+            icon="circles"
+            label={data.tags[3].label}
+            sizes={{ base: 11, xl: 21 }}
+          />
         </div>
       </div>
       {/* end of tablet */}
@@ -433,70 +446,68 @@ function Hero() {
   );
 }
 
-function Slider() {
+function Slider({ data }: { data: typeof homeData.slider }) {
   return (
     <div className="relative">
-      <div className="h-dvh pt-29 bg-dark-gray px-2">
-        <div className="flex flex-row gap-10 text-white">
-          <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square ">
-            <p className="text-hero-subtitle font-aeonik-mono">A</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <h2 className="text-title-1 uppercase font-aeonik-mono">
-              разработка молекул
-            </h2>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-4">
-              <div className="flex flex-col">
-                <p className="text-subtitle-1">1</p>
-                <p className="text-hero-subtitle font-aeonik-mono uppercase mt-1">
-                  Выбор мишени и патентный анализ
-                </p>
-                <div className="mt-2 flex flex-row items-center gap-">
-                  <p className="text-caption-0 py-0.5 px-1 border-[0.5px] border-white w-fit">
-                    Target ID
-                  </p>
-                  <p className="text-caption-0 py-0.5 px-1 border-[0.5px] border-white w-fit rounded-full">
-                    Target ID
-                  </p>
-                </div>
+      {data.slides.map((slide) => (
+        <div key={slide.marker} className="h-dvh pt-29 bg-dark-gray px-2">
+          <div className="flex flex-row gap-10 text-white">
+            <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square">
+              <p className="text-hero-subtitle font-aeonik-mono">
+                {slide.marker}
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-9">
+              <h2 className="text-title-1 uppercase font-aeonik-mono">
+                {slide.title.lines.join(" ")}
+              </h2>
+              <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+                {slide.steps.map((step) => (
+                  <div key={step.number} className="flex flex-col">
+                    <p className="text-subtitle-1">{step.number}</p>
+                    <p className="text-hero-subtitle font-aeonik-mono uppercase mt-1">
+                      {step.title.lines.join(" ")}
+                    </p>
+                    <div className="mt-2 flex flex-row items-center gap-1">
+                      {step.tags.map((tag, i) => (
+                        <p
+                          key={tag}
+                          className={`text-caption-0 py-0.5 px-1 text-white! border-[0.5px] border-white w-fit${i % 2 === 1 ? " rounded-full" : ""}`}
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="h-dvh pt-29 bg-dark-gray px-2">
-        <div className="flex flex-row gap-10 text-white">
-          <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square ">
-            <p className="text-hero-subtitle font-aeonik-mono">Б</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <h2 className="text-title-1 uppercase font-aeonik-mono">
-              цифровые продукты
-            </h2>
-            <div className="flex flex-col gap-0 text-subtitle-1 font-diatype">
-              <p>Поиск и выбор мишени</p>
-              <p>Валидация мишени</p>
-              <p>Поиск и оптимизация «хита»</p>
-              <p>Доклинические исследования</p>
-              <p>Клинические исследования</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
 
-function RequestAccess() {
+function RequestAccess({ data }: { data: typeof homeData.requestAccess }) {
   return (
     <div className="w-full h-full pt-32 relative md:py-32 xl:pt-0">
       <div className="flex flex-col items-start w-fit mx-auto justify-center gap-2 translate-x-[20%] md:absolute md:top-1/2 md:-translate-y-1/2 md:-left-2">
-        <h3 className="text-display-1 uppercase font-aeonik-mono">Xantir</h3>
-        <div className="flex flex-col gap-0 text-subtitle-1 w-fit items-start justify-start font-diatype ">
-          <p>Поиск и выбор мишени</p>
-          <p>Валидация мишени</p>
-          <p>Поиск и оптимизация</p>
-          <p>Доклинические исследования</p>
+        <h3 className="text-display-1 uppercase font-aeonik-mono">
+          {data.title.lines.join(" ")}
+        </h3>
+        <p className="text-subtitle-1 font-diatype max-w-xs">
+          {data.description.ru}
+        </p>
+        <div className="flex flex-row flex-wrap gap-1 mt-1">
+          {data.audience.tags.map((tag) => (
+            <span
+              key={tag.label}
+              className="text-caption-0 py-0.5 px-1 border-[0.5px] border-dark-gray font-aeonik-mono uppercase"
+            >
+              {tag.label}
+            </span>
+          ))}
         </div>
       </div>
       <div className="w-92 h-auto aspect-square bg-dark-gray rounded-full mx-auto mt-8 relative md:w-104 xl:w-[50dvw]">
@@ -514,71 +525,44 @@ function RequestAccess() {
   );
 }
 
-function Team() {
-  const teamMembers = [
-    {
-      name: "ЯН ИВАНЕНКОВ",
-      facts: [
-        ">20 years in Drug Design",
-        ">250 scientific papers",
-        "~38 h-index",
-      ],
-      tag: "FIRST TAG TYPE",
-    },
-    {
-      name: "АНАСТАСИЯ КОРЖЕНЕВКСАЯ",
-      facts: [
-        ">20 years in Drug Design",
-        ">250 scientific papers",
-        "~38 h-index",
-      ],
-      tag: "FIRST TAG TYPE",
-    },
-    {
-      name: "АЛЕКСЕЙ МАЛЫШЕВ",
-      facts: [
-        ">20 years in Drug Design",
-        ">250 scientific papers",
-        "~38 h-index",
-      ],
-      tag: "FIRST TAG TYPE",
-    },
-    {
-      name: "BELLADONNA THE DOG",
-      facts: ["Talented and supportive"],
-      tag: "FIRST TAG TYPE",
-    },
-  ];
+function Team({ data }: { data: typeof homeData.team }) {
   return (
     <div className="w-full h-full pt-30 grid grid-cols-2 px-2 gap-x-2 gap-y-10 md:grid-cols-4">
-      {teamMembers.map((member, index) => (
-        <TeamMember key={index} {...member} />
+      {data.members.map((member, index) => (
+        <TeamMember key={index} member={member} />
       ))}
     </div>
   );
 }
 
 function TeamMember({
-  name,
-  facts,
-  tag,
+  member,
 }: {
-  name: string;
-  facts: string[];
-  tag: string;
+  member: (typeof homeData.team.members)[number];
 }) {
   return (
     <div className="flex flex-col items-start">
-      <div className="w-full h-auto aspect-square bg-dark-gray" />
-      <p className="text-hero-subtitle mt-5 font-aeonik-mono">{name}</p>
+      <div
+        className={`w-full h-auto aspect-square bg-dark-gray${member.shape === "circle" ? " rounded-full" : ""}`}
+      />
+      <p className="text-hero-subtitle mt-5 font-aeonik-mono">
+        {member.name.lines.join(" ")}
+      </p>
       <div className="text-subtitle-1 flex flex-col items-start gap-0 mt-2 max-md:h-10 font-diatype">
-        {facts.map((fact, index) => (
-          <p key={index}>{fact}</p>
+        {member.credentials.map((c, i) => (
+          <p key={i}>{c}</p>
         ))}
       </div>
-      <p className="text-caption-0 p-1 bg-light-gray rounded-full mt-6 font-aeonik-mono">
-        {tag}
-      </p>
+      <div className="flex flex-row flex-wrap gap-1 mt-6">
+        {member.roles.map((role) => (
+          <p
+            key={role.label}
+            className="text-caption-0 p-1 bg-light-gray rounded-full font-aeonik-mono"
+          >
+            {role.label}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
@@ -601,9 +585,9 @@ function Clients() {
           />
         </svg>
         <div className="flex flex-col h-fit *:shrink-0 *:flex-none">
-          <div className="border-y text-burgundy border-current h-fit relative py-[7px] px-[3px] translate-x-[30%] hidden xl:flex">
-            <div className="absolute top-1/2 -translate-y-[49%] right-[80%] h-[77%] aspect-square w-auto border-l border-t -rotate-45 border-current xl:right-[92.5%] xl:h-[73%]" />
-            <div className="absolute top-1/2 -translate-y-[49%] left-[80%] h-[77%] aspect-square w-auto border-l border-t rotate-135 border-current xl:left-[92.5%] xl:h-[73%]" />
+          <div className="border text-burgundy border-current h-fit relative py-[7px] px-[8px] translate-x-[30%] hidden xl:flex">
+            {/*<div className="absolute top-1/2 -translate-y-[49%] right-[80%] h-[77%] aspect-square w-auto border-l border-t -rotate-45 border-current xl:right-[92.5%] xl:h-[73%]" />*/}
+            {/*<div className="absolute top-1/2 -translate-y-[49%] left-[80%] h-[77%] aspect-square w-auto border-l border-t rotate-135 border-current xl:left-[92.5%] xl:h-[73%]" />*/}
             <p className="font-aeonik-mono uppercase text-xs font-light leading-[1.1] tracking-[0.01em] xl:text-[24px] xl:font-light xl:leading-[110%] xl:tracking-[0.24px] ">
               разработчиков
             </p>
@@ -634,10 +618,10 @@ function Footer() {
       className="pt-50 w-full px-2 pb-2 md:py-2 md:h-dvh md:flex md:flex-row md:*:flex-1"
       style={{
         background:
-          "radial-gradient(145.01% 93.79% at 67.18% 65.45%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
+          "radial-gradient(126.63% 82.66% at 71.59% 55.79%, #91868E 0%, #A1A1A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
       }}
     >
-      <div className="flex flex-col items-center justify-center md:-translate-x-1/8">
+      <div className="flex flex-col items-center justify-center">
         <svg
           width="167"
           height="322"

@@ -40,8 +40,6 @@
     --text-hero-subtitle--line-height: 1;
     --text-hero-subtitle--letter-spacing: 0em;
     --text-hero-subtitle--font-weight: 300;
-    --text-hero-subtitle--font-family: var(--font-aeonik-mono), monospace;
-    --text-hero-subtitle--text-transform: uppercase;
 
     --text-subtitle-1: 0.75rem;
     --text-subtitle-1--line-height: 1.2;
@@ -95,7 +93,16 @@
 }
 
 @media (min-width: 1280px) {
+    .text-caption-0 {
+        color: var(--burgundy, #411319);
+    }
+
     :root {
+        --text-nav-link: 1.25rem;
+        --text-nav-link--line-height: 1.1;
+        --text-nav-link--letter-spacing: 0.02em;
+        --text-nav-link--font-weight: 300;
+
         --text-title-1: 8.5rem;
         --text-title-1--line-height: 0.95;
         --text-title-1--letter-spacing: -0.03em;
@@ -114,6 +121,12 @@
         --text-display-1--line-height: 1;
         --text-display-1--letter-spacing: -0.02em;
         --text-display-1--font-weight: 300;
+
+        --text-caption-0: 0.75rem;
+        --text-caption-0--line-height: 1.1;
+        --text-caption-0--letter-spacing: 0.01em;
+        --text-caption-0--font-weight: 300;
+        --text-caption-0--color: #411319;
     }
 }
 

@@ -186,6 +186,44 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
       (c) => drawDiamond(c, 6 * s),
       rIn(0, 2),
     ),
+    // --- extra tablet/desktop items ---
+    makeDecor(
+      // bottom-left strip — below the text block
+      () => [rIn(0.05, 0.14), rIn(0.75, 0.87)],
+      (c) => drawPill(c, "ADAPTIVE", 9 * s),
+      rIn(0, 3),
+      true,
+    ),
+    makeDecor(
+      // far-right mid strip — clear of content and image
+      () => [rIn(0.89, 0.96), rIn(0.4, 0.6)],
+      (c) => drawGrid(c, 10 * s),
+      rIn(0, 2),
+    ),
+    makeDecor(
+      // bottom-centre-right — below content, left of image
+      () => [rIn(0.58, 0.74), rIn(0.72, 0.85)],
+      (c) => drawDiamond(c, 9 * s),
+      rIn(0, 2),
+    ),
+    makeDecor(
+      // top-centre-right — above content block
+      () => [rIn(0.63, 0.78), rIn(0.06, 0.18)],
+      (c) => drawDiamond(c, 7 * s),
+      rIn(0, 2),
+    ),
+    makeDecor(
+      // right side, between content and image
+      () => [rIn(0.73, 0.82), rIn(0.62, 0.75)],
+      (c) => drawSubtract(c, 7 * s),
+      rIn(0, 2),
+    ),
+    makeDecor(
+      // bottom-left corner
+      () => [rIn(0.04, 0.13), rIn(0.86, 0.94)],
+      (c) => drawDiamond(c, 8 * s),
+      rIn(0, 2),
+    ),
   ];
 }
 
@@ -299,36 +337,49 @@ function FloatingCanvas() {
   );
 }
 
-export default function DrugDiscovery() {
+type DrugDiscoveryData = {
+  title: { ru: string; lines: readonly string[] };
+  description: { ru: string };
+  tags: readonly { label: string }[];
+};
+
+export default function DrugDiscovery({ data }: { data: DrugDiscoveryData }) {
   return (
-    <div className="text-burgundy w-full flex flex-col h-dvh justify-center relative overflow-hidden">
+    <div className="text-burgundy w-full flex flex-col h-dvh justify-center relative overflow-hidden max-w-dvw ">
       <FloatingCanvas />
 
-      <div className="flex flex-row items-start mt-20 mx-auto translate-x-[25%] gap-2 md:-translate-x-full md:mt-0 relative z-10 md:gap-5">
-        <div className="md:translate-y-0.5">
+      <div className="flex flex-row items-start mt-20 mx-auto translate-x-[20%] gap-2 md:-translate-x-1/2 md:mt-0 relative z-10 md:gap-5">
+        <div className="translate-y-0.5">
           <Tag
             icon="rectangle"
             sizes={{
-              base: 16,
+              base: 9,
               md: 9,
               xl: 21,
             }}
           />
         </div>
-        <div className="flex flex-col gap-2 xl:gap-6">
-          <h2 className="text-hero-subtitle uppercase font-aeonik-mono">
-            drug discovery
+        <div className="flex flex-col gap-2 xl:gap-6 w-full">
+          <h2 className="text-hero-subtitle uppercase font-aeonik-mono text-pretty max-md:w-[75%] md:max-w-sm">
+            {data.title.ru}
           </h2>
-          <div className="flex flex-col gap-0 text-subtitle-1 font-diatype">
-            <p>Поиск и выбор мишени</p>
-            <p>Валидация мишени</p>
-            <p>Поиск и оптимизация</p>
-            <p>Доклинические исследования</p>
+          <p className="text-subtitle-1 font-diatype md:max-w-sm max-md:max-w-[75%]">
+            {data.description.ru}
+          </p>
+          <div className="flex flex-row flex-wrap gap-1">
+            {data.tags.map((tag) => (
+              <span
+                key={tag.label}
+                className="text-caption-0 py-0.5 px-1 border-[0.5px] border-current font-aeonik-mono uppercase"
+              >
+                {tag.label}
+              </span>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col mt-43 ml-13.5 -space-y-3 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-50 xl:bottom-50">
+      <div className="flex flex-col mt-43 ml-13.5 -space-y-3 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-[15dvw] xl:bottom-[15dvw]">
         <div className="w-19.5 h-auto aspect-square rounded-full bg-amber-50 xl:w-50" />
         <div className="grid grid-cols-4 gap-0.5 aspect-square w-9 xl:w-23">
           {Array.from({ length: 16 }).map((_, i) => {
