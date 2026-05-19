@@ -55,7 +55,7 @@ function buildSizeClasses(sizes: ResponsiveSizes): string {
     Object.entries(sizes) as [keyof ResponsiveSizes, number | undefined][]
   )
     .filter(([, v]) => v !== undefined)
-    .map(([bp, v]) => `${breakpointPrefix[bp]}[--tag-icon-size:${v}px]`)
+    .map(([bp, v]) => `${breakpointPrefix[bp]} size-[${v}px]`)
     .join(" ");
 }
 
@@ -66,9 +66,7 @@ export const Tag = ({ icon, label, size, sizes }: TagProps) => {
     const sizeClasses = buildSizeClasses(sizes);
     return (
       <div className="flex flex-row items-center gap-1.5">
-        <span
-          className={`w-[var(--tag-icon-size)] h-[var(--tag-icon-size)] ${sizeClasses}`}
-        >
+        <span className={sizeClasses}>
           <Icon width="100%" height="100%" />
         </span>
         {label && <p>{label}</p>}

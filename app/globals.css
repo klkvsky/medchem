@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source inline("[--tag-icon-size:11px] [--tag-icon-size:21px] md:[--tag-icon-size:11px] md:[--tag-icon-size:21px] xl:[--tag-icon-size:11px] xl:[--tag-icon-size:21px] w-[var(--tag-icon-size)] h-[var(--tag-icon-size)]");
+@source inline("size-[11px] size-[21px] md:size-[11px] md:size-[21px] xl:size-[11px] xl:size-[21px]");
 
 :root {
     --background: #ffffff;
@@ -19,7 +19,9 @@
     --font-mono: var(--font-geist-mono);
     --font-aeonik-mono: var(--font-aeonik-mono);
     --font-diatype: var(--font-diatype);
+}
 
+@theme {
     --text-nav-link: 0.875rem;
     --text-nav-link--line-height: 1.1;
     --text-nav-link--letter-spacing: 0.02em;
@@ -63,63 +65,52 @@
 }
 
 @media (min-width: 744px) {
-    @theme inline {
+    :root {
         --text-nav-link: 0.5rem;
         --text-nav-link--line-height: 1.1;
         --text-nav-link--letter-spacing: 0.02em;
         --text-nav-link--font-weight: 300;
-        --text-nav-link--font-family: var(--font-aeonik-mono), monospace;
 
         --text-title-1: 2.75rem;
         --text-title-1--line-height: 0.95;
         --text-title-1--letter-spacing: -0.03em;
         --text-title-1--font-weight: 300;
-        --text-title-1--font-family: var(--font-aeonik-mono), monospace;
 
         --text-hero-subtitle: 0.75rem;
         --text-hero-subtitle--line-height: 1;
         --text-hero-subtitle--font-weight: 300;
-        --text-hero-subtitle--font-family: var(--font-aeonik-mono), monospace;
 
         --text-subtitle-1: 0.5rem;
         --text-subtitle-1--line-height: 1.2;
         --text-subtitle-1--letter-spacing: 0.01em;
         --text-subtitle-1--font-weight: 300;
-        --text-subtitle-1--font-family: var(--font-diatype), sans-serif;
         --text-subtitle-1--color: #411319;
 
         --text-display-1: 1.75rem;
         --text-display-1--line-height: 1;
         --text-display-1--letter-spacing: -0.02em;
         --text-display-1--font-weight: 300;
-        --text-display-1--font-family: var(--font-aeonik-mono), monospace;
-        --text-display-1--text-transform: uppercase;
         --text-display-1--color: #411319;
     }
 }
 
 @media (min-width: 1280px) {
-    @theme inline {
+    :root {
         --text-title-1: 7.5rem;
         --text-title-1--line-height: 0.95;
         --text-title-1--letter-spacing: -0.03em;
         --text-title-1--font-weight: 300;
-        --text-title-1--font-family: var(--font-aeonik-mono), monospace;
-        --text-title-1--text-transform: uppercase;
         --text-title-1--color: #fafafa;
 
         --text-hero-subtitle: 1.875rem;
         --text-hero-subtitle--line-height: 1;
         --text-hero-subtitle--font-weight: 300;
-        --text-hero-subtitle--font-family: var(--font-aeonik-mono), monospace;
-        --text-hero-subtitle--text-transform: uppercase;
         --text-hero-subtitle--color: #411319;
 
         --text-subtitle-1: 1.25rem;
         --text-subtitle-1--line-height: 1.2;
         --text-subtitle-1--letter-spacing: 0.01em;
         --text-subtitle-1--font-weight: 300;
-        --text-subtitle-1--font-family: var(--font-diatype), sans-serif;
         --text-subtitle-1--color: #411319;
     }
 }

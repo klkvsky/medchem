@@ -308,7 +308,6 @@ export default function DrugDiscovery() {
         <div className="md:translate-y-0.5">
           <Tag
             icon="rectangle"
-            size={9}
             sizes={{
               base: 16,
               md: 9,

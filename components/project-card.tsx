@@ -40,7 +40,7 @@ export default function ProjectCard({
             direction === "left" || direction === "up" ? "left" : "right",
         }}
       >
-        <div className="bg-dark-gray w-11.5 h-11.5" />
+        <div className="bg-dark-gray w-11.5 h-11.5 xl:h-23.5 xl:w-23.5" />
         <div
           className="flex flex-col gap-2"
           style={{
@@ -48,8 +48,14 @@ export default function ProjectCard({
               direction === "left" || direction === "up" ? "start" : "end",
           }}
         >
-          <button className="w-4 h-4 bg-light-gray rounded-full flex items-center justify-center text-burgundy">
-            <Tag icon="plus" size={7} />
+          <button className="w-4 h-4 bg-light-gray rounded-full flex items-center justify-center text-burgundy xl:w-7.5 xl:h-7.5">
+            <Tag
+              icon="plus"
+              sizes={{
+                base: 7,
+                xl: 14,
+              }}
+            />
           </button>
           <div className="relative ">
             <div

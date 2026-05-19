@@ -96,14 +96,17 @@ export default function Projects() {
     <div className="min-h-dvh flex flex-col items-center pt-15">
       <div
         ref={drag.lineEl}
-        className="w-px h-50 bg-dark-gray relative text-dark-gray will-change-transform"
+        className="w-px h-50 bg-current relative text-dark-gray will-change-transform"
       >
         <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-1/2 flex flex-row items-center gap-15 text-center font-aeonik-mono">
-          <p ref={drag.leftTitle}>
-            разработка <br /> молекул
+          <p
+            ref={drag.leftTitle}
+            className="xl:whitespace-nowrap xl:-translate-x-4"
+          >
+            разработка <br className="xl:hidden" /> молекул
           </p>
-          <p ref={drag.rightTitle}>
-            цифровые <br /> продукты
+          <p ref={drag.rightTitle} className="xl:whitespace-nowrap">
+            цифровые <br className="xl:hidden" /> продукты
           </p>
         </div>
         <div className="absolute top-0 left-1/2 -translate-1/2">
