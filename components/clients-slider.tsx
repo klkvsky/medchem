@@ -95,7 +95,7 @@ function ClientSlide({
         alt={name}
         width={30}
         height={30}
-        className="w-[30px] h-[30px] object-contain"
+        className="w-[30px] h-[30px] object-contain xl:w-[45px] xl:h-[45px]"
       />
       <p className="text-subtitle-1 text-burgundy text-center">{name}</p>
     </div>

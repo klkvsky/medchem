@@ -12,7 +12,7 @@ export default function ProjectCard({
 }) {
   return (
     <div
-      className="flex flex-row gap-3.5"
+      className="flex flex-row gap-3.5 shrink-0"
       style={{
         flexDirection:
           direction === "left"
@@ -57,7 +57,7 @@ export default function ProjectCard({
               }}
             />
           </button>
-          <div className="relative ">
+          <div className="relative flex flex-col">
             <div
               className="flex items-center gap-3.5 absolute top-0 md:hidden"
               style={{
@@ -70,16 +70,15 @@ export default function ProjectCard({
             <h3 className="text-hero-subtitle uppercase whitespace-pre-line font-aeonik-mono">
               {title}
             </h3>
+            <p className="text-subtitle-1 font-diatype mt-2">{subtitle}</p>
           </div>
         </div>
-        <p className="text-subtitle-1 font-diatype text-dark-gray opacity-60">
-          {subtitle}
-        </p>
-        <div className="flex flex-row flex-wrap gap-1">
+
+        <div className="flex flex-row gap-1">
           {tags.map((t) => (
             <div
               key={t}
-              className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap xl:text-[12px] xl:font-light xl:not-italic xl:leading-[110%] xl:tracking-[0.12px]"
+              className="text-caption-0 p-1 bg-light-gray text-burgundy w-fit uppercase font-aeonik-mono whitespace-nowrap "
             >
               {t}
             </div>

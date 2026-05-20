@@ -19,8 +19,7 @@ type Track = {
 function useDragScroll() {
   const scrollEl = useRef<HTMLDivElement>(null);
   const lineEl = useRef<HTMLDivElement>(null);
-  const leftTitle = useRef<HTMLParagraphElement>(null);
-  const rightTitle = useRef<HTMLParagraphElement>(null);
+  const centerEl = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
@@ -28,35 +27,31 @@ function useDragScroll() {
   useEffect(() => {
     const el = scrollEl.current;
     if (!el) return;
-    const initial = (el.scrollWidth - el.clientWidth) / 2;
-    el.scrollLeft = initial;
+    const getInitialScrollLeft = () => {
+      const center = centerEl.current;
+      if (!center) return (el.scrollWidth - el.clientWidth) / 2;
 
-    let minTx = -Infinity;
-    let maxTx = Infinity;
+      const centeredOnDivider =
+        center.offsetLeft + center.offsetWidth / 2 - el.clientWidth / 2;
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
 
-    const computeBounds = () => {
-      if (!lineEl.current || !leftTitle.current || !rightTitle.current) return;
-      lineEl.current.style.transform = "";
-      const w = window.innerWidth;
-      const l = leftTitle.current.getBoundingClientRect().left;
-      const r = rightTitle.current.getBoundingClientRect().right;
-      minTx = 0.05 * w - l;
-      maxTx = 0.95 * w - r;
+      return Math.max(0, Math.min(maxScrollLeft, centeredOnDivider));
     };
+
+    let initial = getInitialScrollLeft();
+    el.scrollLeft = initial;
 
     const sync = () => {
       if (!lineEl.current) return;
       const delta = el.scrollLeft - initial;
-      const tx = Math.max(minTx, Math.min(maxTx, -delta));
-      lineEl.current.style.transform = `translateX(${tx}px)`;
+      lineEl.current.style.transform = `translateX(${-delta}px)`;
     };
 
     const onResize = () => {
-      computeBounds();
+      initial = getInitialScrollLeft();
       sync();
     };
 
-    computeBounds();
     sync();
 
     el.addEventListener("scroll", sync, { passive: true });
@@ -90,8 +85,7 @@ function useDragScroll() {
   return {
     scrollEl,
     lineEl,
-    leftTitle,
-    rightTitle,
+    centerEl,
     onMouseDown,
     onMouseUp,
     onMouseMove,
@@ -104,23 +98,32 @@ export default function Projects({
 }: {
   data: { title: { lines: readonly string[] }; tracks: readonly Track[] };
 }) {
-  const drag = useDragScroll();
+  const {
+    scrollEl,
+    lineEl,
+    centerEl,
+    onMouseDown,
+    onMouseUp,
+    onMouseMove,
+    onMouseLeave,
+  } = useDragScroll();
   const [trackA, trackB] = data.tracks;
 
   return (
-    <div className="min-h-dvh flex flex-col items-center pt-15">
+    <section
+      id="portfolio"
+      className="min-h-dvh flex flex-col items-center pt-15"
+    >
+      <h2 className="sr-only">{data.title.lines.join(" ")}</h2>
       <div
-        ref={drag.lineEl}
-        className="w-px h-50 bg-current relative text-dark-gray will-change-transform"
+        ref={lineEl}
+        className="w-px h-50 bg-current relative text-dark-gray will-change-transform xl:h-143.5"
       >
-        <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-1/2 flex flex-row items-center gap-15 text-center font-aeonik-mono">
-          <p
-            ref={drag.leftTitle}
-            className="xl:whitespace-nowrap xl:-translate-x-4"
-          >
+        <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-y-1/2 text-center font-aeonik-mono">
+          <p className="absolute top-1/2 right-15 -translate-y-1/2 xl:whitespace-nowrap">
             {trackA.title.lines.join("\n")}
           </p>
-          <p ref={drag.rightTitle} className="xl:whitespace-nowrap">
+          <p className="absolute top-1/2 left-15 -translate-y-1/2 xl:whitespace-nowrap">
             {trackB.title.lines.join("\n")}
           </p>
         </div>
@@ -129,15 +132,15 @@ export default function Projects({
         </div>
       </div>
       <div
-        ref={drag.scrollEl}
-        onMouseDown={drag.onMouseDown}
-        onMouseUp={drag.onMouseUp}
-        onMouseMove={drag.onMouseMove}
-        onMouseLeave={drag.onMouseLeave}
-        className="hidden md:flex flex-row items-center overflow-x-auto max-w-dvw gap-30 relative border-t border-current select-none cursor-grab"
+        ref={scrollEl}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        className="hidden md:flex flex-row items-center overflow-x-auto max-w-dvw gap-0 relative border-t border-current select-none cursor-grab "
         style={{ scrollbarWidth: "none" }}
       >
-        <div className="shrink-0 w-1" />
+        <div className="shrink-0 w-10" />
         <div className="flex flex-row gap-15 -translate-y-1">
           {trackA.items.map((item, index) => (
             <ProjectCard
@@ -149,6 +152,7 @@ export default function Projects({
             />
           ))}
         </div>
+        <div ref={centerEl} className="shrink-0 w-100" aria-hidden="true" />
         <div className="flex flex-row gap-15 -translate-y-1">
           {trackB.items.map((item, index) => (
             <ProjectCard
@@ -160,7 +164,7 @@ export default function Projects({
             />
           ))}
         </div>
-        <div className="shrink-0 w-1" />
+        <div className="shrink-0 w-10" />
       </div>
       {/* mobile */}
       <div className="grid grid-cols-2 w-full px-13 relative md:hidden">
@@ -191,6 +195,6 @@ export default function Projects({
         </div>
       </div>
       {/* end of mobile */}
-    </div>
+    </section>
   );
 }
