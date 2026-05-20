@@ -117,7 +117,7 @@ export default function Projects({
       <h2 className="sr-only">{data.title.lines.join(" ")}</h2>
       <div
         ref={lineEl}
-        className="w-px h-50 bg-burgundy relative text-dark-gray will-change-transform xl:h-143.5"
+        className="w-px h-50 bg-dark-gray relative text-dark-gray will-change-transform xl:h-143.5"
       >
         <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-y-1/2 text-center font-aeonik-mono">
           <p className="absolute top-1/2 right-15 -translate-y-1/2 xl:whitespace-nowrap">
@@ -137,7 +137,7 @@ export default function Projects({
         onMouseUp={onMouseUp}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
-        className="hidden md:flex flex-row items-center overflow-x-auto max-w-dvw gap-0 relative border-t border-current select-none cursor-grab "
+        className="hidden md:flex flex-row items-center overflow-x-auto max-w-dvw gap-0 relative border-t border-dark-gray select-none cursor-grab "
         style={{ scrollbarWidth: "none" }}
       >
         <div className="shrink-0 w-10" />
