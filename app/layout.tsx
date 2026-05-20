@@ -107,7 +107,7 @@ export default function RootLayout({
       lang={siteConfig.language}
       className={`${geistSans.variable} ${geistMono.variable} ${aeonikMono.variable} ${diatype.variable} h-full antialiased overscroll-none`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col text-burgundy">{children}</body>
     </html>
   );
 }
