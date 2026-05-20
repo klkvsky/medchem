@@ -115,6 +115,19 @@ function makeDecor(
   };
 }
 
+// Keeps the bottom-left corner (x < 0.50 ∩ y > 0.60) free of particles so the
+// SVG badge is never obscured. Retries the spawn fn up to 20 times on every
+// initial placement AND every respawn.
+function notBL(fn: () => [number, number]): () => [number, number] {
+  return () => {
+    for (let i = 0; i < 20; i++) {
+      const p = fn();
+      if (p[0] >= 0.5 || p[1] <= 0.6) return p;
+    }
+    return fn();
+  };
+}
+
 // Safe vignette zones that never overlap the "drug discovery" text block
 // (desktop content ≈ x:0.15–0.52, y:0.28–0.65; image ≈ x:0.84–0.96, y:0.80–0.96)
 function buildDecors(mobile: boolean, s: number): AnimDecor[] {
@@ -145,118 +158,122 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
     ];
   }
 
+  // notBL() wraps every spawn so particles never land in the bottom-left SVG zone.
   return [
     // Text pills — noScale:true, placed in clear vignette zones
     makeDecor(
-      () => [rIn(0.82, 0.92), rIn(0.17, 0.26)],
+      notBL(() => [rIn(0.82, 0.92), rIn(0.17, 0.26)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[0], 8 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
-      () => [rIn(0.04, 0.13), rIn(0.33, 0.5)],
+      notBL(() => [rIn(0.04, 0.13), rIn(0.33, 0.5)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[1], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
       // top-centre band — above the text block
-      () => [rIn(0.38, 0.58), rIn(0.06, 0.16)],
+      notBL(() => [rIn(0.38, 0.58), rIn(0.06, 0.16)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[2], 8 * s),
       rIn(0, 3),
       true,
     ),
     // Icon decorations — kept in corners / edges
     makeDecor(
-      () => [rIn(0.1, 0.2), rIn(0.07, 0.18)],
+      notBL(() => [rIn(0.1, 0.2), rIn(0.07, 0.18)]),
       (c) => drawDiamond(c, 11 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      () => [rIn(0.03, 0.1), rIn(0.55, 0.72)],
+      // left-side grid — y range straddles 0.60 so notBL handles any >0.60 hits
+      notBL(() => [rIn(0.03, 0.1), rIn(0.55, 0.72)]),
       (c) => drawGrid(c, 10 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      () => [rIn(0.78, 0.86), rIn(0.1, 0.2)],
+      notBL(() => [rIn(0.78, 0.86), rIn(0.1, 0.2)]),
       (c) => drawSubtract(c, 7 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      () => [rIn(0.86, 0.93), rIn(0.07, 0.17)],
+      notBL(() => [rIn(0.86, 0.93), rIn(0.07, 0.17)]),
       (c) => drawDiamond(c, 11 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      () => [rIn(0.42, 0.6), rIn(0.83, 0.93)],
+      // x range straddles 0.50 — notBL rejects the left half
+      notBL(() => [rIn(0.42, 0.6), rIn(0.83, 0.93)]),
       (c) => drawSubtract(c, 7 * s),
       rIn(0, 2),
     ),
     makeDecor(
       // right-edge mid — content ends at ~x:0.52, so x>0.72 is safe
-      () => [rIn(0.72, 0.82), rIn(0.32, 0.52)],
+      notBL(() => [rIn(0.72, 0.82), rIn(0.32, 0.52)]),
       (c) => drawDiamond(c, 6 * s),
       rIn(0, 2),
     ),
     // --- extra tablet/desktop items ---
     makeDecor(
-      // bottom-left strip — below the text block
-      () => [rIn(0.05, 0.14), rIn(0.75, 0.87)],
+      // moved right of x:0.50 so it never lands in the SVG corner
+      notBL(() => [rIn(0.52, 0.66), rIn(0.76, 0.86)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[3], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
       // far-right mid strip — clear of content and image
-      () => [rIn(0.89, 0.96), rIn(0.4, 0.6)],
+      notBL(() => [rIn(0.89, 0.96), rIn(0.4, 0.6)]),
       (c) => drawGrid(c, 10 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      () => [rIn(0.88, 0.96), rIn(0.28, 0.38)],
+      notBL(() => [rIn(0.88, 0.96), rIn(0.28, 0.38)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[4], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
-      () => [rIn(0.18, 0.3), rIn(0.78, 0.9)],
+      // moved right of x:0.50 so it never lands in the SVG corner
+      notBL(() => [rIn(0.52, 0.66), rIn(0.65, 0.74)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[5], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
-      () => [rIn(0.62, 0.78), rIn(0.2, 0.3)],
+      notBL(() => [rIn(0.62, 0.78), rIn(0.2, 0.3)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[6], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
-      () => [rIn(0.72, 0.84), rIn(0.56, 0.66)],
+      notBL(() => [rIn(0.72, 0.84), rIn(0.56, 0.66)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[7], 9 * s),
       rIn(0, 3),
       true,
     ),
     makeDecor(
       // bottom-centre-right — below content, left of image
-      () => [rIn(0.58, 0.74), rIn(0.72, 0.85)],
+      notBL(() => [rIn(0.58, 0.74), rIn(0.72, 0.85)]),
       (c) => drawDiamond(c, 9 * s),
       rIn(0, 2),
     ),
     makeDecor(
       // top-centre-right — above content block
-      () => [rIn(0.63, 0.78), rIn(0.06, 0.18)],
+      notBL(() => [rIn(0.63, 0.78), rIn(0.06, 0.18)]),
       (c) => drawDiamond(c, 7 * s),
       rIn(0, 2),
     ),
     makeDecor(
       // right side, between content and image
-      () => [rIn(0.73, 0.82), rIn(0.62, 0.75)],
+      notBL(() => [rIn(0.73, 0.82), rIn(0.62, 0.75)]),
       (c) => drawSubtract(c, 7 * s),
       rIn(0, 2),
     ),
     makeDecor(
-      // bottom-left corner
-      () => [rIn(0.04, 0.13), rIn(0.86, 0.94)],
+      // moved right of x:0.50 so it never lands in the SVG corner
+      notBL(() => [rIn(0.52, 0.67), rIn(0.87, 0.95)]),
       (c) => drawDiamond(c, 8 * s),
       rIn(0, 2),
     ),

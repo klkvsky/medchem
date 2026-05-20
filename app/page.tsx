@@ -1,9 +1,12 @@
 import Image from "next/image";
-import logo from "../public/logo.svg";
 import Link from "next/link";
 
-import SliderImageA from "@/public/assets/slider/a.png";
-import SliderImageB from "@/public/assets/slider/b.png";
+import SliderImageADesktop from "@/public/assets/slider/a_desktop.png";
+import SliderImageATablet from "@/public/assets/slider/a_tablet.png";
+import SliderImageAMobile from "@/public/assets/slider/a_mobile.png";
+import SliderImageBDesktop from "@/public/assets/slider/b_desktop.png";
+import SliderImageBTablet from "@/public/assets/slider/b_tablet.png";
+import SliderImageBMobile from "@/public/assets/slider/b_mobile.png";
 
 import RequestAccessImage from "@/public/assets/request/circle.png";
 
@@ -12,6 +15,9 @@ import ClientsSlider from "@/components/clients-slider";
 import DrugDiscovery from "@/components/drug-discovery";
 import Projects from "@/components/projects";
 import { getSiteUrl, siteConfig } from "./seo";
+
+import Slider from "@/components/slider";
+import Nav from "@/components/nav";
 
 const accessRequestEmailBody =
   "Привет! Запросить доступ можно уже прямо сейчас, связавшись с нашей командой!";
@@ -99,7 +105,11 @@ const homeData = {
             tags: ["PK", "PD"],
           },
         ],
-        image: SliderImageA,
+        images: {
+          mobile: SliderImageAMobile,
+          tablet: SliderImageATablet,
+          desktop: SliderImageADesktop,
+        },
       },
       {
         marker: "Б",
@@ -149,7 +159,11 @@ const homeData = {
             tags: ["ADOPTION", "SUPPORT"],
           },
         ],
-        image: SliderImageB,
+        images: {
+          mobile: SliderImageBMobile,
+          tablet: SliderImageBTablet,
+          desktop: SliderImageBDesktop,
+        },
       },
     ],
   },
@@ -430,26 +444,7 @@ export default function Home() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <nav className="fixed top-0 left-0 w-full z-100">
-        <div className="relative w-full h-full flex p-2">
-          <Image
-            src={logo}
-            width={147}
-            height={24}
-            alt="MedChem logo"
-            className="absolute top-2 left-1/2 -translate-x-1/2 md:w-[88px] md:h-auto xl:w-45 xl:h-auto"
-          />
-          <div className="flex flex-col text-nav-link uppercase text-[#FAFAFA] font-aeonik-mono mr-auto">
-            <Link href="/#hero">о компании</Link>
-            <Link href="/#services">Услуги</Link>
-            <Link href="/#portfolio">портфолио</Link>
-            <Link href="/#xantir">Xantir</Link>
-            <Link href="/#team">команда</Link>
-            <Link href="/#partners">партнеры</Link>
-            <Link href="/#contacts">Контакты</Link>
-          </div>
-        </div>
-      </nav>
+      <Nav />
       <main className="w-full h-full">
         <Hero data={data.hero} />
         <DrugDiscovery data={data.drugDiscovery} />
@@ -550,64 +545,64 @@ function Hero({ data }: { data: typeof homeData.hero }) {
   );
 }
 
-function Slider({ data }: { data: typeof homeData.slider }) {
-  return (
-    <section id="process" className="relative">
-      {data.slides.map((slide) => (
-        <div
-          key={slide.marker}
-          className="h-dvh pt-29 bg-dark-gray px-2 relative"
-        >
-          <Image
-            src={slide.image}
-            alt={slide.title.lines.join(" ")}
-            fill
-            sizes="100vw"
-            className="object-cover z-0"
-          />
-          <div className="flex flex-row gap-10 text-white z-10 relative">
-            <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square">
-              <p className="text-hero-subtitle font-aeonik-mono">
-                {slide.marker}
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-9">
-              <h2 className="text-title-1 uppercase font-aeonik-mono">
-                {slide.title.lines.join(" ")}
-              </h2>
-              <div className="grid grid-cols-2 gap-x-2 gap-y-4">
-                {slide.steps.map((step) => (
-                  <div key={step.number} className="flex flex-col">
-                    <p className="text-subtitle-1">{step.number}</p>
-                    <p className="text-hero-subtitle font-aeonik-mono uppercase mt-1">
-                      {step.title.lines.join(" ")}
-                    </p>
-                    <div className="mt-2 flex flex-row items-center gap-0">
-                      {step.tags.map((tag, i) => (
-                        <p
-                          key={tag}
-                          className={`text-caption-0 py-0.5 px-1 text-white! border-[0.5px] border-white w-fit${i % 2 === 1 ? " rounded-full" : ""}`}
-                        >
-                          {tag}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>
-  );
-}
+// function Slider({ data }: { data: typeof homeData.slider }) {
+//   return (
+//     <section id="process" className="relative">
+//       {data.slides.map((slide) => (
+//         <div
+//           key={slide.marker}
+//           className="h-dvh pt-29 bg-dark-gray px-2 relative"
+//         >
+//           <Image
+//             src={slide.image}
+//             alt={slide.title.lines.join(" ")}
+//             fill
+//             sizes="100vw"
+//             className="object-cover z-0"
+//           />
+//           <div className="flex flex-row gap-10 text-white z-10 relative">
+//             <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square xl:w-[50px] xl:h-[50px] xl">
+//               <p className="text-hero-subtitle font-aeonik-mono">
+//                 {slide.marker}
+//               </p>
+//             </div>
+//             <div className="flex flex-col items-center gap-9 xl:flex-row xl:items-start">
+//               <h2 className="text-title-1 uppercase font-aeonik-mono">
+//                 {slide.title.lines.join(" ")}
+//               </h2>
+//               <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+//                 {slide.steps.map((step) => (
+//                   <div key={step.number} className="flex flex-col">
+//                     <p className="text-subtitle-1">{step.number}</p>
+//                     <p className="text-hero-subtitle font-aeonik-mono uppercase mt-1">
+//                       {step.title.lines.join(" ")}
+//                     </p>
+//                     <div className="mt-2 flex flex-row items-center gap-0">
+//                       {step.tags.map((tag, i) => (
+//                         <p
+//                           key={tag}
+//                           className={`text-caption-0 py-0.5 px-1 text-white! border-[0.5px] border-white w-fit${i % 2 === 1 ? " rounded-full" : ""}`}
+//                         >
+//                           {tag}
+//                         </p>
+//                       ))}
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </section>
+//   );
+// }
 
 function RequestAccess({ data }: { data: typeof homeData.requestAccess }) {
   return (
     <section
       id="xantir"
-      className="w-full h-full pt-32 relative md:py-32 xl:pt-0"
+      className="w-full h-full pt-32 relative md:py-32 xl:pt-0 max-w-dvw overflow-hidden"
     >
       <div className="flex flex-col items-start w-full px-2  justify-center gap-2 max-md:w-1/2 max-md:mr-auto md:mx-auto md:absolute md:top-1/2 md:-translate-y-1/2 md:left-2">
         <h2 className="text-display-1 uppercase font-aeonik-mono">
@@ -702,7 +697,7 @@ function TeamMember({
 
 function Clients() {
   return (
-    <section className="flex flex-col pt-30">
+    <section id="partners" className="flex flex-col pt-30">
       <div className="flex flex-row items-end px-2">
         <svg
           width="185"
