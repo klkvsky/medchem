@@ -112,12 +112,12 @@ export default function Projects({
   return (
     <section
       id="portfolio"
-      className="min-h-dvh flex flex-col items-center pt-15"
+      className="min-h-dvh flex flex-col items-center pt-15 text-burgundy"
     >
       <h2 className="sr-only">{data.title.lines.join(" ")}</h2>
       <div
         ref={lineEl}
-        className="w-px h-50 bg-current relative text-dark-gray will-change-transform xl:h-143.5"
+        className="w-px h-50 bg-burgundy relative text-dark-gray will-change-transform xl:h-143.5"
       >
         <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-y-1/2 text-center font-aeonik-mono">
           <p className="absolute top-1/2 right-15 -translate-y-1/2 xl:whitespace-nowrap">
@@ -141,7 +141,7 @@ export default function Projects({
         style={{ scrollbarWidth: "none" }}
       >
         <div className="shrink-0 w-10" />
-        <div className="flex flex-row gap-15 -translate-y-1">
+        <div className="flex flex-row gap-45 -translate-y-1">
           {trackA.items.map((item, index) => (
             <ProjectCard
               key={index}
@@ -154,7 +154,7 @@ export default function Projects({
           ))}
         </div>
         <div ref={centerEl} className="shrink-0 w-100" aria-hidden="true" />
-        <div className="flex flex-row gap-15 -translate-y-1">
+        <div className="flex flex-row gap-45 -translate-y-1">
           {trackB.items.map((item, index) => (
             <ProjectCard
               key={index}
@@ -171,7 +171,7 @@ export default function Projects({
       {/* mobile */}
       <div className="grid grid-cols-2 w-full px-13 relative md:hidden">
         <div className="absolute top-0 left-13 w-[calc(100dvw-var(--spacing)*26)] h-px bg-dark-gray" />
-        <div className="flex flex-col gap-15 relative pt-19.5 pb-15">
+        <div className="flex flex-col gap-20 relative pt-19.5 pb-15">
           <div className="absolute top-0 left-0 w-px h-full bg-dark-gray" />
           {trackA.items.map((item, index) => (
             <ProjectCard
@@ -184,7 +184,7 @@ export default function Projects({
             />
           ))}
         </div>
-        <div className="flex flex-col gap-15 relative pt-19.5 pb-15">
+        <div className="flex flex-col gap-20 relative pt-19.5 pb-15">
           <div className="absolute top-0 right-0 w-px h-full bg-dark-gray" />
           {trackB.items.map((item, index) => (
             <ProjectCard
