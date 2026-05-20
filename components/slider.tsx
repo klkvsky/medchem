@@ -66,7 +66,7 @@ export default function Slider({ data }: SliderProps) {
     <section
       ref={sectionRef}
       id="process"
-      className="relative"
+      className="relative bg-black"
       style={{ height: `${data.slides.length * 100}dvh` }}
     >
       {/*
@@ -90,7 +90,7 @@ export default function Slider({ data }: SliderProps) {
               // Paper-edge shadow gives physical depth
               boxShadow: i > 0 ? "0 -20px 60px 4px rgba(0,0,0,0.5)" : undefined,
             }}
-            className="pt-29 bg-dark-gray px-2"
+            className="pt-29 bg-black px-2"
           >
             <Image
               src={slide.images.mobile}
@@ -111,7 +111,7 @@ export default function Slider({ data }: SliderProps) {
               alt={slide.title.lines.join(" ")}
               fill
               sizes="100vw"
-              className="object-cover z-0 hidden xl:block"
+              className="object-cover z-0 hidden xl:block opacity-50"
             />
             <div className="flex flex-row gap-10 text-white z-10 relative">
               <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square xl:w-[50px] xl:h-[50px]">
