@@ -154,7 +154,7 @@ export default function Projects({
           ))}
         </div>
         <div ref={centerEl} className="shrink-0 w-100" aria-hidden="true" />
-        <div className="flex flex-row gap-45 -translate-y-1">
+        <div className="flex flex-row gap-45 -translate-y-1 pr-100">
           {trackB.items.map((item, index) => (
             <ProjectCard
               key={index}
@@ -166,7 +166,7 @@ export default function Projects({
             />
           ))}
         </div>
-        <div className="shrink-0 w-10" />
+        <div className="shrink-0 w-30" />
       </div>
       {/* mobile */}
       <div className="grid grid-cols-2 w-full px-13 relative md:hidden">

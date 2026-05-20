@@ -256,19 +256,19 @@ const homeData = {
           {
             title: "INVENTUM.AI",
             subtitle: "Generative Chemistry",
-            image: "",
+            image: "/assets/projects/Inventum.AI.png",
             tags: ["РОСАТОМ", "ИННОПОЛИС"],
           },
           {
             title: "BIOLOGY42",
             subtitle: "Generative Biology",
-            image: "",
+            image: "/assets/projects/Biology42.png",
             tags: ["INSILICO MEDICINE"],
           },
           {
             title: "GOLDEN CUBES",
             subtitle: "AI-Assisted Workflow",
-            image: "",
+            image: "/assets/projects/Golden-Cubes.png",
             tags: ["INSILICO MEDICINE"],
           },
         ],
