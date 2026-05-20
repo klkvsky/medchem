@@ -123,7 +123,7 @@ export default function Slider({ data }: SliderProps) {
                 <h2 className="text-title-1 uppercase font-aeonik-mono">
                   {slide.title.lines.join(" ")}
                 </h2>
-                <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+                <div className="grid grid-cols-2 gap-x-2 gap-y-4 w-full">
                   {slide.steps.map((step) => (
                     <div key={step.number} className="flex flex-col">
                       <p className="text-subtitle-1">{step.number}</p>
