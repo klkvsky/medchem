@@ -301,7 +301,7 @@ const homeData = {
           ru: "Ян Иваненков",
           lines: ["ЯН", "ИВАНЕНКОВ"],
         },
-        image: "",
+        image: "/assets/team/yan.png",
         shape: "square",
         credentials: [
           "PhD",
@@ -317,7 +317,7 @@ const homeData = {
           ru: "Александр Малышев",
           lines: ["АЛЕКСАНДР", "МАЛЫШЕВ"],
         },
-        image: "",
+        image: "/assets/team/alex.png",
         shape: "square",
         credentials: ["PharmD", "9+ лет опыта"],
         roles: [{ label: "ДИРЕКТОР ПО ПРОДУКТУ" }],
@@ -328,7 +328,7 @@ const homeData = {
           ru: "Анастасия Корженевская",
           lines: ["АНАСТАСИЯ", "КОРЖЕНЕВСКАЯ"],
         },
-        image: "",
+        image: "/assets/team/anya.png",
         shape: "square",
         credentials: ["MSc", "6+ лет опыта"],
         roles: [{ label: "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР" }],
@@ -339,7 +339,7 @@ const homeData = {
           ru: "Белладонна",
           lines: ["БЕЛЛАДОННА"],
         },
-        image: "",
+        image: "/assets/team/dog.png",
         shape: "circle",
         credentials: ["Талантливая", "и поддерживающая"],
         roles: [{ label: "ТАЛИСМАН КОМАНДЫ" }],
@@ -669,10 +669,19 @@ function TeamMember({
   member: (typeof homeData.team.members)[number];
 }) {
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start h-full ">
       <div
-        className={`w-full h-auto aspect-square bg-dark-gray${member.shape === "circle" ? " rounded-full" : ""}`}
-      />
+        className={`w-full h-auto aspect-square bg-dark-gray relative overflow-hidden${member.shape === "circle" ? " rounded-full" : ""}`}
+      >
+        {member.image && (
+          <Image
+            src={member.image}
+            alt={member.name.ru}
+            fill
+            className="object-cover"
+          />
+        )}
+      </div>
       <h3 className="text-hero-subtitle mt-5 font-aeonik-mono">
         {member.name.lines.join(" ")}
       </h3>
@@ -681,11 +690,11 @@ function TeamMember({
           <p key={i}>{c}</p>
         ))}
       </div>
-      <div className="flex flex-row flex-wrap gap-1 mt-6">
+      <div className="flex flex-row flex-wrap gap-1 pt-6! mt-auto">
         {member.roles.map((role) => (
           <p
             key={role.label}
-            className="text-caption-0 p-1 bg-light-gray rounded-full font-aeonik-mono"
+            className="text-caption-0 py-1 px-2 bg-light-gray rounded-full font-aeonik-mono"
           >
             {role.label}
           </p>
