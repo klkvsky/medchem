@@ -117,7 +117,7 @@ export default function Projects({
       <h2 className="sr-only">{data.title.lines.join(" ")}</h2>
       <div
         ref={lineEl}
-        className="w-px h-50 bg-dark-gray relative text-dark-gray will-change-transform xl:h-143.5"
+        className="w-px h-50 bg-burgundy relative text-dark-gray will-change-transform xl:h-143.5"
       >
         <div className="text-hero-subtitle uppercase absolute top-1/2 left-1/2 -translate-y-1/2 text-center font-aeonik-mono">
           <p className="absolute top-1/2 right-15 -translate-y-1/2 xl:whitespace-nowrap">
