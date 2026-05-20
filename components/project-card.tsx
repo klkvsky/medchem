@@ -1,12 +1,15 @@
+import Image from "next/image";
 import { Tag } from "./tag";
 export default function ProjectCard({
   title,
   subtitle,
+  image,
   tags,
   direction,
 }: {
   title: string;
   subtitle: string;
+  image: string;
   tags: readonly string[];
   direction: "left" | "right" | "up";
 }) {
@@ -40,7 +43,11 @@ export default function ProjectCard({
             direction === "left" || direction === "up" ? "left" : "right",
         }}
       >
-        <div className="bg-dark-gray w-11.5 h-11.5 xl:h-23.5 xl:w-23.5" />
+        <div className="bg-dark-gray w-11.5 h-11.5 xl:h-23.5 xl:w-23.5 relative overflow-hidden">
+          {image && (
+            <Image src={image} alt={title} fill className="object-cover" />
+          )}
+        </div>
         <div
           className="flex flex-col gap-2"
           style={{

@@ -147,6 +147,7 @@ export default function Projects({
               key={index}
               title={item.title}
               subtitle={item.subtitle}
+              image={item.image}
               tags={item.tags}
               direction="up"
             />
@@ -159,6 +160,7 @@ export default function Projects({
               key={index}
               title={item.title}
               subtitle={item.subtitle}
+              image={item.image}
               tags={item.tags}
               direction="up"
             />
@@ -176,6 +178,7 @@ export default function Projects({
               key={index}
               title={item.title}
               subtitle={item.subtitle}
+              image={item.image}
               tags={item.tags}
               direction="left"
             />
@@ -188,6 +191,7 @@ export default function Projects({
               key={index}
               title={item.title}
               subtitle={item.subtitle}
+              image={item.image}
               tags={item.tags}
               direction="right"
             />

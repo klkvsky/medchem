@@ -22,7 +22,7 @@ export default function ClientsSlider() {
       logo: ClientLogo1,
     },
     {
-      name: "Expert Systems",
+      name: "Иннополис",
       logo: ClientLogo2,
     },
     {
@@ -34,23 +34,23 @@ export default function ClientsSlider() {
       logo: ClientLogo4,
     },
     {
-      name: "РосАтом",
+      name: "Сбер",
       logo: ClientLogo5,
     },
     {
-      name: "Сбер",
+      name: "НМИЦ Радиологии",
       logo: ClientLogo6,
     },
     {
-      name: "ХимРар",
+      name: "Insilico Medicine ",
       logo: ClientLogo7,
     },
     {
-      name: "НМИЦ Радиологии",
+      name: "Expert Systems",
       logo: ClientLogo8,
     },
     {
-      name: "Иннополис",
+      name: "РосАтом",
       logo: ClientLogo9,
     },
   ];

@@ -115,14 +115,14 @@ function makeDecor(
   };
 }
 
-// Keeps the bottom-left corner (x < 0.50 ∩ y > 0.60) free of particles so the
-// SVG badge is never obscured. Retries the spawn fn up to 20 times on every
+// Keeps y > 0.60 fully clear — guards both the bottom-left SVG badge and the
+// bottom-right eye element. Retries the spawn fn up to 20 times on every
 // initial placement AND every respawn.
 function notBL(fn: () => [number, number]): () => [number, number] {
   return () => {
     for (let i = 0; i < 20; i++) {
       const p = fn();
-      if (p[0] >= 0.5 || p[1] <= 0.6) return p;
+      if (p[1] <= 0.6) return p;
     }
     return fn();
   };
@@ -198,17 +198,6 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
       rIn(0, 2),
     ),
     makeDecor(
-      notBL(() => [rIn(0.86, 0.93), rIn(0.07, 0.17)]),
-      (c) => drawDiamond(c, 11 * s),
-      rIn(0, 2),
-    ),
-    makeDecor(
-      // x range straddles 0.50 — notBL rejects the left half
-      notBL(() => [rIn(0.42, 0.6), rIn(0.83, 0.93)]),
-      (c) => drawSubtract(c, 7 * s),
-      rIn(0, 2),
-    ),
-    makeDecor(
       // right-edge mid — content ends at ~x:0.52, so x>0.72 is safe
       notBL(() => [rIn(0.72, 0.82), rIn(0.32, 0.52)]),
       (c) => drawDiamond(c, 6 * s),
@@ -216,17 +205,10 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
     ),
     // --- extra tablet/desktop items ---
     makeDecor(
-      // moved right of x:0.50 so it never lands in the SVG corner
-      notBL(() => [rIn(0.52, 0.66), rIn(0.76, 0.86)]),
+      notBL(() => [rIn(0.88, 0.96), rIn(0.42, 0.55)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[3], 9 * s),
       rIn(0, 3),
       true,
-    ),
-    makeDecor(
-      // far-right mid strip — clear of content and image
-      notBL(() => [rIn(0.89, 0.96), rIn(0.4, 0.6)]),
-      (c) => drawGrid(c, 10 * s),
-      rIn(0, 2),
     ),
     makeDecor(
       notBL(() => [rIn(0.88, 0.96), rIn(0.28, 0.38)]),
@@ -235,8 +217,7 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
       true,
     ),
     makeDecor(
-      // moved right of x:0.50 so it never lands in the SVG corner
-      notBL(() => [rIn(0.52, 0.66), rIn(0.65, 0.74)]),
+      notBL(() => [rIn(0.04, 0.14), rIn(0.50, 0.59)]),
       (c) => drawPill(c, CANVAS_PILL_LABELS[5], 9 * s),
       rIn(0, 3),
       true,
@@ -252,30 +233,6 @@ function buildDecors(mobile: boolean, s: number): AnimDecor[] {
       (c) => drawPill(c, CANVAS_PILL_LABELS[7], 9 * s),
       rIn(0, 3),
       true,
-    ),
-    makeDecor(
-      // bottom-centre-right — below content, left of image
-      notBL(() => [rIn(0.58, 0.74), rIn(0.72, 0.85)]),
-      (c) => drawDiamond(c, 9 * s),
-      rIn(0, 2),
-    ),
-    makeDecor(
-      // top-centre-right — above content block
-      notBL(() => [rIn(0.63, 0.78), rIn(0.06, 0.18)]),
-      (c) => drawDiamond(c, 7 * s),
-      rIn(0, 2),
-    ),
-    makeDecor(
-      // right side, between content and image
-      notBL(() => [rIn(0.73, 0.82), rIn(0.62, 0.75)]),
-      (c) => drawSubtract(c, 7 * s),
-      rIn(0, 2),
-    ),
-    makeDecor(
-      // moved right of x:0.50 so it never lands in the SVG corner
-      notBL(() => [rIn(0.52, 0.67), rIn(0.87, 0.95)]),
-      (c) => drawDiamond(c, 8 * s),
-      rIn(0, 2),
     ),
   ];
 }
@@ -435,7 +392,7 @@ export default function DrugDiscovery({ data }: { data: DrugDiscoveryData }) {
         </div>
       </div>
 
-      <div className="flex flex-col mt-43 ml-13.5 -space-y-5 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-[15dvw] xl:bottom-[15dvw]">
+      <div className="flex flex-col mt-43 ml-13.5 -space-y-5 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-[15dvw] xl:bottom-[15dvw] bg-white">
         <Image
           src={DiscoverImageEye}
           alt="eye"
