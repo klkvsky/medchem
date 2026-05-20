@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { Tag } from "@/components/tag";
+import Image from "next/image";
+import DiscoverImageEye from "@/public/assets/discovery/eye.png";
 
 const COLOR = "#411319";
 const CANVAS_PILL_LABELS = [
@@ -416,8 +418,14 @@ export default function DrugDiscovery({ data }: { data: DrugDiscoveryData }) {
         </div>
       </div>
 
-      <div className="flex flex-col mt-43 ml-13.5 -space-y-3 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-[15dvw] xl:bottom-[15dvw]">
-        <div className="w-19.5 h-auto aspect-square rounded-full bg-amber-50 xl:w-50" />
+      <div className="flex flex-col mt-43 ml-13.5 -space-y-5 md:absolute md:right-20 md:bottom-20 relative z-10 xl:-space-y-10 xl:right-[15dvw] xl:bottom-[15dvw]">
+        <Image
+          src={DiscoverImageEye}
+          alt="eye"
+          width={100}
+          height={100}
+          className="object-cover  w-19.5 h-19.5 rounded-full xl:w-50 xl:h-50 overflow-hidden"
+        />
         <div className="grid grid-cols-4 gap-0.5 aspect-square w-9 xl:w-23">
           {Array.from({ length: 16 }).map((_, i) => {
             const cols = 4;

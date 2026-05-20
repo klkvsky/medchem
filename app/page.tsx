@@ -2,6 +2,11 @@ import Image from "next/image";
 import logo from "../public/logo.svg";
 import Link from "next/link";
 
+import SliderImageA from "@/public/assets/slider/a.png";
+import SliderImageB from "@/public/assets/slider/b.png";
+
+import RequestAccessImage from "@/public/assets/request/circle.png";
+
 import { Tag } from "@/components/tag";
 import ClientsSlider from "@/components/clients-slider";
 import DrugDiscovery from "@/components/drug-discovery";
@@ -94,6 +99,7 @@ const homeData = {
             tags: ["PK", "PD"],
           },
         ],
+        image: SliderImageA,
       },
       {
         marker: "Б",
@@ -143,6 +149,7 @@ const homeData = {
             tags: ["ADOPTION", "SUPPORT"],
           },
         ],
+        image: SliderImageB,
       },
     ],
   },
@@ -547,8 +554,18 @@ function Slider({ data }: { data: typeof homeData.slider }) {
   return (
     <section id="process" className="relative">
       {data.slides.map((slide) => (
-        <div key={slide.marker} className="h-dvh pt-29 bg-dark-gray px-2">
-          <div className="flex flex-row gap-10 text-white">
+        <div
+          key={slide.marker}
+          className="h-dvh pt-29 bg-dark-gray px-2 relative"
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title.lines.join(" ")}
+            fill
+            sizes="100vw"
+            className="object-cover z-0"
+          />
+          <div className="flex flex-row gap-10 text-white z-10 relative">
             <div className="border-[0.5px] border-current rounded-full flex items-center justify-center px-2 w-[25px] h-[25px] aspect-square">
               <p className="text-hero-subtitle font-aeonik-mono">
                 {slide.marker}
@@ -600,7 +617,13 @@ function RequestAccess({ data }: { data: typeof homeData.requestAccess }) {
           {data.description.ru}
         </p>
       </div>
-      <div className="w-92 h-auto aspect-square bg-dark-gray rounded-full mx-auto mt-8 relative md:w-104 xl:w-[50dvw]">
+      <div className="w-92 h-auto aspect-square bg-dark-gray rounded-full mx-auto mt-8 relative md:w-104 xl:w-[50dvw] overflow-hidden">
+        <Image
+          src={RequestAccessImage}
+          alt="request access"
+          fill
+          className="object-cover"
+        />
         <a
           href={accessRequestMailto}
           className="text-white text-center text-xs font-light leading-[1.1] tracking-[-0.02em] uppercase absolute top-1/2 left-1/2 -translate-1/2 px-4.5 py-3 rounded-[10px] font-aeonik-mono md:text-[6px] md:font-light md:not-italic md:leading-[110%] md:tracking-[-0.12px]  md:py-1.5 md:px-2 md:rounded-[5px] xl:text-[16px] xl:font-light xl:not-italic xl:leading-[110%] xl:tracking-[-0.32px] xl:py-4 xl:px-6 xl:rounded-[13.5px]"
