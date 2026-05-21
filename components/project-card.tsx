@@ -45,7 +45,7 @@ export default function ProjectCard({
       >
         <div className="bg-dark-gray w-11.5 h-11.5 xl:h-23.5 xl:w-23.5 relative overflow-hidden">
           {image && (
-            <Image src={image} alt={title} fill className="object-cover" />
+            <Image src={image} alt={title} fill sizes="(max-width: 1280px) 46px, 94px" className="object-cover" />
           )}
         </div>
         <div

@@ -617,6 +617,7 @@ function RequestAccess({ data }: { data: typeof homeData.requestAccess }) {
           src={RequestAccessImage}
           alt="request access"
           fill
+          sizes="(max-width: 768px) 368px, (max-width: 1280px) 416px, 50vw"
           className="object-cover"
         />
         <a
@@ -678,7 +679,8 @@ function TeamMember({
             src={member.image}
             alt={member.name.ru}
             fill
-            className="object-cover"
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-bottom"
           />
         )}
       </div>
