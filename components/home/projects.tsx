@@ -8,22 +8,26 @@ import { numbers } from "./assets";
 
 export function Projects() {
   return (
-    <div className="flex flex-col items-center gap-8 pt-19 pb-35">
-      <Logo />
-      <div className="px-2">
+    <div className="flex flex-col items-center gap-8 md:gap-15 pt-19 pb-35 md:pt-37.5">
+      <Logo className="w-36.75 h-auto md:w-72.5 " />
+      <div className="px-2 w-full">
         <div className="flex flex-row items-center text-center">
-          <p className="text-h3 uppercase">разработка молекул</p>
-          <div className="w-px h-20 bg-[#B1B1B1]" />
-          <p className="text-h3 uppercase">цифровые продукты</p>
+          <p className="text-h3 uppercase w-full">
+            разработка <br /> молекул
+          </p>
+          <div className="w-px h-20 md:h-36 bg-[#B1B1B1]" />
+          <p className="text-h3 uppercase w-full">
+            цифровые <br /> продукты
+          </p>
         </div>
         <div className="w-full h-20 border-t rounded-2xl border-[#B1B1B1] " />
-        <div className="flex flex-row justify-between -mt-20">
+        <div className="flex flex-row justify-between -mt-20 w-full">
           <ProjectLane align="left" />
           <ProjectLane align="right" />
         </div>
       </div>
       <button
-        className="text-h3 uppercase text-white mx-auto py-3 px-4.5 rounded-[10px]"
+        className="text-h3 uppercase text-white mx-auto py-3 px-4.5 rounded-[10px] md:px-7.5 md:py-4"
         style={{
           background:
             "radial-gradient(894.94% 276.37% at 100% 100%, #A4989B 2%, #A1A1A9 33.26%, #ADB9BC 64.94%, #A3AEA7 94.72%)",
@@ -38,7 +42,7 @@ export function Projects() {
 function ProjectLane({ align }: { align?: "left" | "right" }) {
   return (
     <div
-      className="flex flex-col border-x border-[#B1B1B1] w-full h-fit rounded-t-2xl gap-15 pt-38"
+      className="flex flex-col border-x border-[#B1B1B1] w-full h-fit rounded-t-2xl gap-15 pt-38 md:pt-33 md:gap-16"
       style={{
         borderLeft: align === "right" ? "none" : "",
         borderRight: align === "left" ? "none" : "",
@@ -54,6 +58,9 @@ function ProjectLane({ align }: { align?: "left" | "right" }) {
         alt="numbers.thirty"
         width={127}
         height={105}
+        style={{
+          marginLeft: align === "left" ? 0 : "auto",
+        }}
       />
     </div>
   );
@@ -62,21 +69,21 @@ function ProjectLane({ align }: { align?: "left" | "right" }) {
 function ProjectItem({ align }: { align?: "left" | "right" }) {
   return (
     <div
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 md:gap-6"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
     >
-      <div className="w-11.5 h-11.5 bg-[#B1B1B1]" />
+      <div className="w-11.5 h-11.5 bg-[#B1B1B1] md:w-16.5 md:h-16.5" />
       <div
         className="flex flex-col gap-3"
         style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
       >
-        <button className="w-4 h-4 flex items-center justify-center bg-[#E3E3E3] rounded-full">
+        <button className="w-4 h-4 flex items-center justify-center bg-[#E3E3E3] rounded-full md:w-5 md:h-5">
           <PlusIcon />
         </button>
         <div
-          className="flex flex-col gap-1"
+          className="flex flex-col gap-1 md:gap-1.5"
           style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
         >
           <p className="text-h3">TNIK</p>

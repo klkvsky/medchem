@@ -6,9 +6,9 @@ const tagShapeClasses = {
 };
 
 const tagPaddingClasses = {
-  rectangle: "px-[5px]",
-  pill: "px-[8px]",
-  trapezoid: "px-[16px]",
+  rectangle: "px-[5px] md:px-1.5",
+  pill: "px-[8px] md:px-[9px]",
+  trapezoid: "px-[16px] md:px-[15px]",
 };
 
 const tagVariantClasses = {
@@ -34,7 +34,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
         className={`${shapeClasses} inline-flex shrink-0 w-fit bg-[#E3E3E3] p-px`}
       >
         <span
-          className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-1`}
+          className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-1 md:py-1.5`}
         >
           {text}
         </span>
@@ -44,7 +44,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
 
   return (
     <div
-      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[5px]`}
+      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[5px] md:py-1.5`}
     >
       {text}
     </div>

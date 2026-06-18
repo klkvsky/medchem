@@ -11,15 +11,9 @@ export function Services() {
 
 function ServicesSlide() {
   return (
-    <div className="flex flex-col h-dvh justify-between bg-amber-300 pt-21 pb-5 px-2">
-      <div className="flex flex-col gap-3">
-        <p
-          className="text-h3 flex items-center justify-center rounded-full ring ring-white"
-          style={{
-            width: 25,
-            height: 25,
-          }}
-        >
+    <div className="flex flex-col h-dvh justify-between bg-amber-300 pt-21 md:pt-41 pb-5 px-2">
+      <div className="flex flex-col gap-3 md:gap-5">
+        <p className="text-h3 flex items-center justify-center rounded-full ring ring-white w-[25px] h-[25px] md:w-10 md:h-10">
           A
         </p>
         <h3 className="text-h1 uppercase">разработка молекул</h3>
@@ -31,7 +25,7 @@ function ServicesSlide() {
 
 function ServicesList() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-y-6.5 md:gap-x-2">
       <ServicesItem
         number="1"
         title="Выбор мишени и патентный анализ"
@@ -71,9 +65,9 @@ function ServicesItem({
   tags: string[];
 }) {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 md:gap-2.5">
       <p className="text-text tabular-nums w-4 h-4">{number}</p>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 md:gap-2.5">
         <p className="text-h3 uppercase">{title}</p>
         <div>
           {tags.map((tag, index) => (

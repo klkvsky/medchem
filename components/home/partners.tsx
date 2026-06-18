@@ -1,6 +1,6 @@
 export function Partners() {
   return (
-    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5">
+    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5 md:pt-37.5 md:gap-93 md:pb-10">
       <h4 className="text-h2 w-3/4 text-left uppercase px-2">
         лидеры рынка работают с нами
       </h4>
@@ -26,8 +26,8 @@ export function Partners() {
 
 function PartnersItem({ name }: { name: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-3">
-      <div className="w-12.5 h-12.5 object-contain bg-amber-300" />
+    <div className="flex flex-col items-center justify-center gap-3 md:gap-6">
+      <div className="w-12.5 h-12.5 object-contain bg-amber-300 md:w-25 md:h-25" />
       <p className="text-tag-button uppercase text-center">{name}</p>
     </div>
   );

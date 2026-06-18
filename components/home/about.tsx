@@ -6,14 +6,14 @@ import { numbers } from "./assets";
 
 export function About() {
   return (
-    <div className="px-10 flex flex-col gap-3.5 h-dvh justify-center">
+    <div className="px-10 flex flex-col gap-3.5 h-dvh justify-center md:gap-7">
       <Image
         src={numbers.twenty}
         alt="Number 20"
-        className="w-39 h-auto object-contain"
+        className="w-39 h-auto object-contain md:w-[307px]"
       />
-      <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-4.5">
+      <div className="flex flex-col gap-10 md:gap-8.5">
+        <div className="flex flex-col gap-4.5 md:gap-5">
           <h2 className="text-h3 uppercase">
             лет Создаем R&D-решения для life sciences
           </h2>
