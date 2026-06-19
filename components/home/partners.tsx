@@ -1,10 +1,10 @@
 export function Partners() {
   return (
-    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5 md:pt-37.5 md:gap-93 md:pb-10 xl:pt-3.5 xl:gap-47.5 xl:pb-5 2xl:pt-4.5 2xl:gap-65">
+    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5 md:pt-37.5 md:gap-93 md:pb-10 xl:pt-3.5 xl:gap-47.5 xl:pb-5 2xl:pt-4.5 2xl:gap-65 3xl:pt-5 3xl:gap-82">
       <h4 className="text-h2 w-3/4 text-left uppercase px-2 xl:w-1/2 2xl:w-[40%] xl:ml-auto">
         лидеры рынка работают с нами
       </h4>
-      <div className="flex flex-row gap-11 items-start max-w-full w-full overflow-x-auto">
+      <div className="flex flex-row gap-11 items-start max-w-full w-full overflow-x-auto 3xl:gap-15">
         <PartnersItem name="Артген Биотех" />
         <PartnersItem name="Валента" />
         <PartnersItem name="Герофарм" />
@@ -26,8 +26,8 @@ export function Partners() {
 
 function PartnersItem({ name }: { name: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 md:gap-6 xl:gap-5 2xl:gap-6">
-      <div className="w-12.5 h-12.5 object-contain bg-amber-300 md:w-25 md:h-25 xl:w-15 xl:h-15 2xl:w-18 2xl:h-18" />
+    <div className="flex flex-col items-center justify-center gap-3 md:gap-6 xl:gap-5 2xl:gap-6 3xl:gap-7.5">
+      <div className="w-12.5 h-12.5 object-contain bg-amber-300 md:w-25 md:h-25 xl:w-15 xl:h-15 2xl:w-18 2xl:h-18 3xl:w-22.5 3xl:h-22.5" />
       <p className="text-tag-button uppercase text-center xl:text-h3 w-full">
         {name}
       </p>

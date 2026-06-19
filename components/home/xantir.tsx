@@ -2,8 +2,8 @@ import { Tag } from "@/components/ui/tag";
 
 export function Xantir() {
   return (
-    <div className="flex flex-col items-center justify-center gap-6 text-center px-2 pt-16.5 pb-30 md:pt-28 md:gap-12 md:pb-37.5 xl:grid xl:grid-cols-[20dvw_1fr_20dvw] xl:pt-37.5 xl:gap-10 2xl:py-44 2xl:gap-20">
-      <div className="flex flex-col gap-2 justify-center items-center md:gap-4 xl:items-start xl:text-left 2xl:gap-5">
+    <div className="flex flex-col items-center justify-center gap-6 text-center px-2 pt-16.5 pb-30 md:pt-28 md:gap-12 md:pb-37.5 xl:grid xl:grid-cols-[20dvw_1fr_20dvw] xl:pt-37.5 xl:gap-10 2xl:py-44 2xl:gap-20 3xl:py-55">
+      <div className="flex flex-col gap-2 justify-center items-center md:gap-4 xl:items-start xl:text-left 2xl:gap-5 3xl:gap-6">
         <h3 className="text-h1 uppercase xl:text-h2">Xantir</h3>
         <p className="text-text font-diatype w-3/4 md:w-5/8 xl:w-full">
           AI-платформа для патентного анализа, извлечения данных и разработки

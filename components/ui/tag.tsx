@@ -6,9 +6,9 @@ const tagShapeClasses = {
 };
 
 const tagPaddingClasses = {
-  rectangle: "px-[5px] md:px-1.5",
-  pill: "px-[8px] md:px-[9px]",
-  trapezoid: "px-[16px] md:px-[15px]",
+  rectangle: "px-[5px] md:px-1.5 2xl:px-2 3xl:px-2.5",
+  pill: "px-[8px] md:px-[9px] 3xl:px-[14px]",
+  trapezoid: "px-[16px] md:px-[15px] 3xl:px-[26px]",
 };
 
 const tagVariantClasses = {
@@ -44,7 +44,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
 
   return (
     <div
-      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[5px] md:py-1.5`}
+      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[5px] md:py-1.5 3xl:py-2.5`}
     >
       {text}
     </div>

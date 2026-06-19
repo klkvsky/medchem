@@ -7,14 +7,14 @@ import { numbers } from "./assets";
 export function About() {
   return (
     <div className="px-10 flex flex-col h-dvh justify-center xl:items-center">
-      <div className="flex flex-col gap-3.5 justify-center md:gap-7 xl:max-w-xl xl:relative xl:translate-x-[-10%]">
+      <div className="flex flex-col gap-3.5 justify-center md:gap-7 xl:max-w-xl xl:relative xl:translate-x-[-10%] 3xl:max-w-2xl">
         <Image
           src={numbers.twenty}
           alt="Number 20"
-          className="w-39 h-auto object-contain md:w-[307px] xl:w-[186px] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%] 2xl:w-[223px]"
+          className="w-39 h-auto object-contain md:w-[307px] xl:w-[186px] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%] 2xl:w-[223px] 3xl:w-[279px]"
         />
-        <div className="flex flex-col gap-10 md:gap-8.5">
-          <div className="flex flex-col gap-4.5 md:gap-5 2xl:gap-6">
+        <div className="flex flex-col gap-10 md:gap-8.5 3xl:gap-10">
+          <div className="flex flex-col gap-4.5 md:gap-5 2xl:gap-6 3xl:gap-8">
             <h2 className="text-h3 uppercase">
               лет Создаем R&D-решения для life sciences
             </h2>

@@ -7,8 +7,8 @@ import { numbers } from "./assets";
 
 export function Team() {
   return (
-    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0 2xl:gap-35 2xl:pb-44">
-      <div className="flex flex-col gap-8 md:gap-15 xl:gap-7">
+    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0 2xl:gap-35 2xl:pb-44 3xl:gap-40 3xl:pb-55">
+      <div className="flex flex-col gap-8 md:gap-15 xl:gap-7 3xl:gap-15">
         <h3 className="text-h2 uppercase xl:w-1/2 xl:ml-auto">
           Эксперты, которые создают результат
         </h3>
@@ -48,7 +48,7 @@ export function Team() {
           alt="fifteen"
           width={200}
           height={118}
-          className="w-50 h-auto md:w-100 xl:w-84"
+          className="w-50 h-auto md:w-100 xl:w-84 2xl:w-100 3xl:w-125"
         />
         <Tag text="Ученых" variant="outline" shape="rectangle" />
         <div className="translate-y-[2ch] md:translate-y-[3ch]">
