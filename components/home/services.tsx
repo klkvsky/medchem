@@ -12,13 +12,13 @@ export function Services() {
 function ServicesDesktop() {
   const activeSlide: number = 2;
   return (
-    <div className="hidden xl:flex h-dvh bg-blue-900 items-end text-white px-2 pb-10">
+    <div className="hidden xl:flex h-dvh bg-blue-900 items-end text-white px-2 pb-10 2xl:pb-22">
       <div className="flex flex-row items-start justify-between w-full">
-        <div className="flex flex-row items-start gap-16.5">
+        <div className="flex flex-row items-start gap-16.5 2xl:gap-22">
           <p className="text-h3 uppercase w-10 h-10 flex items-center justify-center border rounded-full">
             {activeSlide === 1 ? "а" : "b"}
           </p>
-          <div className="flex flex-col gap-3.5">
+          <div className="flex flex-col gap-3.5 2xl:gap-4">
             <p
               data-active={activeSlide === 1}
               className="text-h1 uppercase data-[active=false]:opacity-20 data-[active=false]:-translate-y-[3.5ch]"
@@ -82,7 +82,7 @@ function ServicesSlide() {
 
 function ServicesList() {
   return (
-    <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-y-6.5 md:gap-x-2 xl:gap-y-7 xl:w-100">
+    <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-y-6.5 md:gap-x-2 xl:gap-y-7 xl:w-100 2xl:gap-y-8 2xl:w-125">
       <ServicesItem
         number="1"
         title="Выбор мишени и патентный анализ"
@@ -122,9 +122,9 @@ function ServicesItem({
   tags: string[];
 }) {
   return (
-    <div className="flex flex-row gap-2 md:gap-2.5 xl:flex-col xl:gap-0.5">
+    <div className="flex flex-row gap-2 md:gap-2.5 xl:flex-col xl:gap-0.5 2xl:gap-1 2xl:w-fit">
       <p className="text-text tabular-nums w-4 h-4">{number}</p>
-      <div className="flex flex-col gap-2 md:gap-2.5">
+      <div className="flex flex-col gap-2 md:gap-2.5 2xl:gap-3">
         <p className="text-h3 uppercase">{title}</p>
         <div className="xl:flex xl:flex-wrap">
           {tags.map((tag, index) => (

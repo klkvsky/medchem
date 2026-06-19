@@ -17,16 +17,16 @@ export function Projects() {
 
 function ProjectDesktop() {
   return (
-    <div className="flex flex-col items-center pt-3.5 gap-6 pb-10">
+    <div className="flex flex-col items-center pt-3.5 gap-6 pb-10 2xl:pt-4 2xl:gap-7.5">
       <Logo className="w-45 h-auto" />
       <div className="px-2 w-full">
         <div className="flex flex-row items-center text-center">
           <p className="text-h3 uppercase w-full">разработка молекул</p>
-          <div className="w-px h-109 bg-[#B1B1B1]" />
+          <div className="w-px h-109 bg-[#B1B1B1] 2xl:h-131" />
           <p className="text-h3 uppercase w-full">цифровые продукты</p>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-center w-full *:w-1/2! -translate-y-[110px]">
+      <div className="flex flex-row items-center justify-center w-full *:w-1/2! -translate-y-[110px] 2xl:-translate-y-[130px]">
         <div className="flex flex-row-reverse items-start gap-12.5 justify-start overflow-x-auto pl-2 pr-11.5">
           <ProjectItem align="left" />
           <ProjectItem align="left" />
@@ -134,10 +134,10 @@ function ProjectItem({ align }: { align?: "left" | "right" }) {
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
     >
-      <div className="w-11.5 h-11.5 bg-[#B1B1B1] md:w-16.5 md:h-16.5" />
-      <div className="flex flex-col gap-4 md:gap-6 xl:gap-4.5">
+      <div className="w-11.5 h-11.5 bg-[#B1B1B1] md:w-16.5 md:h-16.5 2xl:w-20 2xl:h-20" />
+      <div className="flex flex-col gap-4 md:gap-6 xl:gap-4.5 2xl:gap-5.5">
         <div
-          className="flex flex-col gap-3"
+          className="flex flex-col gap-3 2xl:gap-3.5"
           style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
         >
           <button className="w-4 h-4 flex items-center justify-center bg-[#E3E3E3] rounded-full md:w-5 md:h-5">

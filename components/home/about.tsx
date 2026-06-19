@@ -11,10 +11,10 @@ export function About() {
         <Image
           src={numbers.twenty}
           alt="Number 20"
-          className="w-39 h-auto object-contain md:w-[307px] xl:w-[186px] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%]"
+          className="w-39 h-auto object-contain md:w-[307px] xl:w-[186px] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%] 2xl:w-[223px]"
         />
         <div className="flex flex-col gap-10 md:gap-8.5">
-          <div className="flex flex-col gap-4.5 md:gap-5">
+          <div className="flex flex-col gap-4.5 md:gap-5 2xl:gap-6">
             <h2 className="text-h3 uppercase">
               лет Создаем R&D-решения для life sciences
             </h2>

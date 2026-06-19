@@ -5,7 +5,7 @@ import { icons } from "./assets";
 export function Hero() {
   return (
     <div
-      className="text-white h-dvh flex flex-col items-center justify-end gap-3 md:gap-5.5 pb-43 md:items-start xl:items-end xl:pb-10 xl:pr-23 xl:gap-0"
+      className="text-white h-dvh flex flex-col items-center justify-end gap-3 md:gap-5.5 pb-43 md:items-start xl:items-end xl:pb-10 xl:pr-23 xl:gap-0 2xl:pb-22.5 xl:pr-35"
       style={{
         background:
           "radial-gradient(164.72% 106.54% at 76.3% 74.35%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",

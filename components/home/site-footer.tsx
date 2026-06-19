@@ -9,7 +9,7 @@ export function SiteFooter() {
           "radial-gradient(111.88% 83.41% at 63.33% 54.29%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
       }}
     >
-      <div className="text-text text-left flex flex-col gap-5 text-white font-diatype md:gap-10 xl:flex-row-reverse xl:items-end xl:ml-auto xl:gap-48">
+      <div className="text-text text-left flex flex-col gap-5 text-white font-diatype md:gap-10 xl:flex-row-reverse xl:items-end xl:ml-auto xl:gap-48 2xl:gap-70">
         <div className="flex flex-col gap-1.5 md:gap-3">
           <p>
             ООО «МЕД ХЕМ» 2026 <br /> ИНН: 9731155581

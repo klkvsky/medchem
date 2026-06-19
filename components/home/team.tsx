@@ -7,7 +7,7 @@ import { numbers } from "./assets";
 
 export function Team() {
   return (
-    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0">
+    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0 2xl:gap-35 2xl:pb-44">
       <div className="flex flex-col gap-8 md:gap-15 xl:gap-7">
         <h3 className="text-h2 uppercase xl:w-1/2 xl:ml-auto">
           Эксперты, которые создают результат
