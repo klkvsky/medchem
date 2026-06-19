@@ -1,7 +1,7 @@
 export function Partners() {
   return (
-    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5 md:pt-37.5 md:gap-93 md:pb-10">
-      <h4 className="text-h2 w-3/4 text-left uppercase px-2">
+    <div className="flex flex-col gap-30 bg-[#E3E3E3] pt-21.5 pb-5 md:pt-37.5 md:gap-93 md:pb-10 xl:pt-3.5 xl:gap-47.5 xl:pb-5">
+      <h4 className="text-h2 w-3/4 text-left uppercase px-2 xl:w-1/2 xl:ml-auto">
         лидеры рынка работают с нами
       </h4>
       <div className="flex flex-row gap-11 items-start max-w-full w-full overflow-x-auto">
@@ -26,9 +26,11 @@ export function Partners() {
 
 function PartnersItem({ name }: { name: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 md:gap-6">
-      <div className="w-12.5 h-12.5 object-contain bg-amber-300 md:w-25 md:h-25" />
-      <p className="text-tag-button uppercase text-center">{name}</p>
+    <div className="flex flex-col items-center justify-center gap-3 md:gap-6 xl:gap-5">
+      <div className="w-12.5 h-12.5 object-contain bg-amber-300 md:w-25 md:h-25 xl:w-15 xl:h-15" />
+      <p className="text-tag-button uppercase text-center xl:text-h3 w-full">
+        {name}
+      </p>
     </div>
   );
 }

@@ -6,23 +6,25 @@ import { numbers } from "./assets";
 
 export function About() {
   return (
-    <div className="px-10 flex flex-col gap-3.5 h-dvh justify-center md:gap-7">
-      <Image
-        src={numbers.twenty}
-        alt="Number 20"
-        className="w-39 h-auto object-contain md:w-[307px]"
-      />
-      <div className="flex flex-col gap-10 md:gap-8.5">
-        <div className="flex flex-col gap-4.5 md:gap-5">
-          <h2 className="text-h3 uppercase">
-            лет Создаем R&D-решения для life sciences
-          </h2>
-          <p className="text-text">
-            Поиск перспективных направлений разработки, патентно-конкурентный
-            анализ, дизайн малых молекул, проектирование цифровых инструментов
-          </p>
+    <div className="px-10 flex flex-col h-dvh justify-center xl:items-center">
+      <div className="flex flex-col gap-3.5 justify-center md:gap-7 xl:max-w-xl xl:relative xl:translate-x-[-10%]">
+        <Image
+          src={numbers.twenty}
+          alt="Number 20"
+          className="w-39 h-auto object-contain md:w-[307px] xl:w-[186px] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%]"
+        />
+        <div className="flex flex-col gap-10 md:gap-8.5">
+          <div className="flex flex-col gap-4.5 md:gap-5">
+            <h2 className="text-h3 uppercase">
+              лет Создаем R&D-решения для life sciences
+            </h2>
+            <p className="text-text md:text-h3 md:uppercase">
+              Поиск перспективных направлений разработки, патентно-конкурентный
+              анализ, дизайн малых молекул, проектирование цифровых инструментов
+            </p>
+          </div>
+          <AboutTags />
         </div>
-        <AboutTags />
       </div>
     </div>
   );

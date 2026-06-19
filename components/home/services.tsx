@@ -3,6 +3,63 @@ import { Tag } from "@/components/ui/tag";
 export function Services() {
   return (
     <div>
+      <ServiceMobile />
+      <ServicesDesktop />
+    </div>
+  );
+}
+
+function ServicesDesktop() {
+  const activeSlide: number = 2;
+  return (
+    <div className="hidden xl:flex h-dvh bg-blue-900 items-end text-white px-2 pb-10">
+      <div className="flex flex-row items-start justify-between w-full">
+        <div className="flex flex-row items-start gap-16.5">
+          <p className="text-h3 uppercase w-10 h-10 flex items-center justify-center border rounded-full">
+            {activeSlide === 1 ? "а" : "b"}
+          </p>
+          <div className="flex flex-col gap-3.5">
+            <p
+              data-active={activeSlide === 1}
+              className="text-h1 uppercase data-[active=false]:opacity-20 data-[active=false]:-translate-y-[3.5ch]"
+            >
+              разработка <br />
+              молекул
+            </p>
+            <p
+              data-active={activeSlide === 2}
+              className="text-h1 uppercase data-[active=false]:opacity-20 data-[active=true]:-translate-y-[3.5ch]"
+            >
+              цифровые <br />
+              продукты
+            </p>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="opacity-0">
+            <ServicesList />
+          </div>
+          <div
+            data-active={activeSlide === 1}
+            className="absolute top-0 left-0 data-[active=false]:opacity-0 data-[active=false]:-translate-y-1/2"
+          >
+            <ServicesList />
+          </div>
+          <div
+            data-active={activeSlide === 2}
+            className="absolute top-0 left-0 data-[active=false]:opacity-0 data-[active=false]:-translate-y-1/2"
+          >
+            <ServicesList />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ServiceMobile() {
+  return (
+    <div className="xl:hidden">
       <ServicesSlide />
       <ServicesSlide />
     </div>
@@ -25,7 +82,7 @@ function ServicesSlide() {
 
 function ServicesList() {
   return (
-    <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-y-6.5 md:gap-x-2">
+    <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-y-6.5 md:gap-x-2 xl:gap-y-7 xl:w-100">
       <ServicesItem
         number="1"
         title="Выбор мишени и патентный анализ"
@@ -65,11 +122,11 @@ function ServicesItem({
   tags: string[];
 }) {
   return (
-    <div className="flex flex-row gap-2 md:gap-2.5">
+    <div className="flex flex-row gap-2 md:gap-2.5 xl:flex-col xl:gap-0.5">
       <p className="text-text tabular-nums w-4 h-4">{number}</p>
       <div className="flex flex-col gap-2 md:gap-2.5">
         <p className="text-h3 uppercase">{title}</p>
-        <div>
+        <div className="xl:flex xl:flex-wrap">
           {tags.map((tag, index) => (
             <Tag
               key={index}

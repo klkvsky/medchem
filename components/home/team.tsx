@@ -7,12 +7,12 @@ import { numbers } from "./assets";
 
 export function Team() {
   return (
-    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5">
-      <div className="flex flex-col gap-8 md:gap-15">
-        <h3 className="text-h2 uppercase">
+    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0">
+      <div className="flex flex-col gap-8 md:gap-15 xl:gap-7">
+        <h3 className="text-h2 uppercase xl:w-1/2 xl:ml-auto">
           Эксперты, которые создают результат
         </h3>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:gap-y-15">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:gap-y-15 xl:grid-cols-4">
           <TeamMember
             name="Ян Иваненков"
             badge="Scholar"
@@ -48,7 +48,7 @@ export function Team() {
           alt="fifteen"
           width={200}
           height={118}
-          className="w-50 h-auto md:w-100"
+          className="w-50 h-auto md:w-100 xl:w-84"
         />
         <Tag text="Ученых" variant="outline" shape="rectangle" />
         <div className="translate-y-[2ch] md:translate-y-[3ch]">
