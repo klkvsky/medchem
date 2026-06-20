@@ -2,7 +2,7 @@ const tagShapeClasses = {
   rectangle: "",
   pill: "rounded-full",
   trapezoid:
-    "[clip-path:polygon(10px_0,calc(100%_-_20px)_0,100%_50%,calc(100%_-_10px)_100%,10px_100%,0_50%)]",
+    "[--tag-point:1em] [clip-path:polygon(var(--tag-point)_0,calc(100%_-_var(--tag-point))_0,100%_50%,calc(100%_-_var(--tag-point))_100%,var(--tag-point)_100%,0_50%)]",
 };
 
 const tagPaddingClasses = {
@@ -32,6 +32,20 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
   const paddingClasses = tagPaddingClasses[shape];
 
   if (variant === "outline") {
+    if (shape === "trapezoid") {
+      return (
+        <div
+          className={`${shapeClasses} inline-flex shrink-0 w-fit bg-current p-px`}
+        >
+          <span
+            className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[clamp(0.25rem,calc(0.1607rem_+_0.4464vw),0.375rem)] text-current`}
+          >
+            {text}
+          </span>
+        </div>
+      );
+    }
+
     return (
       <div
         className={`${shapeClasses} inline-flex shrink-0 w-fit border border-current p-px`}

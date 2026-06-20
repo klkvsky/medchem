@@ -1,10 +1,30 @@
+"use client";
+
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  type PointerEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { Logo } from "@/components/ui/logo";
 import { PlusIcon } from "@/components/ui/pattern-icons";
 import { Tag } from "@/components/ui/tag";
 
 import { numbers } from "./assets";
+
+const MOBILE_VISIBLE_PROJECTS = 5;
+const DESKTOP_PROJECTS_PER_LANE = 8;
+const projectLaneGapClass =
+  "gap-[clamp(3.75rem,calc(3.5714rem_+_0.8929vw),4rem)]";
+const desktopProjectLaneGapClass = "gap-12.5";
+const projectRevealTransition = {
+  duration: 0.45,
+  ease: [0.32, 0.72, 0, 1],
+} as const;
 
 export function Projects() {
   return (
@@ -17,56 +37,153 @@ export function Projects() {
 
 function ProjectDesktop() {
   return (
-    <div className="flex flex-col items-center pt-3.5 gap-6 pb-10 xl:pt-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] xl:gap-[clamp(1.5rem,calc(-0.375rem_+_2.3438vw),1.875rem)] 2xl:pt-[clamp(1rem,1.0417vw,1.25rem)] 2xl:gap-[clamp(1.875rem,calc(-1.125rem_+_3.125vw),2.625rem)] 2xl:pb-[clamp(2.5rem,calc(-19.5rem_+_22.9167vw),8rem)] 3xl:pt-[clamp(1.25rem,1.0417vw,1.6667rem)] 3xl:gap-[clamp(2.625rem,2.1875vw,3.5rem)] 3xl:pb-[clamp(8rem,6.6667vw,10.6667rem)]">
+    <div className="hidden xl:flex flex-col items-center pt-3.5 gap-6 pb-10 xl:pt-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] xl:gap-[clamp(1.5rem,calc(-0.375rem_+_2.3438vw),1.875rem)] 2xl:pt-[clamp(1rem,1.0417vw,1.25rem)] 2xl:gap-[clamp(1.875rem,calc(-1.125rem_+_3.125vw),2.625rem)] 2xl:pb-[clamp(2.5rem,calc(-19.5rem_+_22.9167vw),8rem)] 3xl:pt-[clamp(1.25rem,1.0417vw,1.6667rem)] 3xl:gap-[clamp(2.625rem,2.1875vw,3.5rem)] 3xl:pb-[clamp(8rem,6.6667vw,10.6667rem)]">
       <Logo className="w-45 h-auto xl:w-[clamp(11.25rem,calc(5rem_+_7.8125vw),12.5rem)] 2xl:w-[clamp(12.5rem,calc(7.5rem_+_5.2083vw),13.75rem)] 3xl:w-[clamp(13.75rem,11.4583vw,18.3333rem)]" />
       <div className="px-2 w-full">
-        <div className="flex flex-row items-center text-center">
+        <div className="flex flex-row items-center text-center border-b-[0.5px] z-20 relative">
           <p className="text-h3 uppercase w-full">разработка молекул</p>
           <div className="w-px h-109 bg-[#B1B1B1] xl:h-[clamp(27.25rem,calc(-0.25rem_+_34.375vw),32.75rem)] 2xl:h-[clamp(32.75rem,calc(-0.25rem_+_34.375vw),41rem)] 3xl:h-[clamp(41rem,34.1667vw,54.6667rem)]" />
           <p className="text-h3 uppercase w-full">цифровые продукты</p>
         </div>
       </div>
       <div className="flex flex-row items-center justify-center w-full *:w-1/2! -translate-y-[110px] xl:-translate-y-[clamp(6.875rem,calc(0.625rem_+_7.8125vw),8.125rem)] 2xl:-translate-y-[clamp(8.125rem,calc(0.625rem_+_7.8125vw),10rem)] 3xl:-translate-y-[clamp(160px,8.3333vw,213px)]">
-        <div className="flex flex-row-reverse items-start gap-12.5 justify-start overflow-x-auto pl-2 pr-11.5">
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <Image
-            src={numbers.ten}
-            alt="numbers.thirty"
-            width={127}
-            height={105}
-            className="mt-auto w-auto h-30.5"
-          />
-        </div>
-        <div className="flex flex-row items-start gap-12.5 justify-start overflow-x-auto pl-27.5 pr-2">
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <ProjectItem align="left" />
-          <Image
-            src={numbers.thirty}
-            alt="numbers.thirty"
-            width={127}
-            height={105}
-            className="mt-auto w-auto h-30.5"
-          />
-        </div>
+        <ProjectDesktopLane side="left" />
+        <ProjectDesktopLane side="right" />
       </div>
     </div>
   );
 }
 
+function ProjectDesktopLane({ side }: { side: "left" | "right" }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef({
+    active: false,
+    startX: 0,
+    scrollLeft: 0,
+  });
+  const [showCenterGradient, setShowCenterGradient] = useState(false);
+
+  const updateGradient = useCallback(() => {
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement) {
+      return;
+    }
+
+    setShowCenterGradient(Math.abs(scrollElement.scrollLeft) > 1);
+  }, []);
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement) {
+      return;
+    }
+
+    const handleWheel = (event: globalThis.WheelEvent) => {
+      const wheelDistance =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+      if (wheelDistance === 0) {
+        return;
+      }
+
+      event.preventDefault();
+      scrollElement.scrollLeft +=
+        side === "left" ? -wheelDistance : wheelDistance;
+    };
+
+    updateGradient();
+    scrollElement.addEventListener("scroll", updateGradient, { passive: true });
+    scrollElement.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("resize", updateGradient);
+
+    return () => {
+      scrollElement.removeEventListener("scroll", updateGradient);
+      scrollElement.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("resize", updateGradient);
+    };
+  }, [side, updateGradient]);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement) {
+      return;
+    }
+
+    dragRef.current = {
+      active: true,
+      startX: event.clientX,
+      scrollLeft: scrollElement.scrollLeft,
+    };
+    scrollElement.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const scrollElement = scrollRef.current;
+
+    if (!dragRef.current.active || !scrollElement) {
+      return;
+    }
+
+    const distance = event.clientX - dragRef.current.startX;
+
+    scrollElement.scrollLeft = dragRef.current.scrollLeft - distance;
+  };
+
+  const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
+    const scrollElement = scrollRef.current;
+
+    dragRef.current.active = false;
+    scrollElement?.releasePointerCapture(event.pointerId);
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        data-project-desktop-lane={side}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={stopDragging}
+        onPointerCancel={stopDragging}
+        className={`flex items-start ${desktopProjectLaneGapClass} justify-start overflow-x-auto select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+          side === "left"
+            ? "flex-row-reverse pl-2 pr-11.5"
+            : "flex-row pl-27.5 pr-2"
+        }`}
+      >
+        {Array.from({ length: DESKTOP_PROJECTS_PER_LANE }).map((_, i) => (
+          <ProjectItem key={i} align="left" />
+        ))}
+        <Image
+          src={side === "left" ? numbers.ten : numbers.thirty}
+          alt={side === "left" ? "numbers.ten" : "numbers.thirty"}
+          width={127}
+          height={105}
+          className="mt-auto w-auto h-30.5 shrink-0"
+          draggable={false}
+        />
+      </div>
+      <motion.div
+        aria-hidden
+        initial={false}
+        animate={{ opacity: showCenterGradient ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+        className={`pointer-events-none absolute top-0 h-full w-[clamp(4rem,7.5vw,9rem)] bg-gradient-to-r from-white to-transparent ${
+          side === "left" ? "right-0 rotate-180" : "left-0"
+        }`}
+      />
+    </div>
+  );
+}
+
 function ProjectMobile() {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <div className="flex flex-col items-center gap-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] pt-[clamp(4.75rem,calc(1.4464rem_+_16.5179vw),9.375rem)] pb-35 xl:hidden">
       <Logo className="w-[clamp(9.1875rem,calc(2.8036rem_+_31.9196vw),18.125rem)] h-auto" />
@@ -82,27 +199,39 @@ function ProjectMobile() {
         </div>
         <div className="w-full h-20 border-t rounded-2xl border-[#B1B1B1] " />
         <div className="flex flex-row justify-between -mt-20 w-full">
-          <ProjectLane align="left" />
-          <ProjectLane align="right" />
+          <ProjectLane align="left" showAll={showAll} />
+          <ProjectLane align="right" showAll={showAll} />
         </div>
       </div>
-      <button
-        className="text-h3 uppercase text-white mx-auto py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] rounded-[10px]"
-        style={{
-          background:
-            "radial-gradient(894.94% 276.37% at 100% 100%, #A4989B 2%, #A1A1A9 33.26%, #ADB9BC 64.94%, #A3AEA7 94.72%)",
-        }}
+      <motion.button
+        type="button"
+        onClick={() => setShowAll((current) => !current)}
+        whileTap={{ scale: 0.98 }}
+        transition={projectRevealTransition}
+        className="text-h3 uppercase text-white mx-auto py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] rounded-[10px] bg-[radial-gradient(894.94%_276.37%_at_100%_100%,#A4989B_2%,#A1A1A9_33.26%,#ADB9BC_64.94%,#A3AEA7_94.72%)]"
       >
-        Показать больше
-      </button>
+        {showAll ? "Показать меньше" : "Показать больше"}
+      </motion.button>
     </div>
   );
 }
 
-function ProjectLane({ align }: { align?: "left" | "right" }) {
+function ProjectLane({
+  align,
+  showAll,
+}: {
+  align?: "left" | "right";
+  showAll?: boolean;
+}) {
+  const projectCount = align === "left" ? 14 : 7;
+  const hiddenProjectCount = Math.max(
+    projectCount - MOBILE_VISIBLE_PROJECTS,
+    0,
+  );
+
   return (
     <div
-      className="flex flex-col border-x border-[#B1B1B1] w-full h-fit rounded-t-2xl gap-[clamp(3.75rem,calc(3.5714rem_+_0.8929vw),4rem)] pt-[clamp(8.25rem,calc(10.3929rem_-_4.4643vw),9.5rem)]"
+      className={`flex flex-col border-x border-[#B1B1B1] w-full h-fit rounded-t-2xl ${projectLaneGapClass} pt-[clamp(8.25rem,calc(10.3929rem_-_4.4643vw),9.5rem)]`}
       style={{
         borderLeft: align === "right" ? "none" : "",
         borderRight: align === "left" ? "none" : "",
@@ -110,18 +239,32 @@ function ProjectLane({ align }: { align?: "left" | "right" }) {
         paddingRight: align === "right" ? 8 : undefined,
       }}
     >
-      {Array.from({ length: align === "left" ? 14 : 7 }).map((_, i) => (
+      {Array.from({ length: MOBILE_VISIBLE_PROJECTS }).map((_, i) => (
         <ProjectItem key={i} align={align} />
       ))}
-      <Image
-        src={align === "left" ? numbers.thirty : numbers.ten}
-        alt="numbers.thirty"
-        width={127}
-        height={105}
-        style={{
-          marginLeft: align === "left" ? 0 : "auto",
-        }}
-      />
+      <AnimatePresence initial={false}>
+        {showAll && (
+          <motion.div
+            key={`${align}-remaining-projects`}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={projectRevealTransition}
+            className={`flex flex-col overflow-hidden ${projectLaneGapClass}`}
+          >
+            {Array.from({ length: hiddenProjectCount }).map((_, i) => (
+              <ProjectItem key={i + MOBILE_VISIBLE_PROJECTS} align={align} />
+            ))}
+            <Image
+              src={align === "left" ? numbers.thirty : numbers.ten}
+              alt={align === "left" ? "numbers.thirty" : "numbers.ten"}
+              width={127}
+              height={105}
+              className={align === "left" ? "mr-auto" : "ml-auto"}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
