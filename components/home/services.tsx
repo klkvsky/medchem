@@ -1,4 +1,42 @@
+"use client";
+
 import { Tag } from "@/components/ui/tag";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { type ReactNode, useRef, useState } from "react";
+
+type ServicesSlideNumber = 1 | 2;
+
+const servicesTransition = {
+  duration: 0.35,
+  ease: [0.32, 0.72, 0, 1],
+} as const;
+
+const serviceSlides: Record<
+  ServicesSlideNumber,
+  {
+    marker: string;
+    title: ReactNode;
+  }
+> = {
+  1: {
+    marker: "A",
+    title: (
+      <>
+        разработка <br />
+        молекул
+      </>
+    ),
+  },
+  2: {
+    marker: "B",
+    title: (
+      <>
+        цифровые <br />
+        продукты
+      </>
+    ),
+  },
+};
 
 export function Services() {
   return (
@@ -10,46 +48,82 @@ export function Services() {
 }
 
 function ServicesDesktop() {
-  const activeSlide: number = 2;
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState<ServicesSlideNumber>(1);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const nextSlide = latest >= 0.5 ? 2 : 1;
+
+    setActiveSlide((currentSlide) =>
+      currentSlide === nextSlide ? currentSlide : nextSlide,
+    );
+  });
+
   return (
-    <div className="hidden xl:flex h-dvh bg-blue-900 items-end text-white px-2 xl:pb-[clamp(2.5rem,calc(-12.5rem_+_18.75vw),5.5rem)] 2xl:pb-[clamp(5.5rem,calc(0.5rem_+_3.125vw),6.25rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)]">
-      <div className="flex flex-row items-start justify-between w-full">
-        <div className="flex flex-row items-start gap-16.5 xl:gap-[clamp(4.125rem,calc(-2.75rem_+_8.5938vw),5.5rem)] 2xl:gap-[clamp(5.5rem,calc(0.5rem_+_5.2083vw),6.75rem)] 3xl:gap-[clamp(6.75rem,5.625vw,9rem)]">
-          <p className="text-h3 uppercase w-10 h-10 flex items-center justify-center border rounded-full 2xl:w-[clamp(2.5rem,2.6042vw,3.125rem)] 2xl:h-[clamp(2.5rem,2.6042vw,3.125rem)] 3xl:w-[clamp(3.125rem,2.6042vw,4.1667rem)] 3xl:h-[clamp(3.125rem,2.6042vw,4.1667rem)]">
-            {activeSlide === 1 ? "а" : "b"}
-          </p>
-          <div className="flex flex-col gap-3.5 xl:gap-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] 2xl:gap-[clamp(1rem,1.0417vw,1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]">
-            <p
-              data-active={activeSlide === 1}
-              className="text-h1 uppercase data-[active=false]:opacity-20 data-[active=false]:-translate-y-[3.5ch]"
-            >
-              разработка <br />
-              молекул
+    <div
+      ref={sectionRef}
+      data-services-desktop
+      className="relative hidden h-[200dvh] bg-blue-900 text-white xl:block"
+    >
+      <div className="sticky top-0 flex h-dvh items-end px-2 xl:pb-[clamp(2.5rem,calc(-12.5rem_+_18.75vw),5.5rem)] 2xl:pb-[clamp(5.5rem,calc(0.5rem_+_3.125vw),6.25rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)]">
+        <div className="flex flex-row items-start justify-between w-full">
+          <div className="flex flex-row items-start gap-16.5 xl:gap-[clamp(4.125rem,calc(-2.75rem_+_8.5938vw),5.5rem)] 2xl:gap-[clamp(5.5rem,calc(0.5rem_+_5.2083vw),6.75rem)] 3xl:gap-[clamp(6.75rem,5.625vw,9rem)]">
+            <p className="text-h3 uppercase w-10 h-10 flex items-center justify-center border rounded-full 2xl:w-[clamp(2.5rem,2.6042vw,3.125rem)] 2xl:h-[clamp(2.5rem,2.6042vw,3.125rem)] 3xl:w-[clamp(3.125rem,2.6042vw,4.1667rem)] 3xl:h-[clamp(3.125rem,2.6042vw,4.1667rem)]">
+              {activeSlide === 1 ? "а" : "b"}
             </p>
-            <p
-              data-active={activeSlide === 2}
-              className="text-h1 uppercase data-[active=false]:opacity-20 data-[active=true]:-translate-y-[3.5ch]"
+            <div className="flex flex-col gap-3.5 xl:gap-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] 2xl:gap-[clamp(1rem,1.0417vw,1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]">
+              <motion.p
+                animate={{
+                  opacity: activeSlide === 1 ? 1 : 0.2,
+                  y: activeSlide === 1 ? "0ch" : "-3.5ch",
+                }}
+                transition={servicesTransition}
+                className="text-h1 uppercase"
+              >
+                разработка <br />
+                молекул
+              </motion.p>
+              <motion.p
+                animate={{
+                  opacity: activeSlide === 2 ? 1 : 0.2,
+                  y: activeSlide === 2 ? "-3.5ch" : "0ch",
+                }}
+                transition={servicesTransition}
+                className="text-h1 uppercase"
+              >
+                цифровые <br />
+                продукты
+              </motion.p>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="opacity-0">
+              <ServicesList />
+            </div>
+            <motion.div
+              animate={{
+                opacity: activeSlide === 1 ? 1 : 0,
+                y: activeSlide === 1 ? "0%" : "-50%",
+              }}
+              transition={servicesTransition}
+              className="absolute top-0 left-0"
             >
-              цифровые <br />
-              продукты
-            </p>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="opacity-0">
-            <ServicesList />
-          </div>
-          <div
-            data-active={activeSlide === 1}
-            className="absolute top-0 left-0 data-[active=false]:opacity-0 data-[active=false]:-translate-y-1/2"
-          >
-            <ServicesList />
-          </div>
-          <div
-            data-active={activeSlide === 2}
-            className="absolute top-0 left-0 data-[active=false]:opacity-0 data-[active=false]:-translate-y-1/2"
-          >
-            <ServicesList />
+              <ServicesList />
+            </motion.div>
+            <motion.div
+              animate={{
+                opacity: activeSlide === 2 ? 1 : 0,
+                y: activeSlide === 2 ? "0%" : "-50%",
+              }}
+              transition={servicesTransition}
+              className="absolute top-0 left-0"
+            >
+              <ServicesList />
+            </motion.div>
           </div>
         </div>
       </div>
@@ -59,21 +133,30 @@ function ServicesDesktop() {
 
 function ServiceMobile() {
   return (
-    <div className="xl:hidden">
-      <ServicesSlide />
-      <ServicesSlide />
+    <div data-services-mobile className="relative isolate xl:hidden">
+      <div className="sticky top-0 z-0 h-dvh overflow-hidden">
+        <ServicesSlide slide={1} />
+      </div>
+      <div className="relative z-10 -mt-px">
+        <ServicesSlide slide={2} />
+      </div>
     </div>
   );
 }
 
-function ServicesSlide() {
+function ServicesSlide({ slide }: { slide: ServicesSlideNumber }) {
+  const { marker, title } = serviceSlides[slide];
+
   return (
-    <div className="flex flex-col h-dvh justify-between bg-amber-300 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2">
+    <div
+      data-slide={slide}
+      className="flex flex-col h-dvh justify-between data-[slide=1]:bg-amber-300 data-[slide=2]:bg-blue-300 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2"
+    >
       <div className="flex flex-col gap-[clamp(0.75rem,calc(0.3929rem_+_1.7857vw),1.25rem)]">
         <p className="text-h3 flex items-center justify-center rounded-full ring ring-white w-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)] h-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)]">
-          A
+          {marker}
         </p>
-        <h3 className="text-h1 uppercase">разработка молекул</h3>
+        <h3 className="text-h1 uppercase">{title}</h3>
       </div>
       <ServicesList />
     </div>
