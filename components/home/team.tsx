@@ -7,12 +7,12 @@ import { numbers } from "./assets";
 
 export function Team() {
   return (
-    <div className="flex flex-col px-2 gap-22 pt-16.5 pb-30 md:pt-29 md:pb-37.5 xl:pt-0 2xl:gap-35 2xl:pb-44 3xl:gap-40 3xl:pb-55">
-      <div className="flex flex-col gap-8 md:gap-15 xl:gap-7 3xl:gap-15">
+    <div className="flex flex-col px-2 gap-22 pt-[clamp(4.125rem,calc(1.8929rem_+_11.1607vw),7.25rem)] pb-[clamp(7.5rem,calc(6.1607rem_+_6.6964vw),9.375rem)] md:pt-[clamp(0rem,calc(18.125rem_-_22.6563vw),7.25rem)] xl:pt-0 xl:gap-[clamp(5.5rem,calc(-10.75rem_+_20.3125vw),8.75rem)] xl:pb-[clamp(9.375rem,calc(1.25rem_+_10.1563vw),11rem)] 2xl:gap-[clamp(8.75rem,calc(3.75rem_+_5.2083vw),10rem)] 2xl:pb-[clamp(11rem,11.4583vw,13.75rem)] 3xl:gap-[clamp(10rem,8.3333vw,13.3333rem)] 3xl:pb-[clamp(13.75rem,11.4583vw,18.3333rem)]">
+      <div className="flex flex-col gap-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] md:gap-[clamp(1.75rem,calc(6.75rem_-_6.25vw),3.75rem)] xl:gap-7 2xl:gap-[clamp(1.75rem,calc(-6.25rem_+_8.3333vw),3.75rem)] 3xl:gap-[clamp(3.75rem,3.125vw,5rem)]">
         <h3 className="text-h2 uppercase xl:w-1/2 xl:ml-auto">
           Эксперты, которые создают результат
         </h3>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:gap-y-15 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] md:gap-y-[clamp(1.75rem,calc(6.75rem_-_6.25vw),3.75rem)] xl:grid-cols-4">
           <TeamMember
             name="Ян Иваненков"
             badge="Scholar"
@@ -48,7 +48,7 @@ export function Team() {
           alt="fifteen"
           width={200}
           height={118}
-          className="w-50 h-auto md:w-100 xl:w-84 2xl:w-100 3xl:w-125"
+          className="w-[clamp(12.5rem,calc(3.5714rem_+_44.6429vw),25rem)] h-auto md:w-[clamp(21rem,calc(31rem_-_12.5vw),25rem)] xl:w-[clamp(21rem,calc(1rem_+_25vw),25rem)] 2xl:w-[clamp(25rem,26.0417vw,31.25rem)] 3xl:w-[clamp(31.25rem,26.0417vw,41.6667rem)]"
         />
         <Tag text="Ученых" variant="outline" shape="rectangle" />
         <div className="translate-y-[2ch] md:translate-y-[3ch]">
@@ -73,19 +73,19 @@ function TeamMember({
   isLast?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-4 md:gap-6">
+    <div className="flex flex-col gap-[clamp(1rem,calc(0.6429rem_+_1.7857vw),1.5rem)]">
       <div
         data-last={isLast}
         className="w-full h-auto aspect-square relative bg-amber-200 data-[last=true]:rounded-full"
       >
         {badge && (
-          <div className="absolute bottom-2 right-2 px-2 py-1.5 rounded-full bg-white flex flex-row items-center gap-1 md:bottom-3.5 md:right-3.5 md:py-3 md:px-4 md:gap-2">
+          <div className="absolute bottom-[clamp(0.5rem,calc(0.2321rem_+_1.3393vw),0.875rem)] right-[clamp(0.5rem,calc(0.2321rem_+_1.3393vw),0.875rem)] px-[clamp(0.5rem,calc(0.1429rem_+_1.7857vw),1rem)] py-[clamp(0.375rem,calc(-0.0268rem_+_2.0089vw),0.75rem)] rounded-full bg-white flex flex-row items-center gap-[clamp(0.25rem,calc(0.0714rem_+_0.8929vw),0.5rem)]">
             <ArrowIcon />
             <p className="text-tag-button uppercase">{badge}</p>
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-2.5 md:gap-4">
+      <div className="flex flex-col gap-[clamp(0.625rem,calc(0.1786rem_+_2.2321vw),1rem)]">
         <h4 className="text-h3 uppercase">{name}</h4>
         <div className="flex flex-col gap-0 text-text font-diatype md:h-[8ch]">
           {description.map((line, index) => (

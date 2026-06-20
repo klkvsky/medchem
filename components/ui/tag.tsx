@@ -6,9 +6,12 @@ const tagShapeClasses = {
 };
 
 const tagPaddingClasses = {
-  rectangle: "px-[5px] md:px-1.5 2xl:px-2 3xl:px-2.5",
-  pill: "px-[8px] md:px-[9px] 3xl:px-[14px]",
-  trapezoid: "px-[16px] md:px-[15px] 3xl:px-[26px]",
+  rectangle:
+    "px-[clamp(5px,calc(4.2857px_+_0.2232vw),6px)] xl:px-[clamp(0.375rem,calc(-0.625rem_+_1.25vw),0.5rem)] 2xl:px-[clamp(0.5rem,0.5208vw,0.625rem)] 3xl:px-[clamp(0.625rem,0.5208vw,0.8333rem)]",
+  pill:
+    "px-[clamp(8px,calc(7.2857px_+_0.2232vw),9px)] 2xl:px-[clamp(9px,calc(-11px_+_1.3021vw),14px)] 3xl:px-[clamp(14px,0.7292vw,18.67px)]",
+  trapezoid:
+    "px-[clamp(15px,calc(16.7143px_-_0.3571vw),16px)] 2xl:px-[clamp(15px,calc(-29px_+_2.8646vw),26px)] 3xl:px-[clamp(26px,1.3542vw,34.67px)]",
 };
 
 const tagVariantClasses = {
@@ -34,7 +37,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
         className={`${shapeClasses} inline-flex shrink-0 w-fit border border-current p-px`}
       >
         <span
-          className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-1 md:py-1.5 bg-transparent text-current`}
+          className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[clamp(0.25rem,calc(0.1607rem_+_0.4464vw),0.375rem)] bg-transparent text-current`}
         >
           {text}
         </span>
@@ -44,7 +47,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
 
   return (
     <div
-      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[5px] md:py-1.5 3xl:py-2.5`}
+      className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[clamp(5px,calc(4.2857px_+_0.2232vw),6px)] 2xl:py-[clamp(6px,calc(-10px_+_1.0417vw),10px)] 3xl:py-[clamp(0.625rem,0.5208vw,0.8333rem)]`}
     >
       {text}
     </div>
