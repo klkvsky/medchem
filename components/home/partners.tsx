@@ -1,6 +1,6 @@
 "use client";
 
-import { type PointerEvent, useEffect, useRef } from "react";
+import { type PointerEvent, useCallback, useEffect, useRef } from "react";
 
 const partners = [
   "Артген Биотех",
@@ -36,11 +36,42 @@ export function Partners() {
 function PartnersMarquee() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const groupRef = useRef<HTMLDivElement>(null);
+  const scrollPositionRef = useRef(0);
   const dragRef = useRef({
     active: false,
     startX: 0,
     scrollLeft: 0,
   });
+
+  const setWrappedScrollPosition = useCallback((position: number) => {
+    const scrollElement = scrollRef.current;
+    const groupElement = groupRef.current;
+
+    if (!scrollElement || !groupElement) {
+      return position;
+    }
+
+    const groupWidth = groupElement.scrollWidth;
+
+    if (groupWidth <= 0) {
+      return position;
+    }
+
+    let wrappedPosition = position;
+
+    while (wrappedPosition >= groupWidth * 2) {
+      wrappedPosition -= groupWidth;
+    }
+
+    while (wrappedPosition <= 0) {
+      wrappedPosition += groupWidth;
+    }
+
+    scrollPositionRef.current = wrappedPosition;
+    scrollElement.scrollLeft = wrappedPosition;
+
+    return wrappedPosition;
+  }, []);
 
   useEffect(() => {
     const scrollElement = scrollRef.current;
@@ -53,29 +84,12 @@ function PartnersMarquee() {
     let animationFrame = 0;
 
     const getGroupWidth = () => groupElement.scrollWidth;
-
-    const wrapScroll = () => {
-      const groupWidth = getGroupWidth();
-
-      if (groupWidth <= 0) {
-        return;
-      }
-
-      if (scrollElement.scrollLeft >= groupWidth * 2) {
-        scrollElement.scrollLeft -= groupWidth;
-      }
-
-      if (scrollElement.scrollLeft <= 0) {
-        scrollElement.scrollLeft += groupWidth;
-      }
-    };
-
-    scrollElement.scrollLeft = getGroupWidth();
+    scrollPositionRef.current = getGroupWidth();
+    scrollElement.scrollLeft = scrollPositionRef.current;
 
     const animate = () => {
       if (!dragRef.current.active) {
-        scrollElement.scrollLeft += marqueeSpeed;
-        wrapScroll();
+        setWrappedScrollPosition(scrollPositionRef.current + marqueeSpeed);
       }
 
       animationFrame = requestAnimationFrame(animate);
@@ -84,30 +98,7 @@ function PartnersMarquee() {
     animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, []);
-
-  const wrapDraggedScroll = () => {
-    const scrollElement = scrollRef.current;
-    const groupElement = groupRef.current;
-
-    if (!scrollElement || !groupElement) {
-      return;
-    }
-
-    const groupWidth = groupElement.scrollWidth;
-
-    if (groupWidth <= 0) {
-      return;
-    }
-
-    if (scrollElement.scrollLeft >= groupWidth * 2) {
-      scrollElement.scrollLeft -= groupWidth;
-    }
-
-    if (scrollElement.scrollLeft <= 0) {
-      scrollElement.scrollLeft += groupWidth;
-    }
-  };
+  }, [setWrappedScrollPosition]);
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     const scrollElement = scrollRef.current;
@@ -119,7 +110,7 @@ function PartnersMarquee() {
     dragRef.current = {
       active: true,
       startX: event.clientX,
-      scrollLeft: scrollElement.scrollLeft,
+      scrollLeft: scrollPositionRef.current,
     };
     scrollElement.setPointerCapture(event.pointerId);
   };
@@ -133,13 +124,16 @@ function PartnersMarquee() {
 
     const distance = event.clientX - dragRef.current.startX;
 
-    scrollElement.scrollLeft = dragRef.current.scrollLeft - distance;
-    wrapDraggedScroll();
+    setWrappedScrollPosition(dragRef.current.scrollLeft - distance);
   };
 
   const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
     dragRef.current.active = false;
-    scrollRef.current?.releasePointerCapture(event.pointerId);
+    const scrollElement = scrollRef.current;
+
+    if (scrollElement?.hasPointerCapture(event.pointerId)) {
+      scrollElement.releasePointerCapture(event.pointerId);
+    }
   };
 
   return (
@@ -157,7 +151,7 @@ function PartnersMarquee() {
           <div
             key={group}
             ref={group === 0 ? groupRef : undefined}
-            className="flex flex-row gap-4 items-start shrink-0 md:gap-5 xl:gap-6 2xl:gap-[clamp(1.5rem,1.5625vw,1.875rem)] 3xl:gap-[clamp(1.875rem,1.5625vw,2.5rem)]"
+            className="flex flex-row gap-0 items-start shrink-0 md:gap-5 xl:gap-6 2xl:gap-[clamp(1.5rem,1.5625vw,1.875rem)] 3xl:gap-[clamp(1.875rem,1.5625vw,2.5rem)]"
             aria-hidden={group !== 1}
           >
             {partners.map((partner) => (

@@ -13,6 +13,7 @@ import {
 import {
   callToActionType,
   heroKeywordType,
+  heroKeywordRowType,
   imageWithAltType,
   seoType,
   serviceStepType,
@@ -47,6 +48,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     callToActionType,
     seoType,
     heroKeywordType,
+    heroKeywordRowType,
     statisticType,
     serviceStepType,
     footerSettingsType,

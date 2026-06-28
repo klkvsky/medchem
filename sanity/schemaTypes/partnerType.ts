@@ -15,6 +15,7 @@ export const partnerType = defineType({
     defineField({
       name: 'logo',
       type: 'imageWithAlt',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'url',

@@ -1,86 +1,30 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
 import { Tag } from "@/components/ui/tag";
 
-import { AboutDecorations } from "./about-decorations";
+import {
+  AboutDecorations,
+  type AboutDecorationAsset,
+} from "./about-decorations";
 import { icons, numbers } from "./assets";
 
-type AboutDecoration = {
-  src: StaticImageData;
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-  rotate: number;
-  delay: number;
-  duration: number;
-};
-
 const aboutDecorationAssets = [
-  icons.rectangle,
-  icons.coin,
-  icons.grid,
-  icons.pill,
-  icons.circles,
-  icons.hole,
-  numbers.ten,
-  numbers.fifteen,
-  numbers.thirty,
-];
-
-const aboutDecorations = createAboutDecorations();
-
-function createSeededRandom(seed: number) {
-  let value = seed;
-
-  return () => {
-    value = (value * 1664525 + 1013904223) >>> 0;
-
-    return value / 4294967296;
-  };
-}
-
-function createAboutDecorations(): AboutDecoration[] {
-  const random = createSeededRandom(20260620);
-
-  return Array.from({ length: 34 }, (_, index) => {
-    const asset = aboutDecorationAssets[index % aboutDecorationAssets.length];
-    let x = 50;
-    let y = 50;
-
-    for (let attempt = 0; attempt < 24; attempt += 1) {
-      const angle = random() * Math.PI * 2;
-      const radius = 0.48 + Math.pow(random(), 0.35) * 0.58;
-
-      x = 50 + Math.cos(angle) * radius * 58;
-      y = 50 + Math.sin(angle) * radius * 50;
-
-      const centerX = (x - 50) / 34;
-      const centerY = (y - 50) / 26;
-
-      if (centerX * centerX + centerY * centerY > 1) {
-        break;
-      }
-    }
-
-    return {
-      src: asset,
-      x,
-      y,
-      size: index % 4 === 0 ? 12 + random() * 18 : 4 + random() * 8,
-      opacity: 0.1 + random() * 0.16,
-      rotate: random() * 80 - 40,
-      delay: random() * 4,
-      duration: 5 + random() * 3,
-    };
-  });
-}
+  { kind: "icon", name: icons.rectangle },
+  { kind: "icon", name: icons.coin },
+  { kind: "icon", name: icons.grid },
+  { kind: "icon", name: icons.pill },
+  { kind: "icon", name: icons.circles },
+  { kind: "icon", name: icons.hole },
+] satisfies AboutDecorationAsset[];
 
 export function About() {
   return (
-    <div className="relative overflow-hidden px-10 flex flex-col h-dvh justify-center xl:items-center">
-      <AboutDecorations decorations={aboutDecorations} />
-      <div className="relative z-10 flex flex-col gap-[clamp(0.875rem,calc(0.25rem_+_3.125vw),1.75rem)] justify-center xl:max-w-xl xl:relative xl:translate-x-[-10%] 2xl:max-w-[clamp(36rem,calc(12rem_+_25vw),42rem)] 3xl:max-w-[clamp(42rem,35vw,56rem)]">
+    <div className="relative overflow-hidden px-10 flex flex-col h-dvh justify-center xl:items-center text-[#411319]">
+      <AboutDecorations assets={aboutDecorationAssets} />
+      <div
+        data-about-content
+        className="relative z-10 flex flex-col gap-[clamp(0.875rem,calc(0.25rem_+_3.125vw),1.75rem)] justify-center xl:max-w-xl xl:relative xl:translate-x-[-10%] 2xl:max-w-[clamp(36rem,calc(12rem_+_25vw),42rem)] 3xl:max-w-[clamp(42rem,35vw,56rem)]"
+      >
         <Image
           src={numbers.twenty}
           alt="Number 20"
@@ -91,7 +35,7 @@ export function About() {
             <h2 className="text-h3 uppercase">
               лет Создаем R&D-решения для life sciences
             </h2>
-            <p className="text-text md:text-h3 md:uppercase">
+            <p className="text-text font-diatype md:font-aeonik-mono md:text-h3 md:uppercase ">
               Поиск перспективных направлений разработки, патентно-конкурентный
               анализ, дизайн малых молекул, проектирование цифровых инструментов
             </p>

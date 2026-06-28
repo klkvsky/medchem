@@ -50,11 +50,32 @@ export const tagType = defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'variant',
+      title: 'Appearance',
+      type: 'string',
+      initialValue: 'default',
+      options: {
+        list: [
+          {title: 'Default', value: 'default'},
+          {title: 'Outline', value: 'outline'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
       title: 'label',
-      subtitle: 'shape',
+      shape: 'shape',
+      variant: 'variant',
+    },
+    prepare({title, shape, variant}) {
+      return {
+        title,
+        subtitle: [shape, variant].filter(Boolean).join(' / '),
+      }
     },
   },
 })
@@ -71,8 +92,66 @@ export const callToActionType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'linkType',
+      type: 'string',
+      initialValue: 'internal',
+      options: {
+        list: [
+          {title: 'Internal path', value: 'internal'},
+          {title: 'External URL', value: 'external'},
+          {title: 'No link', value: 'none'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'internalPath',
+      type: 'string',
+      description: 'Use a Next.js path or page anchor, for example / or #contact.',
+      hidden: ({parent}) => parent?.linkType !== 'internal',
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const parent = context.parent as {linkType?: string} | undefined
+
+          if (parent?.linkType !== 'internal') {
+            return true
+          }
+
+          if (!value) {
+            return 'Internal path is required.'
+          }
+
+          return value.startsWith('/') || value.startsWith('#')
+            ? true
+            : 'Internal paths must start with / or #.'
+        }),
+    }),
+    defineField({
+      name: 'externalUrl',
+      type: 'url',
+      hidden: ({parent}) => parent?.linkType !== 'external',
+      validation: (rule) =>
+        rule.uri({scheme: ['http', 'https', 'mailto', 'tel']}).custom((value, context) => {
+          const parent = context.parent as {linkType?: string} | undefined
+
+          if (parent?.linkType !== 'external') {
+            return true
+          }
+
+          return value ? true : 'External URL is required.'
+        }),
+    }),
+    defineField({
       name: 'url',
       type: 'url',
+      title: 'URL (deprecated)',
+      deprecated: {
+        reason: 'Use linkType with internalPath or externalUrl instead.',
+      },
+      readOnly: true,
+      hidden: ({value}) => value === undefined,
+      initialValue: undefined,
       validation: (rule) =>
         rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel'],
@@ -82,7 +161,16 @@ export const callToActionType = defineType({
   preview: {
     select: {
       title: 'label',
-      subtitle: 'url',
+      linkType: 'linkType',
+      internalPath: 'internalPath',
+      externalUrl: 'externalUrl',
+      url: 'url',
+    },
+    prepare({title, linkType, internalPath, externalUrl, url}) {
+      return {
+        title,
+        subtitle: internalPath || externalUrl || url || linkType,
+      }
     },
   },
 })
@@ -151,6 +239,33 @@ export const heroKeywordType = defineType({
   },
 })
 
+export const heroKeywordRowType = defineType({
+  name: 'heroKeywordRow',
+  title: 'Hero keyword row',
+  type: 'object',
+  icon: TagIcon,
+  fields: [
+    defineField({
+      name: 'keywords',
+      type: 'array',
+      of: [defineArrayMember({type: 'heroKeyword'})],
+      validation: (rule) => rule.required().min(1).max(3),
+    }),
+  ],
+  preview: {
+    select: {
+      keywords: 'keywords',
+    },
+    prepare({keywords}) {
+      return {
+        title: Array.isArray(keywords)
+          ? keywords.map((keyword) => keyword?.label).filter(Boolean).join(', ')
+          : 'Hero keyword row',
+      }
+    },
+  },
+})
+
 export const statisticType = defineType({
   name: 'statistic',
   title: 'Statistic',
@@ -163,6 +278,20 @@ export const statisticType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'numberAsset',
+      title: 'Number graphic',
+      type: 'string',
+      description: 'Optional matching number artwork used by the home page statistic treatments.',
+      options: {
+        list: [
+          {title: '10', value: 'ten'},
+          {title: '15', value: 'fifteen'},
+          {title: '20', value: 'twenty'},
+          {title: '30', value: 'thirty'},
+        ],
+      },
+    }),
+    defineField({
       name: 'label',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -170,6 +299,14 @@ export const statisticType = defineType({
     defineField({
       name: 'supportingLabel',
       type: 'string',
+    }),
+    defineField({
+      name: 'labelTags',
+      title: 'Label tags',
+      type: 'array',
+      description: 'Optional styled labels for statistic callouts that render as tags.',
+      of: [defineArrayMember({type: 'tag'})],
+      validation: (rule) => rule.max(3),
     }),
   ],
   preview: {
@@ -195,7 +332,8 @@ export const serviceStepType = defineType({
       name: 'tags',
       type: 'array',
       of: [defineArrayMember({type: 'tag'})],
-      validation: (rule) => rule.max(4).warning('The service card is designed for short tag groups.'),
+      validation: (rule) =>
+        rule.required().min(1).max(4).warning('The service card is designed for short tag groups.'),
     }),
   ],
   preview: {

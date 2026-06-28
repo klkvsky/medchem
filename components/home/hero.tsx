@@ -1,9 +1,9 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
 import { motion } from "motion/react";
 
 import { icons } from "./assets";
+import { HomeIcon, type HomeIconName } from "./icons";
 
 export function Hero() {
   return (
@@ -67,17 +67,15 @@ function HeroDescriptionItem({
   icon,
   text,
 }: {
-  icon: StaticImageData;
+  icon: HomeIconName;
   text: string;
 }) {
   return (
     <div className="flex flex-row items-center gap-[clamp(0.5rem,calc(0.2321rem_+_1.3393vw),0.875rem)] shrink-0 flex-none md:gap-[clamp(0.625rem,calc(1.25rem_-_0.7813vw),0.875rem)] xl:gap-2.5 2xl:gap-[clamp(0.625rem,calc(0.125rem_+_0.5208vw),0.75rem)] 3xl:gap-[clamp(0.75rem,0.625vw,1rem)]">
-      <Image
-        src={icon}
-        alt={text}
-        width={12}
-        height={12}
-        className="shrink-0! flex-none! w-[clamp(0.75rem,calc(0.6607rem_+_0.4464vw),0.875rem)] h-[clamp(0.75rem,calc(0.6607rem_+_0.4464vw),0.875rem)] invert"
+      <HomeIcon
+        name={icon}
+        color="#FAFAFA"
+        className="shrink-0! flex-none! w-[clamp(0.75rem,calc(0.6607rem_+_0.4464vw),0.875rem)] h-[clamp(0.75rem,calc(0.6607rem_+_0.4464vw),0.875rem)]"
       />
       <p className="text-h3 uppercase">{text}</p>
     </div>

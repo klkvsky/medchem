@@ -19,13 +19,26 @@ export const heroSectionType = defineType({
       title: 'Headline lines',
       type: 'array',
       of: [defineArrayMember({type: 'string'})],
+      validation: (rule) => rule.required().min(1).max(3),
+    }),
+    defineField({
+      name: 'keywordRows',
+      title: 'Keyword rows',
+      type: 'array',
+      of: [defineArrayMember({type: 'heroKeywordRow'})],
       validation: (rule) => rule.required().min(1).max(4),
     }),
     defineField({
       name: 'keywords',
+      title: 'Keywords (deprecated)',
       type: 'array',
       of: [defineArrayMember({type: 'heroKeyword'})],
-      validation: (rule) => rule.required().min(1),
+      deprecated: {
+        reason: 'Use keywordRows so the hero can preserve row grouping.',
+      },
+      readOnly: true,
+      hidden: ({value}) => value === undefined,
+      initialValue: undefined,
     }),
   ],
   preview: {
@@ -61,7 +74,7 @@ export const aboutSectionType = defineType({
       name: 'audiences',
       type: 'array',
       of: [defineArrayMember({type: 'tag'})],
-      validation: (rule) => rule.min(1),
+      validation: (rule) => rule.required().min(1),
     }),
   ],
   preview: {
@@ -87,7 +100,7 @@ export const servicesSectionType = defineType({
           to: [{type: 'serviceOffering'}],
         }),
       ],
-      validation: (rule) => rule.required().min(1),
+      validation: (rule) => rule.required().min(2).max(2),
     }),
   ],
   preview: {
@@ -129,15 +142,24 @@ export const projectsSectionType = defineType({
     defineField({
       name: 'moleculeStatistic',
       type: 'statistic',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'digitalStatistic',
       type: 'statistic',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'showMoreLabel',
       type: 'string',
       initialValue: 'Показать больше',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'showLessLabel',
+      type: 'string',
+      initialValue: 'Показать меньше',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
@@ -167,20 +189,24 @@ export const productSectionType = defineType({
     defineField({
       name: 'image',
       type: 'imageWithAlt',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'cta',
       type: 'callToAction',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'audience',
       type: 'text',
       rows: 3,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'tags',
       type: 'array',
       of: [defineArrayMember({type: 'tag'})],
+      validation: (rule) => rule.required().min(1),
     }),
   ],
   preview: {
@@ -217,6 +243,7 @@ export const teamSectionType = defineType({
     defineField({
       name: 'statistic',
       type: 'statistic',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

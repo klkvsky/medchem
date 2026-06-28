@@ -17,7 +17,7 @@ export const serviceOfferingType = defineType({
       title: 'Short code',
       type: 'string',
       description: 'A compact label such as A or B used by the service slide.',
-      validation: (rule) => rule.max(3),
+      validation: (rule) => rule.required().max(3),
     }),
     defineField({
       name: 'summary',

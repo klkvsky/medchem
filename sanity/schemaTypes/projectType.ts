@@ -37,6 +37,7 @@ export const projectType = defineType({
       title: 'Stage or status',
       type: 'string',
       description: 'Examples: Phase II, launched, discovery, platform.',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'summary',
@@ -46,11 +47,13 @@ export const projectType = defineType({
     defineField({
       name: 'image',
       type: 'imageWithAlt',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'partners',
       type: 'array',
       of: [defineArrayMember({type: 'tag'})],
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: 'url',

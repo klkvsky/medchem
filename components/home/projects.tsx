@@ -17,6 +17,7 @@ import { Tag } from "@/components/ui/tag";
 import { numbers } from "./assets";
 
 const MOBILE_VISIBLE_PROJECTS = 5;
+const MOBILE_PROJECTS_REVEAL_STEP = 4;
 const DESKTOP_PROJECTS_PER_LANE = 8;
 const projectLaneGapClass =
   "gap-[clamp(3.75rem,calc(3.5714rem_+_0.8929vw),4rem)]";
@@ -25,6 +26,15 @@ const projectRevealTransition = {
   duration: 0.45,
   ease: [0.32, 0.72, 0, 1],
 } as const;
+type ProjectLaneAlign = "left" | "right";
+
+const createPlaceholderProjects = (count: number) =>
+  Array.from({ length: count }, (_, index) => ({ id: `project-${index}` }));
+
+const mobileProjectLanes = {
+  left: createPlaceholderProjects(14),
+  right: createPlaceholderProjects(7),
+} satisfies Record<ProjectLaneAlign, { id: string }[]>;
 
 export function Projects() {
   return (
@@ -182,7 +192,113 @@ function ProjectDesktopLane({ side }: { side: "left" | "right" }) {
 }
 
 function ProjectMobile() {
-  const [showAll, setShowAll] = useState(false);
+  const revealButtonRef = useRef<HTMLButtonElement>(null);
+  const collapseScrollFrameRef = useRef<number | null>(null);
+  const activeCollapseAnimationsRef = useRef(0);
+  const shouldTrackCollapseScrollRef = useRef(false);
+  const [visibleProjectCount, setVisibleProjectCount] = useState(
+    MOBILE_VISIBLE_PROJECTS,
+  );
+  const maxMobileProjectCount = Math.max(
+    ...Object.values(mobileProjectLanes).map((projects) => projects.length),
+  );
+  const hasHiddenProjects = maxMobileProjectCount > MOBILE_VISIBLE_PROJECTS;
+  const hasShownAllProjects = visibleProjectCount >= maxMobileProjectCount;
+
+  const centerRevealButtonInViewport = useCallback(() => {
+    const revealButton = revealButtonRef.current;
+
+    if (!revealButton) {
+      return;
+    }
+
+    const buttonRect = revealButton.getBoundingClientRect();
+    const buttonCenter = buttonRect.top + buttonRect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    const scrollDistance = buttonCenter - viewportCenter;
+
+    if (Math.abs(scrollDistance) > 1) {
+      window.scrollBy(0, scrollDistance);
+    }
+  }, []);
+
+  const stopCollapseScrollTracking = useCallback(() => {
+    if (
+      !shouldTrackCollapseScrollRef.current &&
+      activeCollapseAnimationsRef.current === 0
+    ) {
+      return;
+    }
+
+    activeCollapseAnimationsRef.current = Math.max(
+      activeCollapseAnimationsRef.current - 1,
+      0,
+    );
+
+    if (activeCollapseAnimationsRef.current > 0) {
+      return;
+    }
+
+    shouldTrackCollapseScrollRef.current = false;
+
+    if (collapseScrollFrameRef.current) {
+      window.cancelAnimationFrame(collapseScrollFrameRef.current);
+      collapseScrollFrameRef.current = null;
+    }
+
+    centerRevealButtonInViewport();
+  }, [centerRevealButtonInViewport]);
+
+  const startCollapseScrollTracking = useCallback(() => {
+    if (!shouldTrackCollapseScrollRef.current) {
+      return;
+    }
+
+    activeCollapseAnimationsRef.current += 1;
+
+    if (collapseScrollFrameRef.current) {
+      return;
+    }
+
+    const trackButtonPosition = () => {
+      centerRevealButtonInViewport();
+
+      if (activeCollapseAnimationsRef.current > 0) {
+        collapseScrollFrameRef.current =
+          window.requestAnimationFrame(trackButtonPosition);
+        return;
+      }
+
+      collapseScrollFrameRef.current = null;
+    };
+
+    collapseScrollFrameRef.current =
+      window.requestAnimationFrame(trackButtonPosition);
+  }, [centerRevealButtonInViewport]);
+
+  useEffect(() => {
+    return () => {
+      if (collapseScrollFrameRef.current) {
+        window.cancelAnimationFrame(collapseScrollFrameRef.current);
+      }
+    };
+  }, []);
+
+  const handleProjectReveal = () => {
+    if (hasShownAllProjects) {
+      shouldTrackCollapseScrollRef.current = true;
+      activeCollapseAnimationsRef.current = 0;
+      setVisibleProjectCount(MOBILE_VISIBLE_PROJECTS);
+      return;
+    }
+
+    setVisibleProjectCount((currentCount) => {
+      return Math.min(
+        currentCount + MOBILE_PROJECTS_REVEAL_STEP,
+        maxMobileProjectCount,
+      );
+    });
+  };
 
   return (
     <div className="flex flex-col items-center gap-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] pt-[clamp(4.75rem,calc(1.4464rem_+_16.5179vw),9.375rem)] pb-35 xl:hidden">
@@ -199,35 +315,58 @@ function ProjectMobile() {
         </div>
         <div className="w-full h-20 border-t rounded-2xl border-[#B1B1B1] " />
         <div className="flex flex-row justify-between -mt-20 w-full">
-          <ProjectLane align="left" showAll={showAll} />
-          <ProjectLane align="right" showAll={showAll} />
+          <ProjectLane
+            align="left"
+            projects={mobileProjectLanes.left}
+            visibleProjectCount={visibleProjectCount}
+            onCollapseAnimationComplete={stopCollapseScrollTracking}
+            onCollapseAnimationStart={startCollapseScrollTracking}
+          />
+          <ProjectLane
+            align="right"
+            projects={mobileProjectLanes.right}
+            visibleProjectCount={visibleProjectCount}
+            onCollapseAnimationComplete={stopCollapseScrollTracking}
+            onCollapseAnimationStart={startCollapseScrollTracking}
+          />
         </div>
       </div>
-      <motion.button
-        type="button"
-        onClick={() => setShowAll((current) => !current)}
-        whileTap={{ scale: 0.98 }}
-        transition={projectRevealTransition}
-        className="text-h3 uppercase text-white mx-auto py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] rounded-[10px] bg-[radial-gradient(894.94%_276.37%_at_100%_100%,#A4989B_2%,#A1A1A9_33.26%,#ADB9BC_64.94%,#A3AEA7_94.72%)]"
-      >
-        {showAll ? "Показать меньше" : "Показать больше"}
-      </motion.button>
+      {hasHiddenProjects && (
+        <motion.button
+          ref={revealButtonRef}
+          type="button"
+          onClick={handleProjectReveal}
+          whileTap={{ scale: 0.98 }}
+          transition={projectRevealTransition}
+          className="text-h3 uppercase text-white mx-auto py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] rounded-[10px] bg-[radial-gradient(894.94%_276.37%_at_100%_100%,#A4989B_2%,#A1A1A9_33.26%,#ADB9BC_64.94%,#A3AEA7_94.72%)]"
+        >
+          {hasShownAllProjects ? "Показать меньше" : "Показать больше"}
+        </motion.button>
+      )}
     </div>
   );
 }
 
 function ProjectLane({
   align,
-  showAll,
+  onCollapseAnimationComplete,
+  onCollapseAnimationStart,
+  projects,
+  visibleProjectCount,
 }: {
-  align?: "left" | "right";
-  showAll?: boolean;
+  align: ProjectLaneAlign;
+  onCollapseAnimationComplete: () => void;
+  onCollapseAnimationStart: () => void;
+  projects: { id: string }[];
+  visibleProjectCount: number;
 }) {
-  const projectCount = align === "left" ? 14 : 7;
-  const hiddenProjectCount = Math.max(
-    projectCount - MOBILE_VISIBLE_PROJECTS,
-    0,
+  const initialProjects = projects.slice(0, MOBILE_VISIBLE_PROJECTS);
+  const revealedProjects = projects.slice(
+    MOBILE_VISIBLE_PROJECTS,
+    visibleProjectCount,
   );
+  const hasRevealedProjects = revealedProjects.length > 0;
+  const hasShownAllLaneProjects = visibleProjectCount >= projects.length;
 
   return (
     <div
@@ -239,29 +378,34 @@ function ProjectLane({
         paddingRight: align === "right" ? 8 : undefined,
       }}
     >
-      {Array.from({ length: MOBILE_VISIBLE_PROJECTS }).map((_, i) => (
-        <ProjectItem key={i} align={align} />
+      {initialProjects.map((project) => (
+        <ProjectItem key={project.id} align={align} />
       ))}
       <AnimatePresence initial={false}>
-        {showAll && (
+        {hasRevealedProjects && (
           <motion.div
             key={`${align}-remaining-projects`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
+            layout
+            onAnimationComplete={onCollapseAnimationComplete}
+            onAnimationStart={onCollapseAnimationStart}
             transition={projectRevealTransition}
             className={`flex flex-col overflow-hidden ${projectLaneGapClass}`}
           >
-            {Array.from({ length: hiddenProjectCount }).map((_, i) => (
-              <ProjectItem key={i + MOBILE_VISIBLE_PROJECTS} align={align} />
+            {revealedProjects.map((project) => (
+              <ProjectItem key={project.id} align={align} />
             ))}
-            <Image
-              src={align === "left" ? numbers.thirty : numbers.ten}
-              alt={align === "left" ? "numbers.thirty" : "numbers.ten"}
-              width={127}
-              height={105}
-              className={align === "left" ? "mr-auto" : "ml-auto"}
-            />
+            {hasShownAllLaneProjects && (
+              <Image
+                src={align === "left" ? numbers.thirty : numbers.ten}
+                alt={align === "left" ? "numbers.thirty" : "numbers.ten"}
+                width={127}
+                height={105}
+                className={align === "left" ? "mr-auto" : "ml-auto"}
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>

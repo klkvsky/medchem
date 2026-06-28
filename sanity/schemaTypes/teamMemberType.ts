@@ -33,13 +33,14 @@ export const teamMemberType = defineType({
     defineField({
       name: 'portrait',
       type: 'imageWithAlt',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'descriptionLines',
       title: 'Description lines',
       type: 'array',
       of: [defineArrayMember({type: 'string'})],
-      validation: (rule) => rule.max(6),
+      validation: (rule) => rule.required().min(1).max(6),
     }),
     defineField({
       name: 'roles',

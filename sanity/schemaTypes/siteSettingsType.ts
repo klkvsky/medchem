@@ -21,14 +21,17 @@ export const footerSettingsType = defineType({
       name: 'taxId',
       title: 'Tax ID',
       type: 'string',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'legalLink',
       type: 'callToAction',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'creditLink',
       type: 'callToAction',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
