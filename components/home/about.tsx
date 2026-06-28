@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Tag } from "@/components/ui/tag";
+import type { HomePageData, HomeTag } from "@/sanity/lib/home";
 
 import {
   AboutDecorations,
@@ -17,9 +18,19 @@ const aboutDecorationAssets = [
   { kind: "icon", name: icons.hole },
 ] satisfies AboutDecorationAsset[];
 
-export function About() {
+type AboutData = NonNullable<HomePageData["about"]>;
+
+function tagShape(type: HomeTag["type"]) {
+  return type ?? "rectangle";
+}
+
+export function About({ data }: { data?: AboutData | null }) {
   return (
-    <div className="relative overflow-hidden px-10 flex flex-col h-dvh justify-center xl:items-center text-[#411319]">
+    <div
+      id="about"
+      data-nav-title="О компании"
+      className="relative overflow-hidden px-10 flex flex-col h-dvh justify-center xl:items-center text-[#411319]"
+    >
       <AboutDecorations assets={aboutDecorationAssets} />
       <div
         data-about-content
@@ -33,28 +44,29 @@ export function About() {
         <div className="flex flex-col gap-[clamp(2.125rem,calc(2.7679rem_-_1.3393vw),2.5rem)] 2xl:gap-[clamp(2.125rem,calc(0.625rem_+_1.5625vw),2.5rem)] 3xl:gap-[clamp(2.5rem,2.0833vw,3.3333rem)]">
           <div className="flex flex-col gap-[clamp(1.125rem,calc(1.0357rem_+_0.4464vw),1.25rem)] xl:gap-[clamp(1.25rem,1.5625vw,1.5rem)] 2xl:gap-[clamp(1.5rem,calc(-0.5rem_+_2.0833vw),2rem)] 3xl:gap-[clamp(2rem,1.6667vw,2.6667rem)]">
             <h2 className="text-h3 uppercase">
-              лет Создаем R&D-решения для life sciences
+              {data?.title}
             </h2>
             <p className="text-text font-diatype md:font-aeonik-mono md:text-h3 md:uppercase ">
-              Поиск перспективных направлений разработки, патентно-конкурентный
-              анализ, дизайн малых молекул, проектирование цифровых инструментов
+              {data?.description}
             </p>
           </div>
-          <AboutTags />
+          <AboutTags tags={data?.tags ?? []} />
         </div>
       </div>
     </div>
   );
 }
 
-function AboutTags() {
+function AboutTags({ tags }: { tags: HomeTag[] }) {
   return (
     <div className="flex flex-row items-center">
-      <Tag text="pharma" shape="rectangle" />
-      <Tag text="agrochem" shape="pill" />
-      <Tag text="animal care" shape="rectangle" />
-      <Tag text="vc funds" shape="trapezoid" />
-      <Tag text="IP teams" shape="rectangle" />
+      {tags.map((tag) => (
+        <Tag
+          key={tag._key ?? tag.name}
+          text={tag.name ?? ""}
+          shape={tagShape(tag.type)}
+        />
+      ))}
     </div>
   );
 }

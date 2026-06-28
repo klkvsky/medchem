@@ -1,13 +1,13 @@
-import {CogIcon, HomeIcon, ProjectsIcon, SearchIcon, StackIcon, UsersIcon} from '@sanity/icons'
+import {CogIcon, HomeIcon, SearchIcon} from '@sanity/icons'
 import type {StructureResolver} from 'sanity/structure'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Website')
+    .title('Сайт')
     .items([
       S.listItem()
-        .title('Home page')
+        .title('Главная страница')
         .icon(HomeIcon)
         .child(S.document().schemaType('homePage').documentId('homePage')),
       S.listItem()
@@ -15,25 +15,10 @@ export const structure: StructureResolver = (S) =>
         .icon(SearchIcon)
         .child(S.document().schemaType('siteSeo').documentId('siteSeo')),
       S.listItem()
-        .title('Settings')
+        .title('Настройки')
         .icon(CogIcon)
         .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
-      S.divider(),
-      S.documentTypeListItem('serviceOffering').title('Services').icon(StackIcon),
-      S.documentTypeListItem('project').title('Projects').icon(ProjectsIcon),
-      S.documentTypeListItem('teamMember').title('Team').icon(UsersIcon),
-      S.documentTypeListItem('partner').title('Partners').icon(UsersIcon),
       ...S.documentTypeListItems().filter(
-        (item) =>
-          item.getId() &&
-          ![
-            'homePage',
-            'siteSeo',
-            'siteSettings',
-            'serviceOffering',
-            'project',
-            'teamMember',
-            'partner',
-          ].includes(item.getId()!),
+        (item) => item.getId() && !['homePage', 'siteSeo', 'siteSettings'].includes(item.getId()!),
       ),
     ])

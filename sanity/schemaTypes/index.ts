@@ -1,56 +1,49 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import {type SchemaTypeDefinition} from 'sanity'
 
 import {
   aboutSectionType,
+  footerSectionType,
+  heroDetailType,
   heroSectionType,
   homePageType,
+  partnerItemType,
   partnersSectionType,
-  productSectionType,
-  projectsSectionType,
+  portfolioProjectType,
+  portfolioSectionItemType,
+  portfolioSectionType,
+  serviceItemType,
+  serviceSlideType,
   servicesSectionType,
+  teamMemberCardType,
   teamSectionType,
+  xantirSectionType,
 } from './homePageType'
-import {
-  callToActionType,
-  heroKeywordType,
-  heroKeywordRowType,
-  imageWithAltType,
-  seoType,
-  serviceStepType,
-  statisticType,
-  tagType,
-} from './objects'
-import {partnerType} from './partnerType'
-import {projectType} from './projectType'
-import {serviceOfferingType} from './serviceOfferingType'
+import {imageWithAltType, seoType, tagType} from './objects'
 import {siteSeoType} from './siteSeoType'
-import {footerSettingsType, siteSettingsType} from './siteSettingsType'
-import {teamMemberType} from './teamMemberType'
+import {siteSettingsType} from './siteSettingsType'
 
-export const schema: { types: SchemaTypeDefinition[] } = {
+export const schema: {types: SchemaTypeDefinition[]} = {
   types: [
     homePageType,
-    serviceOfferingType,
-    projectType,
-    teamMemberType,
-    partnerType,
     siteSeoType,
     siteSettingsType,
     heroSectionType,
+    heroDetailType,
     aboutSectionType,
     servicesSectionType,
-    projectsSectionType,
-    productSectionType,
+    serviceSlideType,
+    serviceItemType,
+    portfolioSectionType,
+    portfolioSectionItemType,
+    portfolioProjectType,
+    xantirSectionType,
     teamSectionType,
+    teamMemberCardType,
     partnersSectionType,
+    partnerItemType,
+    footerSectionType,
     imageWithAltType,
     tagType,
-    callToActionType,
     seoType,
-    heroKeywordType,
-    heroKeywordRowType,
-    statisticType,
-    serviceStepType,
-    footerSettingsType,
   ],
 }
