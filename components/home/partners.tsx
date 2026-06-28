@@ -151,7 +151,7 @@ function PartnersMarquee() {
           <div
             key={group}
             ref={group === 0 ? groupRef : undefined}
-            className="flex flex-row gap-0 items-start shrink-0 md:gap-5 xl:gap-6 2xl:gap-[clamp(1.5rem,1.5625vw,1.875rem)] 3xl:gap-[clamp(1.875rem,1.5625vw,2.5rem)]"
+            className="flex flex-row gap-0 items-start shrink-0"
             aria-hidden={group !== 1}
           >
             {partners.map((partner) => (

@@ -2,7 +2,7 @@ const tagShapeClasses = {
   rectangle: "",
   pill: "rounded-full",
   trapezoid:
-    "[--tag-point:0.7rem] [clip-path:polygon(var(--tag-point)_0,calc(100%_-_var(--tag-point))_0,100%_50%,calc(100%_-_var(--tag-point))_100%,var(--tag-point)_100%,0_50%)]",
+    "[--tag-point:1rem] [clip-path:polygon(var(--tag-point)_0,calc(100%_-_var(--tag-point))_0,100%_50%,calc(100%_-_var(--tag-point))_100%,var(--tag-point)_100%,0_50%)]",
 };
 
 const tagPaddingClasses = {

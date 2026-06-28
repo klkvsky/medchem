@@ -205,11 +205,11 @@ function ServicesItem({
   tags: string[];
 }) {
   return (
-    <div className="flex flex-row gap-[clamp(0.5rem,calc(0.4107rem_+_0.4464vw),0.625rem)] max-md:w-[80%] md:gap-[clamp(0.125rem,calc(1.375rem_-_1.5625vw),0.625rem)] xl:flex-col xl:gap-[clamp(0.125rem,calc(-0.5rem_+_0.7813vw),0.25rem)] 2xl:gap-1 2xl:w-fit">
+    <div className="flex flex-row gap-[clamp(0.5rem,calc(0.4107rem_+_0.4464vw),0.625rem)] max-md:w-[80%] md:gap-[clamp(0.125rem,calc(1.375rem_-_1.5625vw),0.625rem)] xl:flex-col xl:gap-[clamp(0.125rem,calc(-0.5rem_+_0.7813vw),0.25rem)] 2xl:gap-2 2xl:w-fit">
       <p className="text-text tabular-nums w-4 h-4">{number}</p>
       <div className="flex flex-col gap-[clamp(0.5rem,calc(0.4107rem_+_0.4464vw),0.625rem)] xl:gap-[clamp(0.625rem,calc(0rem_+_0.7813vw),0.75rem)] 2xl:gap-3">
         <p className="text-h3 uppercase 2xl:w-[95%]">{title}</p>
-        <div className="-space-x-px xl:flex xl:flex-wrap">
+        <div className="-space-x-[0.5px] -space-y-[0.5px] xl:flex xl:flex-wrap">
           {tags.map((tag, index) => (
             <Tag
               key={index}

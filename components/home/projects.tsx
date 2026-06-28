@@ -435,7 +435,7 @@ function ProjectItem({ align }: { align?: "left" | "right" }) {
             style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
           >
             <p className="text-h3">TNIK</p>
-            <p className="text-text">Phase II</p>
+            <p className="text-text font-diatype">Phase II</p>
           </div>
         </div>
         <div className="flex flex-row">
