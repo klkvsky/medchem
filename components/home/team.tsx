@@ -10,7 +10,7 @@ export function Team() {
   return (
     <div className="flex flex-col px-2 gap-22 pt-[clamp(4.125rem,calc(1.8929rem_+_11.1607vw),7.25rem)] pb-[clamp(7.5rem,calc(6.1607rem_+_6.6964vw),9.375rem)] md:pt-[clamp(0rem,calc(18.125rem_-_22.6563vw),7.25rem)] xl:pt-0 xl:gap-[clamp(5.5rem,calc(-10.75rem_+_20.3125vw),8.75rem)] xl:pb-[clamp(9.375rem,calc(1.25rem_+_10.1563vw),11rem)] 2xl:gap-[clamp(8.75rem,calc(3.75rem_+_5.2083vw),10rem)] 2xl:pb-[clamp(11rem,11.4583vw,13.75rem)] 3xl:gap-[clamp(10rem,8.3333vw,13.3333rem)] 3xl:pb-[clamp(13.75rem,11.4583vw,18.3333rem)] text-[#411319]">
       <div className="flex flex-col gap-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] md:gap-[clamp(1.75rem,calc(6.75rem_-_6.25vw),3.75rem)] xl:gap-7 2xl:gap-[clamp(1.75rem,calc(-6.25rem_+_8.3333vw),3.75rem)] 3xl:gap-[clamp(3.75rem,3.125vw,5rem)]">
-        <h3 className="text-h2 uppercase xl:w-1/2 xl:ml-auto">
+        <h3 className="text-h2 uppercase md:w-[75%] xl:w-1/2 xl:ml-auto">
           Эксперты, которые создают результат
         </h3>
         <div className="grid grid-cols-2 gap-x-2 gap-y-[clamp(2rem,calc(0.75rem_+_6.25vw),3.75rem)] md:gap-y-[clamp(1.75rem,calc(6.75rem_-_6.25vw),3.75rem)] xl:grid-cols-4">
