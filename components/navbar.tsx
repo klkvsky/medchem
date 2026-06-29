@@ -110,7 +110,7 @@ export default function Navbar() {
     <div
       ref={navRef}
       data-navbar
-      className="pointer-events-none w-dvw h-dvh fixed top-0 left-0 z-100"
+      className="pointer-events-none w-dvw h-screen fixed top-0 left-0 z-100"
     >
       <div className="flex flex-col w-full h-full gap-23 relative px-2 pt-5">
         {!hasPassedFirstScreen ? (
@@ -118,7 +118,7 @@ export default function Navbar() {
             className="absolute top-5 left-2 z-10 hidden flex-col gap-2.5 xl:flex"
             style={{ color: LIGHT_NAV_COLOR }}
           >
-            <NavSectionList />
+            <NavSectionList isOpen={true} />
           </div>
         ) : null}
         <motion.div
@@ -221,13 +221,13 @@ export default function Navbar() {
           initial={false}
           animate={isOpen ? "open" : "closed"}
           variants={navVariants}
-          // animate={{
-          //   clipPath: !isOpen ? "inset(0 0 100% 0)" : "inset(0 0 0 0)",
-          // }}
           className="flex flex-col gap-2.5 z-10 xl:hidden"
-          style={{ color: navColor }}
+          style={{
+            color: navColor,
+          }}
         >
           <NavSectionList
+            isOpen={isOpen}
             motionItemVariants={itemVariants}
             onNavigate={() => setIsOpen(false)}
           />
@@ -238,9 +238,11 @@ export default function Navbar() {
 }
 
 function NavSectionList({
+  isOpen,
   motionItemVariants,
   onNavigate,
 }: {
+  isOpen: boolean;
   motionItemVariants?: typeof itemVariants;
   onNavigate?: () => void;
 }) {
@@ -256,7 +258,8 @@ function NavSectionList({
           >
             <Link
               href={section.href}
-              className="pointer-events-auto block"
+              data-open={isOpen}
+              className="data-[open=true]:pointer-events-auto block"
               onClick={onNavigate}
             >
               {section.title}
@@ -266,7 +269,8 @@ function NavSectionList({
           <Link
             href={section.href}
             key={section.href}
-            className="pointer-events-auto block text-h2 xl:text-h3 font-aeonik-mono uppercase"
+            data-open={isOpen}
+            className="data-[open=true]:pointer-events-auto block text-h2 xl:text-h3 font-aeonik-mono uppercase"
             onClick={onNavigate}
           >
             {section.title}

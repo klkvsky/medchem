@@ -29,7 +29,7 @@ export function About({ data }: { data?: AboutData | null }) {
     <div
       id="about"
       data-nav-title="О компании"
-      className="relative overflow-hidden px-10 flex flex-col h-dvh justify-center xl:items-center text-[#411319]"
+      className="relative overflow-hidden px-10 flex flex-col h-screen justify-center xl:items-center text-[#411319]"
     >
       <AboutDecorations assets={aboutDecorationAssets} />
       <div
@@ -43,9 +43,7 @@ export function About({ data }: { data?: AboutData | null }) {
         />
         <div className="flex flex-col gap-[clamp(2.125rem,calc(2.7679rem_-_1.3393vw),2.5rem)] 2xl:gap-[clamp(2.125rem,calc(0.625rem_+_1.5625vw),2.5rem)] 3xl:gap-[clamp(2.5rem,2.0833vw,3.3333rem)]">
           <div className="flex flex-col gap-[clamp(1.125rem,calc(1.0357rem_+_0.4464vw),1.25rem)] xl:gap-[clamp(1.25rem,1.5625vw,1.5rem)] 2xl:gap-[clamp(1.5rem,calc(-0.5rem_+_2.0833vw),2rem)] 3xl:gap-[clamp(2rem,1.6667vw,2.6667rem)]">
-            <h2 className="text-h3 uppercase">
-              {data?.title}
-            </h2>
+            <h2 className="text-h3 uppercase">{data?.title}</h2>
             <p className="text-text font-diatype md:font-aeonik-mono md:text-h3 md:uppercase ">
               {data?.description}
             </p>

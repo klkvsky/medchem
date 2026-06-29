@@ -3,7 +3,7 @@
 import { Tag } from "@/components/ui/tag";
 import type { HomePageData, HomeTag } from "@/sanity/lib/home";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 import { SanityImageView } from "./sanity-image";
 
@@ -70,7 +70,7 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
       }}
       className="relative hidden h-[200dvh] bg-blue-900 text-white xl:block"
     >
-      <div className="sticky top-0 isolate flex h-dvh items-end overflow-hidden px-2 xl:pb-[clamp(2.5rem,calc(-12.5rem_+_18.75vw),5.5rem)] 2xl:pb-[clamp(5.5rem,calc(0.5rem_+_3.125vw),6.25rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)]">
+      <div className="sticky top-0 isolate flex h-screen items-end overflow-hidden px-2 xl:pb-[clamp(2.5rem,calc(-12.5rem_+_18.75vw),5.5rem)] 2xl:pb-[clamp(5.5rem,calc(0.5rem_+_3.125vw),6.25rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)]">
         {slides.map((slide, index) => (
           <motion.div
             key={slide._key ?? slide.title ?? index}
@@ -87,10 +87,7 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
             />
           </motion.div>
         ))}
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-black/35"
-        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-black/35" />
         <div className="relative z-10 flex flex-row items-start justify-between w-full">
           <div className="flex flex-row items-start gap-16.5 xl:gap-[clamp(4.125rem,calc(-2.75rem_+_8.5938vw),5.5rem)] 2xl:gap-[clamp(5.5rem,calc(0.5rem_+_5.2083vw),6.75rem)] 3xl:gap-[clamp(6.75rem,5.625vw,9rem)]">
             <p className="text-h3 uppercase w-10 h-10 flex items-center justify-center border rounded-full 2xl:w-[clamp(2.5rem,2.6042vw,3.125rem)] 2xl:h-[clamp(2.5rem,2.6042vw,3.125rem)] 3xl:w-[clamp(3.125rem,2.6042vw,4.1667rem)] 3xl:h-[clamp(3.125rem,2.6042vw,4.1667rem)]">
@@ -139,14 +136,26 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
 function ServiceMobile({ slides }: { slides: ServiceSlide[] }) {
   return (
     <div data-services-mobile className="relative isolate xl:hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={slide._key ?? slide.title ?? index}
-          className={index === 0 ? "sticky top-0 z-0 h-dvh overflow-hidden" : "relative z-10 -mt-px"}
-        >
-          <ServicesSlide slide={slide} slideIndex={index} />
-        </div>
-      ))}
+      {slides.map((slide, index) => {
+        const slideKey = slide._key ?? slide.title ?? index;
+
+        if (index === 0) {
+          return (
+            <Fragment key={slideKey}>
+              <div className="sticky top-0 z-0 h-screen overflow-hidden">
+                <ServicesSlide slide={slide} slideIndex={index} />
+              </div>
+              <div aria-hidden className="h-[15vh]" />
+            </Fragment>
+          );
+        }
+
+        return (
+          <div key={slideKey} className="relative z-10 -mt-px">
+            <ServicesSlide slide={slide} slideIndex={index} />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -166,7 +175,7 @@ function ServicesSlide({
           ? `linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url(${slide.backgroundImage.url})`
           : undefined,
       }}
-      className="flex flex-col h-dvh justify-between data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white!"
+      className="flex flex-col h-screen justify-between data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white!"
     >
       <div className="flex flex-col gap-[clamp(0.75rem,calc(0.3929rem_+_1.7857vw),1.25rem)]">
         <p className="text-h3 flex items-center justify-center rounded-full ring ring-white w-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)] h-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)]">

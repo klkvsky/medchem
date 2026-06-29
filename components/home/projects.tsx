@@ -27,6 +27,8 @@ const DESKTOP_DRAG_CLICK_THRESHOLD = 5;
 const projectLaneGapClass =
   "gap-[clamp(3.75rem,calc(3.5714rem_+_0.8929vw),4rem)]";
 const desktopProjectLaneGapClass = "gap-12.5";
+const desktopProjectEndImageClass = "mt-auto w-auto h-30.5 shrink-0";
+const mobileProjectEndImageClass = "w-[127px] h-[105px] object-contain";
 const projectRevealTransition = {
   duration: 0.45,
   ease: [0.32, 0.72, 0, 1],
@@ -104,7 +106,7 @@ function ProjectDesktop({
         <div className="flex flex-col gap-2 3xl:gap-2.5">
           <p className="text-h3 font-aeonik-mono uppercase">Подсказка</p>
           <p className="text-text font-diatype">
-            Премещайтесь по схеме с помощью горизонтального скролла
+            Перемещайтесь по схеме с помощью горизонтального скролла
           </p>
         </div>
       </div>
@@ -248,15 +250,27 @@ function ProjectDesktopLane({
   const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
     const scrollElement = scrollRef.current;
 
-    suppressClickRef.current = dragRef.current.moved;
+    if (!dragRef.current.active) {
+      return;
+    }
+
+    const shouldSuppressClick = dragRef.current.moved;
+    suppressClickRef.current = shouldSuppressClick;
     if (suppressClickRef.current) {
       window.setTimeout(() => {
         suppressClickRef.current = false;
       }, 0);
     }
 
-    dragRef.current.active = false;
-    scrollElement?.releasePointerCapture(event.pointerId);
+    dragRef.current = {
+      ...dragRef.current,
+      active: false,
+      moved: false,
+    };
+
+    if (scrollElement?.hasPointerCapture(event.pointerId)) {
+      scrollElement.releasePointerCapture(event.pointerId);
+    }
   };
 
   const handleClickCapture = (event: MouseEvent<HTMLDivElement>) => {
@@ -298,7 +312,7 @@ function ProjectDesktopLane({
         {endImage?.url ? (
           <SanityImageView
             image={endImage}
-            className="mt-auto w-auto h-30.5 shrink-0"
+            className={desktopProjectEndImageClass}
             sizes="12vw"
           />
         ) : (
@@ -307,7 +321,7 @@ function ProjectDesktopLane({
             alt={side === "left" ? "numbers.ten" : "numbers.thirty"}
             width={127}
             height={105}
-            className="mt-auto w-auto h-30.5 shrink-0"
+            className={desktopProjectEndImageClass}
             draggable={false}
           />
         )}
@@ -521,6 +535,8 @@ function ProjectLane({
   );
   const hasRevealedProjects = revealedProjects.length > 0;
   const hasShownAllLaneProjects = visibleProjectCount >= projects.length;
+  const shouldShowStaticEndImage =
+    hasShownAllLaneProjects && !hasRevealedProjects;
 
   return (
     <div
@@ -542,6 +558,9 @@ function ProjectLane({
           }}
         />
       ))}
+      {shouldShowStaticEndImage && (
+        <ProjectLaneEndImage align={align} endImage={endImage} />
+      )}
       <AnimatePresence initial={false}>
         {hasRevealedProjects && (
           <motion.div
@@ -565,26 +584,39 @@ function ProjectLane({
                 }}
               />
             ))}
-            {hasShownAllLaneProjects &&
-              (endImage?.url ? (
-                <SanityImageView
-                  image={endImage}
-                  sizes="28vw"
-                  className={align === "left" ? "mr-auto" : "ml-auto"}
-                />
-              ) : (
-                <Image
-                  src={align === "left" ? numbers.thirty : numbers.ten}
-                  alt={align === "left" ? "numbers.thirty" : "numbers.ten"}
-                  width={127}
-                  height={105}
-                  className={align === "left" ? "mr-auto" : "ml-auto"}
-                />
-              ))}
+            {hasShownAllLaneProjects && (
+              <ProjectLaneEndImage align={align} endImage={endImage} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+function ProjectLaneEndImage({
+  align,
+  endImage,
+}: {
+  align: ProjectLaneAlign;
+  endImage?: SanityImage | null;
+}) {
+  const className = `${align === "left" ? "mr-auto" : "ml-auto"} ${mobileProjectEndImageClass}`;
+
+  if (endImage?.url) {
+    return (
+      <SanityImageView image={endImage} sizes="127px" className={className} />
+    );
+  }
+
+  return (
+    <Image
+      src={align === "left" ? numbers.thirty : numbers.ten}
+      alt={align === "left" ? "numbers.thirty" : "numbers.ten"}
+      width={127}
+      height={105}
+      className={className}
+    />
   );
 }
 
@@ -634,8 +666,10 @@ function ProjectItem({
                 alignItems: align === "left" ? "flex-start" : "flex-end",
               }}
             >
-              <p className="text-h3">{project.title}</p>
-              <p className="text-text font-diatype">{project.subtitle}</p>
+              <p className="text-h3 xl:whitespace-nowrap">{project.title}</p>
+              <p className="text-text font-diatype xl:h-10">
+                {project.subtitle}
+              </p>
             </div>
           </div>
           <div className="flex flex-row">
@@ -705,7 +739,7 @@ function ProjectItemPopup({
               pointerEvents: "none",
             }}
             transition={projectPopupTransition}
-            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-fit max-h-[90dvh] bg-white z-101 max-w-md"
+            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-full max-h-[90dvh] bg-white z-101 max-w-md"
           >
             <div className="flex flex-col w-full h-full p-6 gap-11 overflow-y-auto">
               <button

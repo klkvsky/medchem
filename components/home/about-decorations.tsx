@@ -11,6 +11,7 @@ const ABOUT_DECORATION_CONTENT_GAP = 24;
 const MIN_ABOUT_DECORATION_SIZE = 8.5;
 const ABOUT_DECORATION_SIZE_RANGE = 7;
 const ABOUT_DECORATION_COUNT = 8;
+const ABOUT_DECORATION_SEED = 0x9e3779b9;
 
 export type AboutDecorationAsset =
   | { kind: "icon"; name: HomeIconName }
@@ -33,10 +34,14 @@ export function AboutDecorations({
   assets: AboutDecorationAsset[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const layoutSignatureRef = useRef<string | null>(null);
+  const resizeFrameRef = useRef<number | null>(null);
   const [decorations, setDecorations] = useState<AboutDecoration[]>([]);
 
   useEffect(() => {
     function generateDecorations() {
+      resizeFrameRef.current = null;
+
       const container = containerRef.current;
       const section = container?.parentElement;
       const content = section?.querySelector<HTMLElement>(
@@ -47,21 +52,35 @@ export function AboutDecorations({
         return;
       }
 
-      setDecorations(
-        createAboutDecorations(
-          assets,
-          section.getBoundingClientRect(),
-          content.getBoundingClientRect(),
-        ),
-      );
+      const sectionRect = section.getBoundingClientRect();
+      const contentRect = content.getBoundingClientRect();
+      const layoutSignature = getLayoutSignature(sectionRect, contentRect);
+
+      if (layoutSignature === layoutSignatureRef.current) {
+        return;
+      }
+
+      layoutSignatureRef.current = layoutSignature;
+      setDecorations(createAboutDecorations(assets, sectionRect, contentRect));
     }
 
-    const frame = requestAnimationFrame(generateDecorations);
-    window.addEventListener("resize", generateDecorations);
+    function requestGenerateDecorations() {
+      if (resizeFrameRef.current !== null) {
+        return;
+      }
+
+      resizeFrameRef.current = requestAnimationFrame(generateDecorations);
+    }
+
+    requestGenerateDecorations();
+    window.addEventListener("resize", requestGenerateDecorations);
 
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("resize", generateDecorations);
+      if (resizeFrameRef.current !== null) {
+        cancelAnimationFrame(resizeFrameRef.current);
+      }
+
+      window.removeEventListener("resize", requestGenerateDecorations);
     };
   }, [assets]);
 
@@ -123,6 +142,22 @@ function getDecorationEdgeInset(size: number) {
   return Math.ceil((size * Math.SQRT2) / 2) + ABOUT_DECORATION_EDGE_GAP;
 }
 
+function getLayoutSignature(sectionRect: Rect, contentRect: Rect) {
+  const contentTop = contentRect.top - sectionRect.top;
+  const contentLeft = contentRect.left - sectionRect.left;
+
+  return [
+    sectionRect.width,
+    sectionRect.height,
+    contentRect.width,
+    contentRect.height,
+    contentTop,
+    contentLeft,
+  ]
+    .map((value) => Math.round(value))
+    .join(":");
+}
+
 type Rect = {
   top: number;
   right: number;
@@ -137,18 +172,27 @@ function createAboutDecorations(
   sectionRect: Rect,
   contentRect: Rect,
 ): AboutDecoration[] {
+  if (assets.length === 0) {
+    return [];
+  }
+
   return Array.from({ length: ABOUT_DECORATION_COUNT }, (_, index) => {
+    const random = createSeededRandom(ABOUT_DECORATION_SEED + index);
     const asset = assets[index % assets.length];
     const size =
-      MIN_ABOUT_DECORATION_SIZE +
-      Math.random() * ABOUT_DECORATION_SIZE_RANGE;
+      MIN_ABOUT_DECORATION_SIZE + random() * ABOUT_DECORATION_SIZE_RANGE;
     const edgeInset = getDecorationEdgeInset(size);
     const contentSafeRect = getContentSafeRect(
       sectionRect,
       contentRect,
       edgeInset,
     );
-    const { x, y } = getRandomSafePoint(sectionRect, contentSafeRect, edgeInset);
+    const { x, y } = getRandomSafePoint(
+      sectionRect,
+      contentSafeRect,
+      edgeInset,
+      random,
+    );
 
     return {
       asset,
@@ -156,11 +200,20 @@ function createAboutDecorations(
       y: (y / sectionRect.height) * 100,
       size,
       opacity: 1,
-      rotate: Math.random() * 80 - 40,
-      delay: Math.random() * 4,
-      duration: 8 + Math.random() * 5,
+      rotate: random() * 80 - 40,
+      delay: random() * 4,
+      duration: 8 + random() * 5,
     };
   });
+}
+
+function createSeededRandom(seed: number) {
+  let state = seed >>> 0;
+
+  return () => {
+    state = (state * 1664525 + 1013904223) >>> 0;
+    return state / 0x100000000;
+  };
 }
 
 function getContentSafeRect(
@@ -178,14 +231,19 @@ function getContentSafeRect(
   };
 }
 
-function getRandomBetween(min: number, max: number) {
-  return min + Math.random() * Math.max(0, max - min);
+function getRandomBetween(
+  min: number,
+  max: number,
+  random: () => number,
+) {
+  return min + random() * Math.max(0, max - min);
 }
 
 function getRandomSafePoint(
   sectionRect: Rect,
   contentSafeRect: Pick<Rect, "top" | "right" | "bottom" | "left">,
   edgeInset: number,
+  random: () => number,
 ) {
   const minX = edgeInset;
   const maxX = sectionRect.width - edgeInset;
@@ -215,15 +273,15 @@ function getRandomSafePoint(
     .filter((area) => area.width > 0 && area.height > 0);
 
   const totalArea = areas.reduce((sum, area) => sum + area.width * area.height, 0);
-  let cursor = Math.random() * totalArea;
+  let cursor = random() * totalArea;
 
   for (const area of areas) {
     cursor -= area.width * area.height;
 
     if (cursor <= 0) {
       return {
-        x: getRandomBetween(area.left, area.right),
-        y: getRandomBetween(area.top, area.bottom),
+        x: getRandomBetween(area.left, area.right, random),
+        y: getRandomBetween(area.top, area.bottom, random),
       };
     }
   }

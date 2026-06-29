@@ -55,7 +55,7 @@ function splitHeroTitle(title: string | null | undefined) {
 
 function chunkDetails(details: NonNullable<HeroData["details"]>) {
   const rowSizes = [1, 2, 2];
-  const rows: typeof details[] = [];
+  const rows: (typeof details)[] = [];
   let offset = 0;
 
   for (const size of rowSizes) {
@@ -80,7 +80,7 @@ export function Hero({ data }: { data?: HeroData | null }) {
   return (
     <div
       data-nav-title="Главная"
-      className="relative overflow-hidden text-white h-dvh flex flex-col items-center justify-end gap-[clamp(0.75rem,calc(0.3036rem_+_2.2321vw),1.375rem)] pb-43 md:items-start md:gap-[clamp(0rem,calc(3.4375rem_-_4.2969vw),1.375rem)] md:pb-[clamp(2.5rem,calc(23.125rem_-_25.7813vw),10.75rem)] xl:items-end xl:pb-[clamp(2.5rem,calc(-13.125rem_+_19.5313vw),5.625rem)] xl:pr-[clamp(5.75rem,calc(-9.25rem_+_18.75vw),8.75rem)] xl:gap-0 2xl:pb-[clamp(5.625rem,calc(3.125rem_+_2.6042vw),6.25rem)] 2xl:pr-[clamp(8.75rem,calc(-6.25rem_+_15.625vw),12.5rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)] 3xl:pr-[clamp(12.5rem,10.4167vw,16.6667rem)]"
+      className="relative overflow-hidden text-white h-screen flex flex-col items-center justify-end gap-[clamp(0.75rem,calc(0.3036rem_+_2.2321vw),1.375rem)] pb-43 md:items-start md:gap-[clamp(0rem,calc(3.4375rem_-_4.2969vw),1.375rem)] md:pb-[clamp(2.5rem,calc(23.125rem_-_25.7813vw),10.75rem)] xl:items-end xl:pb-[clamp(2.5rem,calc(-13.125rem_+_19.5313vw),5.625rem)] xl:pr-[clamp(5.75rem,calc(-9.25rem_+_18.75vw),8.75rem)] xl:gap-0 2xl:pb-[clamp(5.625rem,calc(3.125rem_+_2.6042vw),6.25rem)] 2xl:pr-[clamp(8.75rem,calc(-6.25rem_+_15.625vw),12.5rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)] 3xl:pr-[clamp(12.5rem,10.4167vw,16.6667rem)]"
     >
       <motion.div
         aria-hidden
@@ -117,7 +117,11 @@ export function Hero({ data }: { data?: HeroData | null }) {
   );
 }
 
-function HeroDescription({ details }: { details: NonNullable<HeroData["details"]> }) {
+function HeroDescription({
+  details,
+}: {
+  details: NonNullable<HeroData["details"]>;
+}) {
   const rows = chunkDetails(details);
 
   return (
