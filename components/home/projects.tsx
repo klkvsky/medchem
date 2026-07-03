@@ -760,7 +760,7 @@ function ProjectItemPopup({
             transition={{
               duration: 0.3,
             }}
-            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-full max-h-[90dvh] bg-white z-101 max-w-md"
+            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-full max-h-[90dvh] bg-white z-101 max-w-2xl"
           >
             <div className="flex flex-col w-full h-full p-6 gap-11 overflow-y-auto">
               <button
