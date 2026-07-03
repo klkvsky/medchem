@@ -33,10 +33,7 @@ const projectRevealTransition = {
   duration: 0.45,
   ease: [0.32, 0.72, 0, 1],
 } as const;
-const projectPopupTransition = {
-  duration: 0.35,
-  ease: [0.32, 0.72, 0, 1],
-} as const;
+
 type ProjectLaneAlign = "left" | "right";
 type PortfolioData = NonNullable<HomePageData["portfolio"]>;
 type PortfolioSection = NonNullable<
@@ -94,7 +91,7 @@ function ProjectDesktop({
   openProject: (project: Project) => void;
 }) {
   return (
-    <div className="hidden xl:flex flex-col items-center pt-3.5 gap-6 pb-10 xl:pt-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] xl:gap-[clamp(1.5rem,calc(-0.375rem_+_2.3438vw),1.875rem)] 2xl:pt-[clamp(1rem,1.0417vw,1.25rem)] 2xl:gap-[clamp(1.875rem,calc(-1.125rem_+_3.125vw),2.625rem)] 2xl:pb-[clamp(2.5rem,calc(-19.5rem_+_22.9167vw),8rem)] 3xl:pt-[clamp(1.25rem,1.0417vw,1.6667rem)] 3xl:gap-[clamp(2.625rem,2.1875vw,3.5rem)] 3xl:pb-[clamp(8rem,6.6667vw,10.6667rem)] relative">
+    <div className="hidden xl:flex flex-col items-center pt-3.5 gap-6 pb-10 xl:pt-[clamp(0.875rem,calc(0.25rem_+_0.7813vw),1rem)] xl:gap-[clamp(1.5rem,calc(-0.375rem_+_2.3438vw),1.875rem)] 2xl:pt-[clamp(1rem,1.0417vw,1.25rem)] 2xl:gap-[clamp(1.875rem,calc(-1.125rem_+_3.125vw),2.625rem)] 2xl:pb-[clamp(2.5rem,calc(-19.5rem_+_22.9167vw),1rem)] 3xl:pt-[clamp(1.25rem,1.0417vw,1.6667rem)] 3xl:gap-[clamp(2.625rem,2.1875vw,3.5rem)] 3xl:pb-[clamp(8rem,6.6667vw,3rem)] relative">
       <div
         className="absolute top-2 right-2 hidden xl:flex flex-row items-start gap-3 z-100 text-white py-4 px-5 w-78 rounded-2xl 2xl:w-94 3xl:w-117.5 3xl:gap-4"
         style={{
@@ -102,7 +99,7 @@ function ProjectDesktop({
             "radial-gradient(276.56% 1199.59% at 164.54% 144.07%, #A4989B 0%, #A1A1A9 33.26%, #ADB9BC 64.94%, #A3AEA7 94.72%)",
         }}
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-white translate-y-2" />
+        <div className="w-1.5 h-1.5 rounded-full bg-white translate-y-2 shrink-0" />
         <div className="flex flex-col gap-2 3xl:gap-2.5">
           <p className="text-h3 font-aeonik-mono uppercase">Подсказка</p>
           <p className="text-text font-diatype">
@@ -111,11 +108,15 @@ function ProjectDesktop({
         </div>
       </div>
       <Logo className="w-45 h-auto text-[#411319] xl:w-[clamp(11.25rem,calc(5rem_+_7.8125vw),12.5rem)] 2xl:w-[clamp(12.5rem,calc(7.5rem_+_5.2083vw),13.75rem)] 3xl:w-[clamp(13.75rem,11.4583vw,18.3333rem)]" />
-      <div className="px-2 w-full">
+      <div className="px-2 w-full pointer-events-none">
         <div className="flex flex-row items-center text-center border-b-[0.5px] z-20 relative">
-          <p className="text-h3 uppercase w-full">{leftSection.title}</p>
-          <div className="w-px h-109 bg-[#B1B1B1] xl:h-[clamp(27.25rem,calc(-0.25rem_+_34.375vw),32.75rem)] 2xl:h-[clamp(32.75rem,calc(-0.25rem_+_34.375vw),41rem)] 3xl:h-[clamp(41rem,34.1667vw,54.6667rem)]" />
-          <p className="text-h3 uppercase w-full">{rightSection.title}</p>
+          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-end pr-50">
+            {leftSection.title}
+          </p>
+          <div className="w-px h-109 bg-[#B1B1B1] xl:h-[clamp(27.25rem,calc(-0.25rem_+_34.375vw),25rem)] 2xl:h-[clamp(32.75rem,calc(-0.25rem_+_34.375vw),35rem)] 3xl:h-[clamp(41rem,34.1667vw,45rem)]" />
+          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-start pl-50">
+            {rightSection.title}
+          </p>
         </div>
       </div>
       <div className="flex flex-row items-center justify-center w-full *:w-1/2! -translate-y-[110px] xl:-translate-y-[clamp(6.875rem,calc(0.625rem_+_7.8125vw),8.125rem)] 2xl:-translate-y-[clamp(8.125rem,calc(0.625rem_+_7.8125vw),10rem)] 3xl:-translate-y-[clamp(160px,8.3333vw,213px)]">
@@ -465,9 +466,17 @@ function ProjectMobile({
       <Logo className="w-[clamp(9.1875rem,calc(2.8036rem_+_31.9196vw),18.125rem)] h-auto text-[#411319]" />
       <div className="px-2 w-full">
         <div className="flex flex-row items-center text-center">
-          <p className="text-h3 uppercase w-full">{leftSection.title}</p>
+          <p className="text-h3 uppercase w-full">
+            <span className="flex max-w-1/2 text-center mx-auto">
+              {leftSection.title}
+            </span>
+          </p>
           <div className="w-px h-[clamp(5rem,calc(2.1429rem_+_14.2857vw),9rem)] bg-[#B1B1B1]" />
-          <p className="text-h3 uppercase w-full">{rightSection.title}</p>
+          <p className="text-h3 uppercase w-full">
+            <span className="flex max-w-1/2 text-center mx-auto">
+              {rightSection.title}
+            </span>
+          </p>
         </div>
         <div className="w-full h-20 border-t rounded-2xl border-[#B1B1B1] " />
         <div className="flex flex-row justify-between -mt-20 w-full">
@@ -629,6 +638,8 @@ function ProjectItem({
   project: Project;
   openProject: (project: Project) => void;
 }) {
+  const visibleTags = (project.tags ?? []).slice(0, 1);
+
   return (
     <>
       <div
@@ -645,7 +656,10 @@ function ProjectItem({
             className="object-contain"
           />
         </div>
-        <div className="flex flex-col gap-[clamp(1rem,calc(0.6429rem_+_1.7857vw),1.5rem)] md:gap-[clamp(1.125rem,calc(2.0625rem_-_1.1719vw),1.5rem)] xl:gap-[clamp(1.125rem,calc(-0.125rem_+_1.5625vw),1.375rem)] 2xl:gap-[clamp(1.375rem,calc(-0.125rem_+_1.5625vw),1.75rem)] 3xl:gap-[clamp(1.75rem,1.4583vw,2.3333rem)]">
+        <div
+          className="flex flex-col gap-[clamp(1rem,calc(0.6429rem_+_1.7857vw),1.5rem)] md:gap-[clamp(1.125rem,calc(2.0625rem_-_1.1719vw),1.5rem)] xl:gap-[clamp(1.125rem,calc(-0.125rem_+_1.5625vw),1.375rem)] 2xl:gap-[clamp(1.375rem,calc(-0.125rem_+_1.5625vw),1.75rem)] 3xl:gap-[clamp(1.75rem,1.4583vw,2.3333rem)]"
+          style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
+        >
           <div
             className="flex flex-col gap-3 xl:gap-[clamp(0.75rem,calc(0.125rem_+_0.7813vw),0.875rem)] 2xl:gap-[clamp(0.875rem,calc(-0.125rem_+_1.0417vw),1.125rem)] 3xl:gap-[clamp(1.125rem,0.9375vw,1.5rem)]"
             style={{ alignItems: align === "left" ? "flex-start" : "flex-end" }}
@@ -656,7 +670,7 @@ function ProjectItem({
               onClick={() => {
                 openProject(project);
               }}
-              className="w-[clamp(1rem,calc(0.8214rem_+_0.8929vw),1.25rem)] h-[clamp(1rem,calc(0.8214rem_+_0.8929vw),1.25rem)] flex items-center justify-center bg-[#E3E3E3] rounded-full cursor-pointer hover:opacity-50"
+              className="w-[clamp(1rem,calc(0.8214rem_+_0.8929vw),1.25rem)] h-[clamp(1rem,calc(0.8214rem_+_0.8929vw),1.25rem)] min-[1280px]:min-w-[30px] min-[1280px]:min-h-[30px] flex items-center justify-center bg-[#E3E3E3] rounded-full cursor-pointer hover:opacity-50 xl:*:size-4"
             >
               <PlusIcon />
             </button>
@@ -666,14 +680,16 @@ function ProjectItem({
                 alignItems: align === "left" ? "flex-start" : "flex-end",
               }}
             >
-              <p className="text-h3 xl:whitespace-nowrap">{project.title}</p>
+              <p className="text-h3 xl:whitespace-nowrap uppercase">
+                {project.title}
+              </p>
               <p className="text-text font-diatype xl:h-10">
                 {project.subtitle}
               </p>
             </div>
           </div>
-          <div className="flex flex-row">
-            {(project.tags ?? []).map((tag, index) => (
+          <div className="flex flex-row items-center w-fit">
+            {visibleTags.map((tag, index) => (
               <Tag
                 key={tag._key ?? tag.name ?? index}
                 text={tag.name ?? ""}
@@ -711,6 +727,9 @@ function ProjectItemPopup({
               opacity: 0,
               pointerEvents: "none",
             }}
+            transition={{
+              duration: 0.3,
+            }}
             className="fixed top-0 left-0 w-screen h-dvh z-100"
             style={{
               background:
@@ -720,7 +739,7 @@ function ProjectItemPopup({
           />
         )}
       </AnimatePresence>
-      <AnimatePresence initial={false} mode="popLayout">
+      <AnimatePresence initial={false} mode="wait">
         {project && (
           <motion.div
             initial={{
@@ -738,7 +757,9 @@ function ProjectItemPopup({
               y: "100%",
               pointerEvents: "none",
             }}
-            transition={projectPopupTransition}
+            transition={{
+              duration: 0.3,
+            }}
             className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-full max-h-[90dvh] bg-white z-101 max-w-md"
           >
             <div className="flex flex-col w-full h-full p-6 gap-11 overflow-y-auto">
@@ -761,7 +782,7 @@ function ProjectItemPopup({
                     </p>
                   </div>
                   <div className="flex flex-row items-center flex-wrap justify-start">
-                    {(project.tags ?? []).map((tag, index) => (
+                    {(project.tags ?? []).slice(0, 1).map((tag, index) => (
                       <Tag
                         key={tag._key ?? tag.name ?? index}
                         text={tag.name ?? ""}

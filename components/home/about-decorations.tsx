@@ -104,7 +104,7 @@ export function AboutDecorations({
               left: clampedX,
               top: clampedY,
               width: `${decoration.size}px`,
-              transform: `translate(-50%, -50%) rotate(${decoration.rotate}deg)`,
+              transform: `translate(-50%, -50%))`,
             }}
             initial={{ opacity: 0 }}
             animate={{
@@ -231,11 +231,7 @@ function getContentSafeRect(
   };
 }
 
-function getRandomBetween(
-  min: number,
-  max: number,
-  random: () => number,
-) {
+function getRandomBetween(min: number, max: number, random: () => number) {
   return min + random() * Math.max(0, max - min);
 }
 
@@ -272,7 +268,10 @@ function getRandomSafePoint(
     }))
     .filter((area) => area.width > 0 && area.height > 0);
 
-  const totalArea = areas.reduce((sum, area) => sum + area.width * area.height, 0);
+  const totalArea = areas.reduce(
+    (sum, area) => sum + area.width * area.height,
+    0,
+  );
   let cursor = random() * totalArea;
 
   for (const area of areas) {

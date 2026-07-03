@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <div>
       <Navbar />
-      <main>
+      <main className="text-[#411319]">
         <Hero data={home.hero} />
         <About data={home.about} />
         <Services data={home.services} />

@@ -13,7 +13,7 @@ type ServiceSlide = NonNullable<
 >;
 
 const servicesTransition = {
-  duration: 0.35,
+  duration: 0.5,
   ease: [0.32, 0.72, 0, 1],
 } as const;
 
@@ -109,16 +109,22 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
               ))}
             </div>
           </div>
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <div className="opacity-0">
               <ServicesList services={activeSlideData.services ?? []} />
             </div>
             {slides.map((slide, index) => (
               <motion.div
                 key={slide._key ?? slide.title ?? index}
+                initial={false}
                 animate={{
                   opacity: activeSlide === index ? 1 : 0,
-                  y: activeSlide === index ? "0%" : "-50%",
+                  y:
+                    index === activeSlide
+                      ? "0%"
+                      : index < activeSlide
+                        ? "-100%"
+                        : "100%",
                 }}
                 transition={servicesTransition}
                 className="absolute top-0 left-0"

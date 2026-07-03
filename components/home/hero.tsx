@@ -82,17 +82,12 @@ export function Hero({ data }: { data?: HeroData | null }) {
       data-nav-title="Главная"
       className="relative overflow-hidden text-white h-screen flex flex-col items-center justify-end gap-[clamp(0.75rem,calc(0.3036rem_+_2.2321vw),1.375rem)] pb-43 md:items-start md:gap-[clamp(0rem,calc(3.4375rem_-_4.2969vw),1.375rem)] md:pb-[clamp(2.5rem,calc(23.125rem_-_25.7813vw),10.75rem)] xl:items-end xl:pb-[clamp(2.5rem,calc(-13.125rem_+_19.5313vw),5.625rem)] xl:pr-[clamp(5.75rem,calc(-9.25rem_+_18.75vw),8.75rem)] xl:gap-0 2xl:pb-[clamp(5.625rem,calc(3.125rem_+_2.6042vw),6.25rem)] 2xl:pr-[clamp(8.75rem,calc(-6.25rem_+_15.625vw),12.5rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)] 3xl:pr-[clamp(12.5rem,10.4167vw,16.6667rem)]"
     >
-      <motion.div
+      <div
         aria-hidden
-        className="absolute inset-[-20%] bg-[radial-gradient(164.72%_106.54%_at_76.3%_74.35%,#878691_0%,#A1A2A9_33.26%,#ADB9BC_66%,#A3AEA7_100%)] bg-[length:135%_135%]"
-        animate={{
-          backgroundPosition: ["45% 50%", "65% 42%", "56% 72%", "45% 50%"],
-          scale: [1, 1.05, 1.02, 1],
-        }}
-        transition={{
-          duration: 18,
-          ease: "easeInOut",
-          repeat: Infinity,
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(76.3% 135.65% at 76.3% 74.35%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
         }}
       />
       <h1
