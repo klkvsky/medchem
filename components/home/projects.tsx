@@ -782,7 +782,7 @@ function ProjectItemPopup({
                     </p>
                   </div>
                   <div className="flex flex-row items-center flex-wrap justify-start">
-                    {(project.tags ?? []).slice(0, 1).map((tag, index) => (
+                    {(project.tags ?? []).map((tag, index) => (
                       <Tag
                         key={tag._key ?? tag.name ?? index}
                         text={tag.name ?? ""}
