@@ -23,7 +23,6 @@ export type AboutDecoration = {
   y: number;
   size: number;
   opacity: number;
-  rotate: number;
   delay: number;
   duration: number;
 };
@@ -99,12 +98,12 @@ export function AboutDecorations({
         return (
           <motion.div
             key={index}
-            className="absolute h-auto object-contain"
+            className="absolute aspect-square h-auto overflow-visible object-contain"
             style={{
               left: clampedX,
               top: clampedY,
               width: `${decoration.size}px`,
-              transform: `translate(-50%, -50%))`,
+              transform: "translate(-50%, -50%)",
             }}
             initial={{ opacity: 0 }}
             animate={{
@@ -122,7 +121,7 @@ export function AboutDecorations({
             {decoration.asset.kind === "icon" ? (
               <HomeIcon
                 name={decoration.asset.name}
-                className="h-auto w-full"
+                className="block h-auto w-full overflow-visible"
               />
             ) : (
               <Image
@@ -139,7 +138,7 @@ export function AboutDecorations({
 }
 
 function getDecorationEdgeInset(size: number) {
-  return Math.ceil((size * Math.SQRT2) / 2) + ABOUT_DECORATION_EDGE_GAP;
+  return Math.ceil(size / 2) + ABOUT_DECORATION_EDGE_GAP;
 }
 
 function getLayoutSignature(sectionRect: Rect, contentRect: Rect) {
@@ -200,7 +199,6 @@ function createAboutDecorations(
       y: (y / sectionRect.height) * 100,
       size,
       opacity: 1,
-      rotate: random() * 80 - 40,
       delay: random() * 4,
       duration: 8 + random() * 5,
     };

@@ -126,7 +126,11 @@ export default function Navbar() {
           animate={{
             opacity: isOpen ? 1 : 0,
           }}
-          className="bg-white/20 backdrop-blur-md absolute top-0 left-0 w-full h-full xl:hidden"
+          className="backdrop-blur-md absolute top-0 left-0 w-full h-full xl:hidden"
+          style={{
+            background:
+              "radial-gradient(160.91% 74.35% at 76.3% 74.35%, rgba(135, 134, 145, 0.95) 0%, rgba(161, 162, 169, 0.95) 33.26%, rgba(173, 185, 188, 0.95) 66%, rgba(163, 174, 167, 0.95) 100%)",
+          }}
         />
         <div className="flex flex-row items-center justify-between w-full z-10">
           <div className="flex flex-row items-center gap-3">
@@ -203,7 +207,7 @@ export default function Navbar() {
               style={{ color: DARK_NAV_COLOR }}
               className="pointer-events-auto h-6.25 w-6.25 flex items-center justify-center bg-[#E3E3E3] rounded-md xl:hidden"
             >
-              <CloseIcon className="w-1.5 h-1.5" />
+              <CloseIcon className="w-[7px] h-[7px]" />
             </motion.button>
           ) : !hasPassedFirstScreen ? (
             <motion.div

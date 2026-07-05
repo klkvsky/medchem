@@ -59,10 +59,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
           preserveAspectRatio="none"
           className={`${capWidthClasses} -mr-px shrink-0 self-stretch overflow-visible pointer-events-none`}
         >
-          <path
-            d="M 50 0 L 0 50 L 50 100 Z"
-            className={trapezoidFillClass}
-          />
+          <path d="M 50 0 L 0 50 L 50 100 Z" className={trapezoidFillClass} />
           <polyline
             points="50 0 0 50 50 100"
             fill="none"
@@ -82,10 +79,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
           preserveAspectRatio="none"
           className={`${capWidthClasses} -ml-px shrink-0 self-stretch overflow-visible pointer-events-none`}
         >
-          <path
-            d="M 0 0 L 50 50 L 0 100 Z"
-            className={trapezoidFillClass}
-          />
+          <path d="M 0 0 L 50 50 L 0 100 Z" className={trapezoidFillClass} />
           <polyline
             points="0 0 50 50 0 100"
             fill="none"
@@ -101,7 +95,7 @@ export function Tag({ text, shape, variant = "default" }: TagProps) {
   if (variant === "outline") {
     return (
       <div
-        className={`${shapeClasses} inline-flex shrink-0 w-fit border-[0.5px] border-current p-px`}
+        className={`${shapeClasses} inline-flex shrink-0 w-fit border-[0.5px] border-current p-px h-fit`}
       >
         <span
           className={`${baseClasses} ${shapeClasses} ${paddingClasses} ${tagVariantClasses[variant]} py-[clamp(0.25rem,calc(0.1607rem_+_0.4464vw),0.375rem)] bg-transparent text-current`}

@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-
 import type { HomePageData } from "@/sanity/lib/home";
 
 import { HomeIcon, type HomeIconName } from "./icons";
@@ -11,7 +9,7 @@ type HeroData = NonNullable<HomePageData["hero"]>;
 const titleLineClasses = [
   "",
   "ml-[clamp(1ch,calc(0.75ch_+_1.25vw),1.5ch)] md:ml-[clamp(1.5ch,calc(-3.45ch_+_10.3125vw),4.8ch)] xl:ml-[4.8ch]",
-  "ml-[clamp(1ch,calc(0.25ch_+_3.75vw),2.8ch)] md:ml-[clamp(2ch,calc(4ch_-_2.5vw),2.8ch)] xl:ml-[2ch]",
+  "ml-0 md:ml-[clamp(2ch,calc(4ch_-_2.5vw),2.8ch)] xl:ml-[2ch]",
 ];
 
 const detailRowClasses = [

@@ -27,7 +27,7 @@ const DESKTOP_DRAG_CLICK_THRESHOLD = 5;
 const projectLaneGapClass =
   "gap-[clamp(3.75rem,calc(3.5714rem_+_0.8929vw),4rem)]";
 const desktopProjectLaneGapClass = "gap-12.5";
-const desktopProjectEndImageClass = "mt-auto w-auto h-30.5 shrink-0";
+const desktopProjectEndImageClass = "mt-auto w-auto h-40 shrink-0";
 const mobileProjectEndImageClass = "w-[127px] h-[105px] object-contain";
 const projectRevealTransition = {
   duration: 0.45,
@@ -110,11 +110,11 @@ function ProjectDesktop({
       <Logo className="w-45 h-auto text-[#411319] xl:w-[clamp(11.25rem,calc(5rem_+_7.8125vw),12.5rem)] 2xl:w-[clamp(12.5rem,calc(7.5rem_+_5.2083vw),13.75rem)] 3xl:w-[clamp(13.75rem,11.4583vw,18.3333rem)]" />
       <div className="px-2 w-full pointer-events-none">
         <div className="flex flex-row items-center text-center border-b-[0.5px] z-20 relative">
-          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-end pr-50">
+          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-end pr-25">
             {leftSection.title}
           </p>
-          <div className="w-px h-109 bg-[#B1B1B1] xl:h-[clamp(27.25rem,calc(-0.25rem_+_34.375vw),25rem)] 2xl:h-[clamp(32.75rem,calc(-0.25rem_+_34.375vw),35rem)] 3xl:h-[clamp(41rem,34.1667vw,45rem)]" />
-          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-start pl-50">
+          <div className="w-0.5 h-109 bg-[#B1B1B1] xl:h-[clamp(27.25rem,calc(-0.25rem_+_34.375vw),25rem)] 2xl:h-[clamp(32.75rem,calc(-0.25rem_+_34.375vw),35rem)] 3xl:h-[clamp(41rem,34.1667vw,45rem)]" />
+          <p className="text-h3 uppercase w-full -translate-y-[200%] flex items-center justify-start pl-25">
             {rightSection.title}
           </p>
         </div>
@@ -314,7 +314,7 @@ function ProjectDesktopLane({
           <SanityImageView
             image={endImage}
             className={desktopProjectEndImageClass}
-            sizes="12vw"
+            sizes="13vw"
           />
         ) : (
           <Image
@@ -332,7 +332,7 @@ function ProjectDesktopLane({
         initial={false}
         animate={{ opacity: showCenterGradient ? 1 : 0 }}
         transition={{ duration: 0.2 }}
-        className={`pointer-events-none absolute top-0 h-full w-[clamp(4rem,7.5vw,9rem)] bg-gradient-to-r from-white to-transparent ${
+        className={`pointer-events-none absolute top-0 h-full w-[clamp(4rem,7.5vw,9rem)] bg-gradient-to-r from-white to-white/10 ${
           side === "left" ? "right-0 rotate-180" : "left-0"
         }`}
       />

@@ -97,10 +97,12 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
               {slides.map((slide, index) => (
                 <motion.p
                   key={slide._key ?? slide.title ?? index}
-                  animate={{
-                    opacity: activeSlide === index ? 1 : 0.2,
-                    y: `-${activeSlide * 3.5}ch`,
-                  }}
+                  animate={
+                    {
+                      // opacity: activeSlide === index ? 1 : 0.2,
+                      // y: `-${activeSlide * 3.5}ch`,
+                    }
+                  }
                   transition={servicesTransition}
                   className="text-h1 uppercase whitespace-pre-line"
                 >
