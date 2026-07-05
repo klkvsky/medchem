@@ -1,7 +1,7 @@
 "use client";
 
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag } from "@/sanity/lib/home";
+import type { HomePageData, HomeTag, SanityImage } from "@/sanity/lib/home";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Fragment, useRef, useState } from "react";
 
@@ -23,6 +23,37 @@ function tagShape(type: HomeTag["type"]) {
 
 function splitTitle(title: string | null | undefined) {
   return (title ?? "").split(/\s+/).filter(Boolean).join("\n");
+}
+
+function firstImage(...images: Array<SanityImage | null | undefined>) {
+  return images.find((image) => image?.url) ?? null;
+}
+
+function getServiceBackgroundImage(
+  slide: ServiceSlide,
+  variant: "mobile" | "tablet" | "desktop",
+) {
+  if (variant === "mobile") {
+    return firstImage(
+      slide.mobileBackgroundImage,
+      slide.tabletBackgroundImage,
+      slide.desktopBackgroundImage,
+    );
+  }
+
+  if (variant === "tablet") {
+    return firstImage(
+      slide.tabletBackgroundImage,
+      slide.desktopBackgroundImage,
+      slide.mobileBackgroundImage,
+    );
+  }
+
+  return firstImage(
+    slide.desktopBackgroundImage,
+    slide.tabletBackgroundImage,
+    slide.mobileBackgroundImage,
+  );
 }
 
 export function Services({ data }: { data?: ServicesData | null }) {
@@ -80,7 +111,7 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
             className="absolute inset-0 -z-20"
           >
             <SanityImageView
-              image={slide.backgroundImage}
+              image={getServiceBackgroundImage(slide, "desktop")}
               fill
               sizes="100vw"
               className="object-cover"
@@ -97,12 +128,10 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
               {slides.map((slide, index) => (
                 <motion.p
                   key={slide._key ?? slide.title ?? index}
-                  animate={
-                    {
-                      // opacity: activeSlide === index ? 1 : 0.2,
-                      // y: `-${activeSlide * 3.5}ch`,
-                    }
-                  }
+                  animate={{
+                    opacity: activeSlide === index ? 1 : 0.2,
+                    y: `-${activeSlide * 3.5}ch`,
+                  }}
                   transition={servicesTransition}
                   className="text-h1 uppercase whitespace-pre-line"
                 >
@@ -178,14 +207,10 @@ function ServicesSlide({
   return (
     <div
       data-slide={slideIndex + 1}
-      style={{
-        backgroundImage: slide.backgroundImage?.url
-          ? `linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url(${slide.backgroundImage.url})`
-          : undefined,
-      }}
-      className="flex flex-col h-screen justify-between data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white!"
+      className="relative flex h-screen flex-col justify-between overflow-hidden data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white!"
     >
-      <div className="flex flex-col gap-[clamp(0.75rem,calc(0.3929rem_+_1.7857vw),1.25rem)]">
+      <ServicesSlideBackground slide={slide} />
+      <div className="relative z-20 flex flex-col gap-[clamp(0.75rem,calc(0.3929rem_+_1.7857vw),1.25rem)]">
         <p className="text-h3 flex items-center justify-center rounded-full ring ring-white w-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)] h-[clamp(1.5625rem,calc(0.8929rem_+_3.3482vw),2.5rem)]">
           {slide.bulletPointText}
         </p>
@@ -193,8 +218,35 @@ function ServicesSlide({
           {splitTitle(slide.title)}
         </h3>
       </div>
-      <ServicesList services={slide.services ?? []} />
+      <div className="relative z-20">
+        <ServicesList services={slide.services ?? []} />
+      </div>
     </div>
+  );
+}
+
+function ServicesSlideBackground({ slide }: { slide: ServiceSlide }) {
+  const mobileImage = getServiceBackgroundImage(slide, "mobile");
+  const tabletImage = getServiceBackgroundImage(slide, "tablet");
+
+  return (
+    <>
+      <div aria-hidden className="absolute inset-0 z-0">
+        <SanityImageView
+          image={mobileImage}
+          fill
+          sizes="100vw"
+          className="object-cover md:hidden"
+        />
+        <SanityImageView
+          image={tabletImage}
+          fill
+          sizes="100vw"
+          className="hidden object-cover md:block xl:hidden"
+        />
+      </div>
+      <div aria-hidden className="absolute inset-0 z-10 bg-black/35" />
+    </>
   );
 }
 

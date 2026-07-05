@@ -18,13 +18,14 @@ export function SiteFooter({ data }: { data?: FooterData | null }) {
       <div className="text-text text-left flex flex-col gap-5 text-white font-diatype md:gap-[clamp(2.5rem,calc(-11.75rem_+_29.6875vw),12rem)] xl:flex-row-reverse xl:items-end xl:ml-auto xl:gap-[clamp(12rem,calc(-15.5rem_+_34.375vw),17.5rem)] 2xl:gap-[clamp(17.5rem,calc(-1.5rem_+_12.5vw),20.5rem)] 3xl:gap-[clamp(20.5rem,17.0833vw,27.3333rem)]">
         <div className="flex flex-col gap-1.5 md:gap-3">
           <p className="whitespace-pre-line">{data?.footerText}</p>
-          <Link
-            href={data?.privacyLink ?? "/"}
+          <a
+            href="/terms.pdf"
             target="_blank"
+            rel="noopener noreferrer"
             className="xl:w-1/2"
           >
             Пользовательское соглашение
-          </Link>
+          </a>
         </div>
         <Link href="/">Designed & Developed by VOSK</Link>
       </div>

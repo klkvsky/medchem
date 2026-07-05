@@ -56,7 +56,9 @@ export function Xantir({ data }: { data?: XantirData | null }) {
           className="object-cover"
         />
         <a
-          href={data?.buttonLink ?? "#"}
+          href="/terms.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-text absolute top-1/2 left-1/2 -translate-1/2 px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] rounded-[10px] uppercase text-white"
           style={{
             background:

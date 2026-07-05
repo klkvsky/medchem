@@ -176,13 +176,39 @@ export const serviceSlideType = defineType({
   title: 'Слайд услуг',
   type: 'object',
   icon: StackIcon,
+  fieldsets: [
+    {
+      name: 'responsiveBackgroundImages',
+      title: 'Фоновые изображения по устройствам',
+      options: {columns: 1},
+    },
+  ],
   fields: [
     defineField({
-      name: 'backgroundImage',
-      title: 'Фоновое изображение',
+      name: 'mobileBackgroundImage',
+      title: 'Телефон',
       type: 'imageWithAlt',
+      fieldset: 'responsiveBackgroundImages',
       description:
-        'Изображение для фона слайда. Выбирайте контрастную картинку, чтобы текст оставался читаемым.',
+        'Вертикальное или плотнее кадрированное фоновое изображение для телефонов.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'tabletBackgroundImage',
+      title: 'Планшет',
+      type: 'imageWithAlt',
+      fieldset: 'responsiveBackgroundImages',
+      description:
+        'Фоновое изображение для планшетов и средних экранов.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'desktopBackgroundImage',
+      title: 'Desktop',
+      type: 'imageWithAlt',
+      fieldset: 'responsiveBackgroundImages',
+      description:
+        'Широкое фоновое изображение для desktop-версии блока услуг.',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -215,7 +241,7 @@ export const serviceSlideType = defineType({
     select: {
       title: 'title',
       subtitle: 'bulletPointText',
-      media: 'backgroundImage',
+      media: 'desktopBackgroundImage',
     },
   },
 })
@@ -429,14 +455,6 @@ export const xantirSectionType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'buttonLink',
-      title: 'Ссылка кнопки',
-      type: 'url',
-      description:
-        'Адрес для кнопки. Можно использовать внешнюю ссылку, mailto: или tel:.',
-      validation: (rule) => rule.required().uri({scheme: ['http', 'https', 'mailto', 'tel']}),
-    }),
-    defineField({
       name: 'image',
       title: 'Изображение',
       type: 'imageWithAlt',
@@ -644,19 +662,10 @@ export const footerSectionType = defineType({
         'Юридический или контактный текст в футере. Обычно здесь указывают компанию, год и реквизиты.',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'privacyLink',
-      title: 'Текст ссылки на политику',
-      type: 'string',
-      description:
-        'Текст ссылки на политику конфиденциальности или пользовательское соглашение. Сам маршрут можно зафиксировать во фронтенде.',
-      validation: (rule) => rule.required(),
-    }),
   ],
   preview: {
     select: {
-      title: 'privacyLink',
-      subtitle: 'footerText',
+      title: 'footerText',
     },
   },
 })

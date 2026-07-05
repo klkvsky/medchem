@@ -34,7 +34,13 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
     services {
       serviceSlides[] {
         _key,
-        backgroundImage {
+        mobileBackgroundImage {
+          ${imageFields}
+        },
+        tabletBackgroundImage {
+          ${imageFields}
+        },
+        desktopBackgroundImage {
           ${imageFields}
         },
         bulletPointText,
@@ -80,7 +86,6 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
       },
       description2,
       buttonText,
-      buttonLink,
       image {
         ${imageFields}
       }
@@ -114,8 +119,7 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
       }
     },
     footer {
-      footerText,
-      privacyLink
+      footerText
     }
   }
 `)
@@ -151,7 +155,9 @@ export type HomePageData = {
   services?: {
     serviceSlides?: {
       _key?: string
-      backgroundImage?: SanityImage | null
+      mobileBackgroundImage?: SanityImage | null
+      tabletBackgroundImage?: SanityImage | null
+      desktopBackgroundImage?: SanityImage | null
       bulletPointText?: string | null
       title?: string | null
       services?: {
@@ -183,7 +189,6 @@ export type HomePageData = {
     tags?: HomeTag[] | null
     description2?: string | null
     buttonText?: string | null
-    buttonLink?: string | null
     image?: SanityImage | null
   } | null
   team?: {
@@ -208,6 +213,5 @@ export type HomePageData = {
   } | null
   footer?: {
     footerText?: string | null
-    privacyLink?: string | null
   } | null
 }
