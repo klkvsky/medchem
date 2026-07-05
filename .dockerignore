@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+.next
+out
+build
+.env*
+.vercel
+.DS_Store
+*.md
+Dockerfile
+.dockerignore
