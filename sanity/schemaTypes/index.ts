@@ -18,15 +18,11 @@ import {
   teamSectionType,
   xantirSectionType,
 } from './homePageType'
-import {imageWithAltType, seoType, tagType} from './objects'
-import {siteSeoType} from './siteSeoType'
-import {siteSettingsType} from './siteSettingsType'
+import {imageWithAltType, tagType} from './objects'
 
 export const schema: {types: SchemaTypeDefinition[]} = {
   types: [
     homePageType,
-    siteSeoType,
-    siteSettingsType,
     heroSectionType,
     heroDetailType,
     aboutSectionType,
@@ -44,6 +40,5 @@ export const schema: {types: SchemaTypeDefinition[]} = {
     footerSectionType,
     imageWithAltType,
     tagType,
-    seoType,
   ],
 }
