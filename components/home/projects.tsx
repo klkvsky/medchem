@@ -680,7 +680,12 @@ function ProjectItem({
                 alignItems: align === "left" ? "flex-start" : "flex-end",
               }}
             >
-              <p className="text-h3 xl:whitespace-nowrap uppercase">
+              <p
+                className="text-h3 xl:whitespace-nowrap uppercase"
+                style={{
+                  textAlign: align === "left" ? "left" : "right",
+                }}
+              >
                 {project.title}
               </p>
               <p className="text-text font-diatype xl:h-10">

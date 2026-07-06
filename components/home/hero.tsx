@@ -16,7 +16,7 @@ const detailRowClasses = [
   "flex flex-row gap-3",
   "flex flex-row gap-3 ml-[clamp(3.875rem,calc(1.4643rem_+_12.0536vw),7.25rem)] md:ml-[clamp(0rem,calc(18.125rem_-_22.6563vw),7.25rem)] xl:ml-0 2xl:gap-[clamp(0.75rem,calc(-1.25rem_+_2.0833vw),1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]",
   "flex flex-row gap-3 ml-[clamp(2rem,calc(0.9732rem_+_5.1339vw),3.4375rem)] md:ml-[clamp(0rem,calc(8.5938rem_-_10.7422vw),3.4375rem)] xl:ml-0 xl:mr-[7rem] 2xl:gap-[clamp(0.75rem,calc(-1.25rem_+_2.0833vw),1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]",
-  "flex flex-row gap-3 ml-[clamp(7.9375rem,calc(4.0536rem_+_19.4196vw),13.375rem)] md:ml-[clamp(7rem,calc(16.9375rem_-_4.2969vw),13.375rem)] xl:ml-[7rem] xl:mr-auto 2xl:gap-[clamp(0.75rem,calc(-1.25rem_+_2.0833vw),1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]",
+  "flex flex-row gap-3 ml-[clamp(7.9375rem,calc(4.0536rem_+_19.4196vw),5rem)] md:ml-[clamp(7rem,calc(16.9375rem_-_4.2969vw),13.375rem)] xl:ml-[7rem] xl:mr-auto 2xl:gap-[clamp(0.75rem,calc(-1.25rem_+_2.0833vw),1.25rem)] 3xl:gap-[clamp(1.25rem,1.0417vw,1.6667rem)]",
 ];
 
 const homeIconNames = new Set<HomeIconName>([
@@ -118,7 +118,7 @@ function HeroDescription({
   const rows = chunkDetails(details);
 
   return (
-    <div className="relative z-10 flex flex-col gap-[clamp(0.25rem,calc(0.1607rem_+_0.4464vw),0.375rem)] translate-x-[clamp(0rem,calc(-0.3571rem_+_1.7857vw),0.5rem)] md:translate-x-[clamp(0rem,calc(1.25rem_-_1.5625vw),0.5rem)] xl:translate-x-0 xl:items-end xl:gap-1.5 2xl:gap-[clamp(0.375rem,calc(-0.125rem_+_0.5208vw),0.5rem)] 3xl:gap-[clamp(0.5rem,0.4167vw,0.6667rem)]">
+    <div className="relative z-10 flex flex-col gap-[clamp(0.25rem,calc(0.1607rem_+_0.4464vw),0.375rem)] translate-x-[clamp(0rem,calc(-0.3571rem_+_1.7857vw),0.5rem)] md:translate-x-[clamp(0rem,calc(1.25rem_-_1.5625vw),0.5rem)] xl:translate-x-0 xl:items-end xl:gap-1.5 2xl:gap-[clamp(0.375rem,calc(-0.125rem_+_0.5208vw),0.5rem)] 3xl:gap-[clamp(0.5rem,0.4167vw,0.6667rem)] px-2">
       {rows.map((row, rowIndex) => (
         <div
           key={row.map((detail) => detail._key ?? detail.name).join("-")}
