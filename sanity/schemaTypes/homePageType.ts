@@ -455,6 +455,15 @@ export const xantirSectionType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'buttonLink',
+      title: 'Ссылка кнопки',
+      type: 'url',
+      description:
+        'Адрес для кнопки. Можно использовать внешнюю ссылку, mailto: или tel:.',
+      validation: (rule) =>
+        rule.required().uri({scheme: ['http', 'https', 'mailto', 'tel']}),
+    }),
+    defineField({
       name: 'image',
       title: 'Изображение',
       type: 'imageWithAlt',

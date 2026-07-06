@@ -86,6 +86,7 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
       },
       description2,
       buttonText,
+      buttonLink,
       image {
         ${imageFields}
       }
@@ -189,6 +190,7 @@ export type HomePageData = {
     tags?: HomeTag[] | null
     description2?: string | null
     buttonText?: string | null
+    buttonLink?: string | null
     image?: SanityImage | null
   } | null
   team?: {
