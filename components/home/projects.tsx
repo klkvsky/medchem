@@ -45,6 +45,10 @@ function tagShape(type: HomeTag["type"]) {
   return type ?? "rectangle";
 }
 
+function normalizeTextBreaks(text: string | null | undefined) {
+  return (text ?? "").replace(/[\u2028\u2029]/g, "\n");
+}
+
 export function Projects({ data }: { data?: PortfolioData | null }) {
   const [openedProject, setOpenedProject] = useState<Project | null>(null);
   const sections = data?.sections ?? [];
@@ -294,11 +298,10 @@ function ProjectDesktopLane({
         onPointerUp={stopDragging}
         onPointerCancel={stopDragging}
         onClickCapture={handleClickCapture}
-        className={`flex items-start ${desktopProjectLaneGapClass} justify-start overflow-x-auto select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
-          side === "left"
-            ? "flex-row-reverse pl-2 pr-11.5"
-            : "flex-row pl-27.5 pr-2"
-        }`}
+        className={`flex items-start ${desktopProjectLaneGapClass} justify-start overflow-x-auto select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${side === "left"
+          ? "flex-row-reverse pl-2 pr-11.5"
+          : "flex-row pl-27.5 pr-2"
+          }`}
       >
         {projects.map((project, index) => (
           <ProjectItem
@@ -332,9 +335,8 @@ function ProjectDesktopLane({
         initial={false}
         animate={{ opacity: showCenterGradient ? 1 : 0 }}
         transition={{ duration: 0.2 }}
-        className={`pointer-events-none absolute top-0 h-full w-[clamp(4rem,7.5vw,9rem)] bg-gradient-to-r from-white to-white/10 ${
-          side === "left" ? "right-0 rotate-180" : "left-0"
-        }`}
+        className={`pointer-events-none absolute top-0 h-full w-[clamp(4rem,7.5vw,9rem)] bg-gradient-to-r from-white to-white/10 ${side === "left" ? "right-0 rotate-180" : "left-0"
+          }`}
       />
     </div>
   );
@@ -797,7 +799,9 @@ function ProjectItemPopup({
                   </div>
                 </div>
               </div>
-              <p className="text-text font-diatype">{project.description}</p>
+              <p className="text-text font-diatype whitespace-pre-line">
+                {normalizeTextBreaks(project.description)}
+              </p>
               <div className="relative w-full h-auto aspect-square bg-neutral-400">
                 <SanityImageView
                   image={project.innerImage}

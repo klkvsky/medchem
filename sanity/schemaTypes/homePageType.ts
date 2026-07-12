@@ -302,9 +302,9 @@ export const portfolioProjectType = defineType({
       name: 'description',
       title: 'Описание',
       type: 'text',
-      rows: 4,
+      rows: 6,
       description:
-        'Кратко объясните, что сделано в проекте и почему он важен. Достаточно 1-3 предложений.',
+        'Кратко объясните, что сделано в проекте и почему он важен. Пустые строки сохраняются и отображаются в попапе.',
       validation: (rule) => rule.required(),
     }),
     defineField({

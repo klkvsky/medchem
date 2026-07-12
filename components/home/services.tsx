@@ -3,7 +3,7 @@
 import { Tag } from "@/components/ui/tag";
 import type { HomePageData, HomeTag, SanityImage } from "@/sanity/lib/home";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useRef, useState } from "react";
 
 import { SanityImageView } from "./sanity-image";
 
@@ -175,6 +175,31 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
 }
 
 function ServiceMobile({ slides }: { slides: ServiceSlide[] }) {
+  const firstSlideRef = useRef<HTMLDivElement>(null);
+  const [stickyTop, setStickyTop] = useState(0);
+
+  useLayoutEffect(() => {
+    const el = firstSlideRef.current;
+    if (!el) return;
+
+    const updateStickyTop = () => {
+      // Negative top when taller than the viewport so content scrolls through
+      // fully before pinning; next slide then covers.
+      setStickyTop(Math.min(0, window.innerHeight - el.offsetHeight));
+    };
+
+    updateStickyTop();
+
+    const resizeObserver = new ResizeObserver(updateStickyTop);
+    resizeObserver.observe(el);
+    window.addEventListener("resize", updateStickyTop);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateStickyTop);
+    };
+  }, [slides.length]);
+
   return (
     <div data-services-mobile className="relative isolate xl:hidden">
       {slides.map((slide, index) => {
@@ -183,7 +208,11 @@ function ServiceMobile({ slides }: { slides: ServiceSlide[] }) {
         if (index === 0) {
           return (
             <Fragment key={slideKey}>
-              <div className="sticky top-0 z-0 h-screen overflow-hidden">
+              <div
+                ref={firstSlideRef}
+                className="sticky z-0 h-fit overflow-hidden"
+                style={{ top: stickyTop }}
+              >
                 <ServicesSlide slide={slide} slideIndex={index} />
               </div>
               <div aria-hidden className="h-[15vh]" />
@@ -211,7 +240,7 @@ function ServicesSlide({
   return (
     <div
       data-slide={slideIndex + 1}
-      className="relative flex h-screen flex-col justify-between overflow-hidden data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white!"
+      className="relative flex h-fit min-h-screen flex-col justify-between overflow-hidden data-[slide=1]:bg-neutral-900 data-[slide=2]:bg-blue-900 pt-[clamp(5.25rem,calc(1.6786rem_+_17.8571vw),10.25rem)] pb-5 px-2 text-white! gap-15"
     >
       <ServicesSlideBackground slide={slide} />
       <div className="relative z-20 flex flex-col gap-[clamp(0.75rem,calc(0.3929rem_+_1.7857vw),1.25rem)]">
@@ -240,7 +269,7 @@ function ServicesSlideBackground({ slide }: { slide: ServiceSlide }) {
           image={mobileImage}
           fill
           sizes="100vw"
-          className="object-cover md:hidden"
+          className="object-cover object-left md:hidden"
         />
         <SanityImageView
           image={tabletImage}
