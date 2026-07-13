@@ -720,10 +720,10 @@ function ProjectPopupCloseButton({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       aria-label="Закрыть меню"
-      className="pointer-events-auto h-6.25 w-6.25 flex items-center justify-center bg-[#E3E3E3] rounded-md shrink-0"
+      className="pointer-events-auto h-6.25 w-6.25 md:w-8 md:h-8 xl:w-10 xl:h-10 3xl:w-12.5 3xl:h-12.5 flex items-center justify-center bg-[#E3E3E3] rounded-md shrink-0 cursor-pointer"
       onClick={onClick}
     >
-      <CloseIcon className="w-1.5 h-1.5" />
+      <CloseIcon className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 2xl:w-3 2xl:h-3 3xl:w-3.5 3xl:h-3.5" />
     </button>
   );
 }
@@ -848,7 +848,7 @@ function ProjectItemPopup({
             </motion.div>
             <div
               ref={scrollRef}
-              className="flex h-full flex-col overflow-y-auto overscroll-y-contain px-6 pb-6"
+              className="flex h-full flex-col overflow-y-auto overscroll-y-contain px-6 pb-6 md:px-8 md:pb-8 2xl:px-9.5 2xl:pb-9.5 3xl:px-12 3xl:pb-12"
             >
               <div className="flex flex-col gap-11 pt-6">
                 <div ref={headerRef} className="flex flex-col gap-11">
