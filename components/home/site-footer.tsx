@@ -49,7 +49,7 @@ export function SiteFooter({ data }: { data?: FooterData | null }) {
           width={1000}
           height={1000}
           alt="logo"
-          className="absolute top-1/2 left-1/2 -translate-y-[50%] -translate-x-[70%] hidden 2xl:flex w-full"
+          className="absolute top-1/2 left-1/2 -translate-y-[70%] -translate-x-[65%] hidden 2xl:flex w-[90%]"
         />
       </Link>
       <div className="text-text text-left flex flex-col gap-5 text-white font-diatype md:gap-[clamp(2.5rem,calc(-11.75rem_+_29.6875vw),12rem)] xl:flex-row-reverse xl:items-end xl:ml-auto xl:gap-[clamp(12rem,calc(-15.5rem_+_34.375vw),17.5rem)] 2xl:gap-[clamp(17.5rem,calc(-1.5rem_+_12.5vw),20.5rem)] 3xl:gap-[clamp(20.5rem,17.0833vw,27.3333rem)]">
