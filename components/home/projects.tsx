@@ -710,6 +710,24 @@ function ProjectItem({
   );
 }
 
+const popupTitleBarTransition = {
+  duration: 0.25,
+  ease: [0.32, 0.72, 0, 1],
+} as const;
+
+function ProjectPopupCloseButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      aria-label="Закрыть меню"
+      className="pointer-events-auto h-6.25 w-6.25 flex items-center justify-center bg-[#E3E3E3] rounded-md shrink-0"
+      onClick={onClick}
+    >
+      <CloseIcon className="w-1.5 h-1.5" />
+    </button>
+  );
+}
+
 function ProjectItemPopup({
   project,
   close,
@@ -717,6 +735,48 @@ function ProjectItemPopup({
   project: Project | null;
   close: () => void;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [showTitleBar, setShowTitleBar] = useState(false);
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current;
+    const headerElement = headerRef.current;
+
+    if (!scrollElement || !headerElement) {
+      setShowTitleBar(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowTitleBar(!entry.isIntersecting);
+      },
+      {
+        root: scrollElement,
+        threshold: 0,
+        rootMargin: "0px 0px -1px 0px",
+      },
+    );
+
+    observer.observe(headerElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [project?._key]);
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement) {
+      return;
+    }
+
+    scrollElement.scrollTop = 0;
+    setShowTitleBar(false);
+  }, [project?._key]);
+
   return (
     <div>
       <AnimatePresence initial={false} mode="wait">
@@ -767,19 +827,32 @@ function ProjectItemPopup({
             transition={{
               duration: 0.3,
             }}
-            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-dvw h-full max-h-[90dvh] bg-white z-101 max-w-2xl"
+            className="fixed bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 md:bottom-1/2 md:translate-y-1/2 w-dvw h-full max-h-[90dvh] md:max-h-[970px] md:max-w-[498px] bg-white z-101 xl:max-w-[484px] xl:max-h-[90dvh] xl:bottom-0 xl:translate-y-0 2xl:max-w-[580px] 3xl:max-w-[736px] overflow-hidden"
           >
-            <div className="flex flex-col w-full h-full p-6 gap-11 overflow-y-auto">
-              <button
-                type="button"
-                aria-label="Закрыть меню"
-                className="pointer-events-auto h-6.25 w-6.25 flex items-center justify-center bg-[#E3E3E3] rounded-md shrink-0"
-                onClick={close}
-              >
-                <CloseIcon className="w-1.5 h-1.5" />
-              </button>
-              <div>
-                <div className="flex flex-col gap-6">
+            <motion.div
+              initial={false}
+              animate={{
+                opacity: showTitleBar ? 1 : 0,
+                y: showTitleBar ? 0 : -8,
+              }}
+              transition={popupTitleBarTransition}
+              className="absolute top-0 left-0 right-0 z-10 flex items-center gap-3 border-b border-[#E3E3E3]/80 bg-white/90 px-6 py-4 backdrop-blur-md"
+              style={{
+                pointerEvents: showTitleBar ? "auto" : "none",
+              }}
+            >
+              <ProjectPopupCloseButton onClick={close} />
+              <p className="min-w-0 flex-1 truncate text-h3 font-aeonik-mono uppercase">
+                {project.title}
+              </p>
+            </motion.div>
+            <div
+              ref={scrollRef}
+              className="flex h-full flex-col overflow-y-auto overscroll-y-contain px-6 pb-6"
+            >
+              <div className="flex flex-col gap-11 pt-6">
+                <div ref={headerRef} className="flex flex-col gap-11">
+                  <ProjectPopupCloseButton onClick={close} />
                   <div className="flex flex-col gap-2">
                     <p className="text-h2 font-aeonik-mono uppercase">
                       {project.title}
@@ -788,27 +861,29 @@ function ProjectItemPopup({
                       {project.subtitle}
                     </p>
                   </div>
-                  <div className="flex flex-row items-center flex-wrap justify-start">
-                    {(project.tags ?? []).map((tag, index) => (
-                      <Tag
-                        key={tag._key ?? tag.name ?? index}
-                        text={tag.name ?? ""}
-                        shape={tagShape(tag.type)}
-                      />
-                    ))}
-                  </div>
+                </div>
+                <div className="flex flex-row flex-wrap items-center justify-start">
+                  {(project.tags ?? []).map((tag, index) => (
+                    <Tag
+                      key={tag._key ?? tag.name ?? index}
+                      text={tag.name ?? ""}
+                      shape={tagShape(tag.type)}
+                    />
+                  ))}
                 </div>
               </div>
-              <p className="text-text font-diatype whitespace-pre-line">
-                {normalizeTextBreaks(project.description)}
-              </p>
-              <div className="relative w-full h-auto aspect-square bg-neutral-400">
-                <SanityImageView
-                  image={project.innerImage}
-                  fill
-                  sizes="(min-width: 768px) 28rem, 100vw"
-                  className="object-cover"
-                />
+              <div className="mt-11 flex flex-col gap-11">
+                <p className="text-text font-diatype whitespace-pre-line">
+                  {normalizeTextBreaks(project.description)}
+                </p>
+                <div className="relative aspect-square h-auto w-full bg-neutral-400">
+                  <SanityImageView
+                    image={project.innerImage}
+                    fill
+                    sizes="(min-width: 768px) 28rem, 100vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
