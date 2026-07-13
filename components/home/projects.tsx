@@ -836,7 +836,7 @@ function ProjectItemPopup({
                 y: showTitleBar ? 0 : -8,
               }}
               transition={popupTitleBarTransition}
-              className="absolute top-0 left-0 right-0 z-10 flex items-center gap-3 border-b border-[#E3E3E3]/80 bg-white/90 px-6 py-4 backdrop-blur-md"
+              className="absolute top-0 left-0 right-0 z-10 flex items-center gap-3 border-b border-[#E3E3E3]/80 bg-white/90 px-6 md:px-8 2xl:px-9.5 3xl:px-12 py-4 backdrop-blur-md"
               style={{
                 pointerEvents: showTitleBar ? "auto" : "none",
               }}
