@@ -13,7 +13,8 @@
 }
 
 @theme {
-    --breakpoint-xl: 74rem;
+    /* 72rem = 1152px: covers 2880@2x Chrome 125% without falling into tablet */
+    --breakpoint-xl: 72rem;
     --breakpoint-3xl: 120rem;
     --text-h1: clamp(3rem, calc(1.5714rem + 7.1429vw), 5rem);
     --text-h1--line-height: 0.9;
@@ -70,7 +71,7 @@
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1152px) {
     :root {
         --text-h1: clamp(5rem, 6.25vw, 6rem);
         --text-h1--line-height: 0.95;

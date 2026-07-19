@@ -1,7 +1,4 @@
-import Number10Icon from "@/public/assets/numbers/10.png";
 import Number15Icon from "@/public/assets/numbers/15.png";
-import Number20Icon from "@/public/assets/numbers/20.png";
-import Number30Icon from "@/public/assets/numbers/30.png";
 
 export const icons = {
   circles: "circles",
@@ -13,8 +10,8 @@ export const icons = {
 } as const;
 
 export const numbers = {
-  ten: Number10Icon,
+  ten: "/assets/numbers/10.svg",
   fifteen: Number15Icon,
-  twenty: Number20Icon,
-  thirty: Number30Icon,
-};
+  twenty: "/assets/numbers/20.svg",
+  thirty: "/assets/numbers/30.svg",
+} as const;

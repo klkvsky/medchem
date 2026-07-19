@@ -39,6 +39,8 @@ export function About({ data }: { data?: AboutData | null }) {
         <Image
           src={numbers.twenty}
           alt="Number 20"
+          width={270}
+          height={160}
           className="w-[clamp(9.75rem,calc(3.0089rem_+_33.7054vw),19.1875rem)] h-auto object-contain md:w-[clamp(11.625rem,calc(30.5313rem_-_23.6328vw),19.1875rem)] xl:w-[clamp(11.625rem,calc(0.0625rem_+_14.4531vw),13.9375rem)] xl:absolute xl:bottom-full xl:right-[96%] xl:translate-y-[20%] 2xl:w-[clamp(13.9375rem,calc(-0.0625rem_+_14.5833vw),17.4375rem)] 3xl:w-[clamp(279px,14.5313vw,372px)]"
         />
         <div className="flex flex-col gap-[clamp(2.125rem,calc(2.7679rem_-_1.3393vw),2.5rem)] 2xl:gap-[clamp(2.125rem,calc(0.625rem_+_1.5625vw),2.5rem)] 3xl:gap-[clamp(2.5rem,2.0833vw,3.3333rem)]">

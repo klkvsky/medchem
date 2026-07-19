@@ -86,7 +86,13 @@ export function SiteFooter({ data }: { data?: FooterData | null }) {
             Пользовательское соглашение
           </a>
         </div>
-        <Link href="/">Designed & Developed by VOSK</Link>
+        <Link
+          href="https://vosk.design"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Designed & Developed by VOSK
+        </Link>
       </div>
     </footer>
   );

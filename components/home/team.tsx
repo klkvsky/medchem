@@ -73,7 +73,7 @@ function TeamMember({
   isLast?: boolean;
 }) {
   const descriptionLines = (member.description ?? "")
-    .split(/\r?\n/)
+    .split(/\r\n|[\r\n\u2028\u2029]/)
     .map((line) => line.trim())
     .filter(Boolean);
 
@@ -86,7 +86,7 @@ function TeamMember({
         <SanityImageView
           image={member.image}
           fill
-          sizes="(min-width: 1280px) 25vw, 50vw"
+          sizes="(min-width: 1152px) 25vw, 50vw"
           className="object-cover"
         />
         {member.isBadge && (

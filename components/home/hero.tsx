@@ -6,6 +6,13 @@ import { HomeIcon, type HomeIconName } from "./icons";
 
 type HeroData = NonNullable<HomePageData["hero"]>;
 
+const HERO_GRADIENT_SOURCES = [
+  { media: "(min-width: 1536px)", src: "/assets/gradient/1920.png" },
+  { media: "(min-width: 1152px)", src: "/assets/gradient/1536.png" },
+  { media: "(min-width: 768px)", src: "/assets/gradient/1280.png" },
+  { media: "(min-width: 390px)", src: "/assets/gradient/768.png" },
+] as const;
+
 const titleLineClasses = [
   "",
   "ml-[clamp(1ch,calc(0.75ch_+_1.25vw),1.5ch)] md:ml-[clamp(1.5ch,calc(-3.45ch_+_10.3125vw),4.8ch)] xl:ml-[4.8ch]",
@@ -40,7 +47,7 @@ function splitHeroTitle(title: string | null | undefined) {
   }
 
   const explicitLines = title
-    .split(/\r?\n/)
+    .split(/\r\n|[\r\n\u2028\u2029]/)
     .map((line) => line.trim())
     .filter(Boolean);
 
@@ -80,14 +87,19 @@ export function Hero({ data }: { data?: HeroData | null }) {
       data-nav-title="Главная"
       className="relative overflow-hidden text-white h-screen flex flex-col items-center justify-end gap-[clamp(0.75rem,calc(0.3036rem_+_2.2321vw),1.375rem)] pb-43 md:items-start md:gap-[clamp(0rem,calc(3.4375rem_-_4.2969vw),1.375rem)] md:pb-[clamp(2.5rem,calc(23.125rem_-_25.7813vw),10.75rem)] xl:items-end xl:pb-[clamp(2.5rem,calc(-13.125rem_+_19.5313vw),5.625rem)] xl:pr-[clamp(5.75rem,calc(-9.25rem_+_18.75vw),8.75rem)] xl:gap-0 2xl:pb-[clamp(5.625rem,calc(3.125rem_+_2.6042vw),6.25rem)] 2xl:pr-[clamp(8.75rem,calc(-6.25rem_+_15.625vw),12.5rem)] 3xl:pb-[clamp(6.25rem,5.2083vw,8.3333rem)] 3xl:pr-[clamp(12.5rem,10.4167vw,16.6667rem)]"
     >
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(76.3% 135.65% at 76.3% 74.35%, #878691 0%, #A1A2A9 33.26%, #ADB9BC 66%, #A3AEA7 100%)",
-        }}
-      />
+      <div aria-hidden className="absolute inset-0">
+        <picture className="absolute inset-0 block h-full w-full">
+          {HERO_GRADIENT_SOURCES.map(({ media, src }) => (
+            <source key={src} media={media} srcSet={src} />
+          ))}
+          {/* eslint-disable-next-line @next/next/no-img-element -- art-directed static gradient sources */}
+          <img
+            src="/assets/gradient/390.png"
+            alt=""
+            className="h-full w-full object-cover object-center"
+          />
+        </picture>
+      </div>
       <h1
         style={
           {

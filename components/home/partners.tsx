@@ -13,7 +13,7 @@ import type { HomePageData } from "@/sanity/lib/home";
 import { SanityImageView } from "./sanity-image";
 
 const partnerGroups = [0, 1, 2];
-const marqueeSpeed = 0.6;
+const marqueeSpeed = 1.2;
 const partnerItemSpacing = {
   // Multiplies the logo width to create the item column width.
   mobile: 1.5,
