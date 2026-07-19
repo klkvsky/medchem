@@ -57,7 +57,7 @@ export function Xantir({ data }: { data?: XantirData | null }) {
         />
         <a
           href={data?.buttonLink ?? "mailto:info@medchem.ltd"}
-          className="text-text absolute top-1/2 left-1/2 -translate-1/2 px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] rounded-[10px] uppercase text-white"
+          className="text-text absolute top-1/2 left-1/2 -translate-1/2 px-[clamp(1.125rem,calc(0.5893rem_+_2.6786vw),1.875rem)] py-[clamp(0.75rem,calc(0.5714rem_+_0.8929vw),1rem)] rounded-[10px] uppercase text-white whitespace-nowrap"
           style={{
             background:
               "radial-gradient(894.94% 276.37% at 100% 100%, #A4989B 2%, #A1A1A9 33.26%, #ADB9BC 64.94%, #A3AEA7 94.72%)",
