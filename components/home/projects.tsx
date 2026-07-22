@@ -123,7 +123,7 @@ function ProjectDesktop({
           </p>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-center w-full *:w-1/2! -translate-y-[110px] md:-translate-y-[clamp(6.875rem,calc(0.625rem_+_7.8125vw),8.125rem)] 2xl:-translate-y-[clamp(8.125rem,calc(0.625rem_+_7.8125vw),10rem)] 3xl:-translate-y-[clamp(160px,8.3333vw,213px)]">
+      <div className="flex flex-row items-start justify-center w-full *:w-1/2! -translate-y-[110px] md:-translate-y-[clamp(6.875rem,calc(0.625rem_+_7.8125vw),8.125rem)] 2xl:-translate-y-[clamp(8.125rem,calc(0.625rem_+_7.8125vw),10rem)] 3xl:-translate-y-[clamp(160px,8.3333vw,213px)]">
         <ProjectDesktopLane
           side="left"
           projects={(leftSection.projects ?? []).slice(
