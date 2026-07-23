@@ -14,7 +14,7 @@ import {
 import { Logo } from "@/components/ui/logo";
 import { PlusIcon } from "@/components/ui/pattern-icons";
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag, SanityImage } from "@/sanity/lib/home";
+import type { HomePageData, HomeTag, SanityImage } from "@/types/home";
 
 import { numbers } from "./assets";
 import { CloseIcon } from "./icons";

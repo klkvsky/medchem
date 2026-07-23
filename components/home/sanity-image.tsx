@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import type { SanityImage } from "@/sanity/lib/home";
+import type { SanityImage } from "@/types/home";
 
 type SanityImageViewProps = {
   image?: SanityImage | null;

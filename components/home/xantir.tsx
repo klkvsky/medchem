@@ -1,5 +1,5 @@
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag } from "@/sanity/lib/home";
+import type { HomePageData, HomeTag } from "@/types/home";
 
 import { SanityImageView } from "./sanity-image";
 

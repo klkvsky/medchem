@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ArrowIcon } from "@/components/ui/pattern-icons";
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag } from "@/sanity/lib/home";
+import type { HomePageData, HomeTag } from "@/types/home";
 
 import { numbers } from "./assets";
 import { SanityImageView } from "./sanity-image";

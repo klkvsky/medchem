@@ -8,7 +8,7 @@ import {
   useRef,
 } from "react";
 
-import type { HomePageData } from "@/sanity/lib/home";
+import type { HomePageData } from "@/types/home";
 
 import { SanityImageView } from "./sanity-image";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag, SanityImage } from "@/sanity/lib/home";
+import type { HomePageData, HomeTag, SanityImage } from "@/types/home";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 

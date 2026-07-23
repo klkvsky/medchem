@@ -1,5 +1,4 @@
 import localFont from "next/font/local";
-import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 
 const aeonikMono = localFont({
@@ -41,10 +40,7 @@ export default function RootLayout({
       lang="ru"
       className={`${aeonikMono.variable} ${diatype.variable} h-full antialiased overscroll-none relative`}
     >
-      <body>
-        {children}
-        <SanityLive />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

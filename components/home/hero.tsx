@@ -1,6 +1,6 @@
 "use client";
 
-import type { HomePageData } from "@/sanity/lib/home";
+import type { HomePageData } from "@/types/home";
 
 import { HomeIcon, type HomeIconName } from "./icons";
 

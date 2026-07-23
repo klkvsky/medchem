@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { HomePageData } from "@/sanity/lib/home";
+import type { HomePageData } from "@/types/home";
 import Image from "next/image";
 
 type FooterData = NonNullable<HomePageData["footer"]>;

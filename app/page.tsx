@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { About } from "@/components/home/about";
 import { Hero } from "@/components/home/hero";
 import { Partners } from "@/components/home/partners";
@@ -7,17 +11,58 @@ import { SiteFooter } from "@/components/home/site-footer";
 import { Team } from "@/components/home/team";
 import { Xantir } from "@/components/home/xantir";
 import Navbar from "@/components/navbar";
-import { HOME_PAGE_QUERY, type HomePageData } from "@/sanity/lib/home";
-import { sanityFetch } from "@/sanity/lib/live";
+import type { HomePageData, HomePageResponse } from "@/types/home";
 
-export default async function Home() {
-  const { data } = await sanityFetch({
-    query: HOME_PAGE_QUERY,
-  });
-  const home = data as HomePageData | null;
+export default function Home() {
+  const [home, setHome] = useState<HomePageData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadHomePage() {
+      try {
+        const response = await fetch("/api/home", {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Home page request failed with ${response.status}.`);
+        }
+
+        const payload = (await response.json()) as HomePageResponse;
+        setHome(payload.data);
+      } catch (reason) {
+        if (reason instanceof Error && reason.name === "AbortError") {
+          return;
+        }
+
+        console.error("Unable to load home page content.", reason);
+        setError("Не удалось загрузить страницу. Попробуйте обновить её.");
+      }
+    }
+
+    void loadHomePage();
+
+    return () => controller.abort();
+  }, []);
+
+  if (error) {
+    return (
+      <main className="flex min-h-screen items-center justify-center p-6 text-center text-[#411319]">
+        <p>{error}</p>
+      </main>
+    );
+  }
 
   if (!home) {
-    return null;
+    return (
+      <main
+        aria-busy="true"
+        aria-label="Загрузка страницы"
+        className="min-h-screen bg-[#411319]"
+      />
+    );
   }
 
   return (
