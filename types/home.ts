@@ -1,4 +1,4 @@
-export type SanityImage = {
+export type ContentImage = {
   alt?: string | null;
   url?: string | null;
   width?: number | null;
@@ -29,9 +29,9 @@ export type HomePageData = {
   services?: {
     serviceSlides?: {
       _key?: string;
-      mobileBackgroundImage?: SanityImage | null;
-      tabletBackgroundImage?: SanityImage | null;
-      desktopBackgroundImage?: SanityImage | null;
+      mobileBackgroundImage?: ContentImage | null;
+      tabletBackgroundImage?: ContentImage | null;
+      desktopBackgroundImage?: ContentImage | null;
       bulletPointText?: string | null;
       title?: string | null;
       services?: {
@@ -47,14 +47,14 @@ export type HomePageData = {
       title?: string | null;
       projects?: {
         _key?: string;
-        image?: SanityImage | null;
+        image?: ContentImage | null;
         title?: string | null;
         subtitle?: string | null;
         description?: string | null;
         tags?: HomeTag[] | null;
-        innerImage?: SanityImage | null;
+        innerImage?: ContentImage | null;
       }[] | null;
-      endImage?: SanityImage | null;
+      endImage?: ContentImage | null;
     }[] | null;
   } | null;
   xantir?: {
@@ -64,14 +64,14 @@ export type HomePageData = {
     description2?: string | null;
     buttonText?: string | null;
     buttonLink?: string | null;
-    image?: SanityImage | null;
+    image?: ContentImage | null;
   } | null;
   team?: {
     title?: string | null;
     bottomTags?: HomeTag[] | null;
     teamMembers?: {
       _key?: string;
-      image?: SanityImage | null;
+      image?: ContentImage | null;
       isBadge?: boolean | null;
       title?: string | null;
       description?: string | null;
@@ -82,15 +82,11 @@ export type HomePageData = {
     title?: string | null;
     partners?: {
       _key?: string;
-      image?: SanityImage | null;
+      image?: ContentImage | null;
       name?: string | null;
     }[] | null;
   } | null;
   footer?: {
     footerText?: string | null;
   } | null;
-};
-
-export type HomePageResponse = {
-  data: HomePageData;
 };

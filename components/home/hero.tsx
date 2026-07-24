@@ -7,10 +7,10 @@ import { HomeIcon, type HomeIconName } from "./icons";
 type HeroData = NonNullable<HomePageData["hero"]>;
 
 const HERO_GRADIENT_SOURCES = [
-  { media: "(min-width: 1536px)", src: "/assets/gradient/1920.png" },
-  { media: "(min-width: 1152px)", src: "/assets/gradient/1536.png" },
-  { media: "(min-width: 768px)", src: "/assets/gradient/1280.png" },
-  { media: "(min-width: 390px)", src: "/assets/gradient/768.png" },
+  { media: "(min-width: 1536px)", src: "/assets/gradient/1920.webp" },
+  { media: "(min-width: 1152px)", src: "/assets/gradient/1536.webp" },
+  { media: "(min-width: 768px)", src: "/assets/gradient/1280.webp" },
+  { media: "(min-width: 390px)", src: "/assets/gradient/768.webp" },
 ] as const;
 
 const titleLineClasses = [
@@ -92,10 +92,10 @@ export function Hero({ data }: { data?: HeroData | null }) {
           {HERO_GRADIENT_SOURCES.map(({ media, src }) => (
             <source key={src} media={media} srcSet={src} />
           ))}
-          {/* eslint-disable-next-line @next/next/no-img-element -- art-directed static gradient sources */}
           <img
-            src="/assets/gradient/390.png"
+            src="/assets/gradient/390.webp"
             alt=""
+            fetchPriority="high"
             className="h-full w-full object-cover object-center"
           />
         </picture>

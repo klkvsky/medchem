@@ -1,7 +1,7 @@
 import { Tag } from "@/components/ui/tag";
 import type { HomePageData, HomeTag } from "@/types/home";
 
-import { SanityImageView } from "./sanity-image";
+import { ContentImageView } from "./content-image";
 
 type XantirData = NonNullable<HomePageData["xantir"]>;
 
@@ -49,7 +49,7 @@ export function Xantir({ data }: { data?: XantirData | null }) {
         />
       </div>
       <div className="w-full max-w-[22rem] md:max-w-[min(100%,28rem)] xl:max-w-none mx-auto h-auto aspect-square rounded-full relative overflow-hidden bg-amber-200">
-        <SanityImageView
+        <ContentImageView
           image={data?.image}
           fill
           sizes="(min-width: 768px) 40vw, 100vw"

@@ -6,7 +6,7 @@ import { Tag } from "@/components/ui/tag";
 import type { HomePageData, HomeTag } from "@/types/home";
 
 import { numbers } from "./assets";
-import { SanityImageView } from "./sanity-image";
+import { ContentImageView } from "./content-image";
 
 type TeamData = NonNullable<HomePageData["team"]>;
 type TeamMemberData = NonNullable<NonNullable<TeamData["teamMembers"]>[number]>;
@@ -83,7 +83,7 @@ function TeamMember({
         data-last={isLast}
         className="w-full h-auto aspect-square relative overflow-hidden bg-amber-200 data-[last=true]:rounded-full"
       >
-        <SanityImageView
+        <ContentImageView
           image={member.image}
           fill
           sizes="(min-width: 1152px) 25vw, 50vw"

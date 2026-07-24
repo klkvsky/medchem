@@ -1,0 +1,1478 @@
+{
+  "_createdAt": "2026-06-20T05:12:09Z",
+  "_id": "homePage",
+  "_rev": "EUpKYI5JW6L6ubJBJ84aD6",
+  "_system": {
+    "base": {
+      "id": "homePage",
+      "rev": "0T4F0Wf3tO3T3gJMrhGjWi"
+    }
+  },
+  "_type": "homePage",
+  "_updatedAt": "2026-07-13T12:13:41Z",
+  "about": {
+    "_type": "aboutSection",
+    "description": "Поиск перспективных направлений разработки, патентно-конкурентный анализ, дизайн малых молекул, проектирование цифровых инструментов",
+    "tags": [
+      {
+        "_key": "748b00e66c77",
+        "_type": "tag",
+        "name": "pharma",
+        "type": "rectangle"
+      },
+      {
+        "_key": "85ead5f0d9db",
+        "_type": "tag",
+        "name": "agrochem",
+        "type": "pill"
+      },
+      {
+        "_key": "5eaad3b517c8",
+        "_type": "tag",
+        "name": "animal care",
+        "type": "rectangle"
+      },
+      {
+        "_key": "c598e423c57f",
+        "_type": "tag",
+        "name": "vc funds",
+        "type": "trapezoid"
+      },
+      {
+        "_key": "37ada248d6b7",
+        "_type": "tag",
+        "name": "ip teams",
+        "type": "rectangle"
+      }
+    ],
+    "title": "лет Создаем R&D-решения для life sciences"
+  },
+  "footer": {
+    "_type": "footerSection",
+    "footerText": "ООО «МЕД ХЕМ» 2026\nИНН: 9731155581"
+  },
+  "hero": {
+    "_type": "heroSection",
+    "details": [
+      {
+        "_key": "4ad92393a6a9",
+        "_type": "heroDetail",
+        "icon": "rectangle",
+        "name": "drug discovery"
+      },
+      {
+        "_key": "ff8069f5f4ac",
+        "_type": "heroDetail",
+        "icon": "coin",
+        "name": "chemoinformatics"
+      },
+      {
+        "_key": "97c3d7e5b554",
+        "_type": "heroDetail",
+        "icon": "grid",
+        "name": "cadd"
+      },
+      {
+        "_key": "799d2974bd2a",
+        "_type": "heroDetail",
+        "icon": "pill",
+        "name": "medicinal chemistry"
+      },
+      {
+        "_key": "f9f35f9b35c8",
+        "_type": "heroDetail",
+        "icon": "circles",
+        "name": "ai"
+      },
+      {
+        "_key": "aa590a02bad3",
+        "_type": "heroDetail",
+        "icon": "hole",
+        "name": "software development"
+      }
+    ],
+    "title": "проектируем будущее фармацевтики"
+  },
+  "partners": {
+    "_type": "partnersSection",
+    "partners": [
+      {
+        "_key": "d8d0a9790b51",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Артген Биотех",
+          "assetId": "image-45817c05327875b8d4e47c20ffb63f298089a42d",
+          "url": "/content/assets/images/45817c05327875b8d4e47c20ffb63f298089a42d-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234616.png",
+          "sourceAsset": "image@file://./images/45817c05327875b8d4e47c20ffb63f298089a42d-270x270.png"
+        },
+        "name": "Артген Биотех"
+      },
+      {
+        "_key": "077787632ce2",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Валента",
+          "assetId": "image-400693bf0646cdf2940e3c8a0feaf959a1be61ed",
+          "url": "/content/assets/images/400693bf0646cdf2940e3c8a0feaf959a1be61ed-317x270.webp",
+          "width": 317,
+          "height": 270,
+          "originalFilename": "Vector.png",
+          "sourceAsset": "image@file://./images/400693bf0646cdf2940e3c8a0feaf959a1be61ed-317x270.png"
+        },
+        "name": "Валента"
+      },
+      {
+        "_key": "9190861d6f5c",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Герофарм",
+          "assetId": "image-89d6be1b7ffe243aa5498823cff138ff6d1cd891",
+          "url": "/content/assets/images/89d6be1b7ffe243aa5498823cff138ff6d1cd891-442x240.webp",
+          "width": 442,
+          "height": 240,
+          "originalFilename": "Vector-1.png",
+          "sourceAsset": "image@file://./images/89d6be1b7ffe243aa5498823cff138ff6d1cd891-442x240.png"
+        },
+        "name": "Герофарм"
+      },
+      {
+        "_key": "1ce8adc8fa1f",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Expert Systems",
+          "assetId": "image-c6dc2967f2864caa22428c03ed64454218f8f183",
+          "url": "/content/assets/images/c6dc2967f2864caa22428c03ed64454218f8f183-278x270.webp",
+          "width": 278,
+          "height": 270,
+          "originalFilename": "Frame 2147234619.png",
+          "sourceAsset": "image@file://./images/c6dc2967f2864caa22428c03ed64454218f8f183-278x270.png"
+        },
+        "name": "Expert Systems"
+      },
+      {
+        "_key": "e3dac86f5b85",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "ИФарма",
+          "assetId": "image-306cfbfeca863308de3aa3b3f8a6f4ec2ece9f78",
+          "url": "/content/assets/images/306cfbfeca863308de3aa3b3f8a6f4ec2ece9f78-182x270.webp",
+          "width": 182,
+          "height": 270,
+          "originalFilename": "Frame 2147234631.png",
+          "sourceAsset": "image@file://./images/306cfbfeca863308de3aa3b3f8a6f4ec2ece9f78-182x270.png"
+        },
+        "name": "ИФарма"
+      },
+      {
+        "_key": "a2b8a9f61a4f",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "chemdiv",
+          "assetId": "image-bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987",
+          "url": "/content/assets/images/bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234632.png",
+          "sourceAsset": "image@file://./images/bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987-270x270.png"
+        },
+        "name": "chemdiv"
+      },
+      {
+        "_key": "4f88be97f7ee",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "росатом",
+          "assetId": "image-eec878120b94eb4474cd17dc2282ea539daefb03",
+          "url": "/content/assets/images/eec878120b94eb4474cd17dc2282ea539daefb03-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234622.png",
+          "sourceAsset": "image@file://./images/eec878120b94eb4474cd17dc2282ea539daefb03-270x270.png"
+        },
+        "name": "росатом"
+      },
+      {
+        "_key": "7e1514e18e82",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "  ",
+          "assetId": "image-e864cee41a155f8e924a40472de9f495c871bad6",
+          "url": "/content/assets/images/e864cee41a155f8e924a40472de9f495c871bad6-393x303.webp",
+          "width": 393,
+          "height": 303,
+          "originalFilename": "Union.png",
+          "sourceAsset": "image@file://./images/e864cee41a155f8e924a40472de9f495c871bad6-393x303.png"
+        },
+        "name": "   "
+      },
+      {
+        "_key": "20200b3677a8",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "сбер",
+          "assetId": "image-9d9a5cf8a601f894ddc261f5a9cd7b697f781a28",
+          "url": "/content/assets/images/9d9a5cf8a601f894ddc261f5a9cd7b697f781a28-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234623.png",
+          "sourceAsset": "image@file://./images/9d9a5cf8a601f894ddc261f5a9cd7b697f781a28-270x270.png"
+        },
+        "name": "сбер"
+      },
+      {
+        "_key": "6bf5b4c666a4",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "химрар",
+          "assetId": "image-bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987",
+          "url": "/content/assets/images/bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234632.png",
+          "sourceAsset": "image@file://./images/bd30a7548e7e19ab2ddbe65d10e34fa6c92f8987-270x270.png"
+        },
+        "name": "химрар"
+      },
+      {
+        "_key": "25aa021cf3e2",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "НМИЦ Радиологии",
+          "assetId": "image-0962b1547b843325c5ddffaec03369fa8d793881",
+          "url": "/content/assets/images/0962b1547b843325c5ddffaec03369fa8d793881-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234625.png",
+          "sourceAsset": "image@file://./images/0962b1547b843325c5ddffaec03369fa8d793881-270x270.png"
+        },
+        "name": "НМИЦ Радиологии"
+      },
+      {
+        "_key": "4d9da9b74ada",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Иннополис",
+          "assetId": "image-da2ccc8b5a97cb599d628e5b8170083b6772304e",
+          "url": "/content/assets/images/da2ccc8b5a97cb599d628e5b8170083b6772304e-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234630.png",
+          "sourceAsset": "image@file://./images/da2ccc8b5a97cb599d628e5b8170083b6772304e-270x270.png"
+        },
+        "name": "Иннополис"
+      },
+      {
+        "_key": "07242511d318",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Insilico Medicine",
+          "assetId": "image-d9fd9a99e434f82fc5b29badf36d6357356c7664",
+          "url": "/content/assets/images/d9fd9a99e434f82fc5b29badf36d6357356c7664-301x301.png",
+          "width": 301,
+          "height": 301,
+          "originalFilename": "Frame 2147234627.png",
+          "sourceAsset": "image@file://./images/d9fd9a99e434f82fc5b29badf36d6357356c7664-301x301.png"
+        },
+        "name": "Insilico Medicine"
+      },
+      {
+        "_key": "9dc972ceca64",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "МГУ",
+          "assetId": "image-f0c743067c6febb0b8e70551557f5d7b0b1185a0",
+          "url": "/content/assets/images/f0c743067c6febb0b8e70551557f5d7b0b1185a0-284x270.webp",
+          "width": 284,
+          "height": 270,
+          "originalFilename": "Frame 2147234634.png",
+          "sourceAsset": "image@file://./images/f0c743067c6febb0b8e70551557f5d7b0b1185a0-284x270.png"
+        },
+        "name": "МГУ"
+      },
+      {
+        "_key": "1ab33973e95c",
+        "_type": "partnerItem",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "ИБГ",
+          "assetId": "image-f830c7882d242c2a082dff69395a1a1629203972",
+          "url": "/content/assets/images/f830c7882d242c2a082dff69395a1a1629203972-270x270.webp",
+          "width": 270,
+          "height": 270,
+          "originalFilename": "Frame 2147234629.png",
+          "sourceAsset": "image@file://./images/f830c7882d242c2a082dff69395a1a1629203972-270x270.png"
+        },
+        "name": "ИБГ"
+      }
+    ],
+    "title": "лидеры рынка работают с нами"
+  },
+  "portfolio": {
+    "_type": "portfolioSection",
+    "sections": [
+      {
+        "_key": "f33a4eceec4e",
+        "_type": "portfolioSectionItem",
+        "endImage": {
+          "_type": "imageWithAlt",
+          "alt": "+30 проектов",
+          "assetId": "image-7ec97b99a7d4ad2539bcb781a99731fb9d9157f9",
+          "url": "/content/assets/images/7ec97b99a7d4ad2539bcb781a99731fb9d9157f9-449x315.webp",
+          "width": 449,
+          "height": 315,
+          "originalFilename": "30.png",
+          "sourceAsset": "image@file://./images/7ec97b99a7d4ad2539bcb781a99731fb9d9157f9-449x315.png"
+        },
+        "projects": [
+          {
+            "_key": "0f21e1b2a680",
+            "_type": "portfolioProject",
+            "description": "TNIK – проект в области терапии идиопатического легочного фиброза. Программа объединила выбор новой мишени, генерацию новых структур, медицинскую химию и проверку терапевтической гипотезы. \n\nПроект показывает, как методы с применением ИИ могут сократить путь от биологической идеи до клинической разработки малой молекулы.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "Символы",
+              "assetId": "image-d3e8390a27fdc10df2222a4840ba0c71fa71e8db",
+              "url": "/content/assets/images/d3e8390a27fdc10df2222a4840ba0c71fa71e8db-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "TNIK.svg",
+              "sourceAsset": "image@file://./images/d3e8390a27fdc10df2222a4840ba0c71fa71e8db-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "соединение",
+              "assetId": "image-bbbf065ff795bb0ccc95be740abcc80da81d74c3",
+              "url": "/content/assets/images/bbbf065ff795bb0ccc95be740abcc80da81d74c3-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "TNIK.png",
+              "sourceAsset": "image@file://./images/bbbf065ff795bb0ccc95be740abcc80da81d74c3-1260x1262.png"
+            },
+            "subtitle": "Phase II",
+            "tags": [
+              {
+                "_key": "db4a636489f4",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "6c8384d621d1",
+                "_type": "tag",
+                "name": "фиброз легких",
+                "type": "pill"
+              },
+              {
+                "_key": "5b32c5da83a5",
+                "_type": "tag",
+                "name": "first-in-class",
+                "type": "pill"
+              },
+              {
+                "_key": "d65789606f99",
+                "_type": "tag",
+                "name": "ai",
+                "type": "pill"
+              }
+            ],
+            "title": "TNIK"
+          },
+          {
+            "_key": "6c3a30f55161",
+            "_type": "portfolioProject",
+            "description": "Mpro – программа разработки малой молекулы против главной протеазы коронавируса. Проект направлен на создание таргетной терапии COVID-19. Разработка включена в глобальный реестр INTREPID Alliance по противовирусным препаратам.\n\nВ основе программы – рациональный дизайн ингибитора, способного блокировать ключевой фермент вирусной репликации и поддерживать терапевтическую стратегию для новых респираторных угроз.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "MPRO",
+              "assetId": "image-445932c982bd9b14b9a84e5ca0f9781df73f5984",
+              "url": "/content/assets/images/445932c982bd9b14b9a84e5ca0f9781df73f5984-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Mpro.svg",
+              "sourceAsset": "image@file://./images/445932c982bd9b14b9a84e5ca0f9781df73f5984-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321",
+              "assetId": "image-3b4b4a44220ecbc7f1e37031c770084bf2ad0ad7",
+              "url": "/content/assets/images/3b4b4a44220ecbc7f1e37031c770084bf2ad0ad7-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "Mpro.png",
+              "sourceAsset": "image@file://./images/3b4b4a44220ecbc7f1e37031c770084bf2ad0ad7-1260x1262.png"
+            },
+            "subtitle": "Phase II",
+            "tags": [
+              {
+                "_key": "af0032b2618b",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "f86d63e0e5ba",
+                "_type": "tag",
+                "name": "covid-19",
+                "type": "pill"
+              },
+              {
+                "_key": "36d67131f94b",
+                "_type": "tag",
+                "name": "противовирусная терапия",
+                "type": "pill"
+              },
+              {
+                "_key": "87e1c03d295e",
+                "_type": "tag",
+                "name": "ai",
+                "type": "pill"
+              }
+            ],
+            "title": "MPRO"
+          },
+          {
+            "_key": "3990db34218b",
+            "_type": "portfolioProject",
+            "description": "ATM/DNA-PK – доклиническая программа по разработке двойных ингибиторов киназ ATM и DNA-PK. Проект связан с разработкой малых молекул, которые могут усиливать чувствительность опухолевых клеток к лучевой терапии и химиотерапии.\n\nСмысл программы – использовать уязвимости опухолевых клеток в механизмах восстановления ДНК и превратить это в новую терапевтическую стратегию.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "ATM/DNA-PK",
+              "assetId": "image-eced64667d4695e6fb8e87bc02ddb91a7644a93c",
+              "url": "/content/assets/images/eced64667d4695e6fb8e87bc02ddb91a7644a93c-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "DNA-PK.svg",
+              "sourceAsset": "image@file://./images/eced64667d4695e6fb8e87bc02ddb91a7644a93c-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "глаз",
+              "assetId": "image-e6a5c7648e3ef14331075406112364b3ec1e1b3e",
+              "url": "/content/assets/images/e6a5c7648e3ef14331075406112364b3ec1e1b3e-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "ATM,DNA-PK.png",
+              "sourceAsset": "image@file://./images/e6a5c7648e3ef14331075406112364b3ec1e1b3e-1260x1262.png"
+            },
+            "subtitle": "Preclinical",
+            "tags": [
+              {
+                "_key": "936a11423754",
+                "_type": "tag",
+                "name": "росатом",
+                "type": "rectangle"
+              },
+              {
+                "_key": "71ad6c015b2c",
+                "_type": "tag",
+                "name": "НМИЦ Радиологии",
+                "type": "pill"
+              },
+              {
+                "_key": "d185fc013c34",
+                "_type": "tag",
+                "name": "онкология",
+                "type": "pill"
+              }
+            ],
+            "title": "ATM/DNA-PK"
+          },
+          {
+            "_key": "4860e5be4c6d",
+            "_type": "portfolioProject",
+            "description": "QPCTL – онкоиммунологическая программа, связанная с механизмами иммунного распознавания опухоли. Мишень относится к оси CD47-SIRPα, которая участвует в механизме избегания иммунного надзора опухолевыми клетками.\n\nПроект отражает новый подход к сложным биологическим задачам: разработать малую молекулу в области, где терапевтическая логика традиционно ассоциировалась с биологическими препаратами.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "QPCTL",
+              "assetId": "image-a352db0f56a5e1620527cdaeed646527a37b9b05",
+              "url": "/content/assets/images/a352db0f56a5e1620527cdaeed646527a37b9b05-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "QPCTL.svg",
+              "sourceAsset": "image@file://./images/a352db0f56a5e1620527cdaeed646527a37b9b05-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321",
+              "assetId": "image-25aea5a402b5f1aa26d7bdafdf7a8566ecd44859",
+              "url": "/content/assets/images/25aea5a402b5f1aa26d7bdafdf7a8566ecd44859-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "QPCTL.png",
+              "sourceAsset": "image@file://./images/25aea5a402b5f1aa26d7bdafdf7a8566ecd44859-1260x1262.png"
+            },
+            "subtitle": "Phase I",
+            "tags": [
+              {
+                "_key": "211478422f5b",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "31d91a434d9f",
+                "_type": "tag",
+                "name": "Fosun Pharmaceutical",
+                "type": "pill"
+              },
+              {
+                "_key": "88a8ae852e4a",
+                "_type": "tag",
+                "name": "Онкоиммунология",
+                "type": "pill"
+              }
+            ],
+            "title": "QPCTL"
+          },
+          {
+            "_key": "e20208000743",
+            "_type": "portfolioProject",
+            "description": "AR – программа в области терапии рака простаты, связанного с андрогеновым рецептором. Проект представляет собой опыт разработки малых молекул в конкурентной терапевтической области, где особенно важны селективность, фармакологический профиль и возможность дальнейшей клинической разработки.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "AR",
+              "assetId": "image-f4eabdee296011dbfc6843941c5f7f27ecb2fbb3",
+              "url": "/content/assets/images/f4eabdee296011dbfc6843941c5f7f27ecb2fbb3-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "AR.svg",
+              "sourceAsset": "image@file://./images/f4eabdee296011dbfc6843941c5f7f27ecb2fbb3-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-43e6e074f806e39bdf361eeba8fa171117722abb",
+              "url": "/content/assets/images/43e6e074f806e39bdf361eeba8fa171117722abb-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "AR.png",
+              "sourceAsset": "image@file://./images/43e6e074f806e39bdf361eeba8fa171117722abb-1260x1262.png"
+            },
+            "subtitle": "Phase II",
+            "tags": [
+              {
+                "_key": "14211944332f",
+                "_type": "tag",
+                "name": "р-фарм",
+                "type": "rectangle"
+              },
+              {
+                "_key": "1123ec9dbaab",
+                "_type": "tag",
+                "name": "рак простаты",
+                "type": "pill"
+              }
+            ],
+            "title": "AR"
+          },
+          {
+            "_key": "370d159afe0d",
+            "_type": "portfolioProject",
+            "description": "JAK3 – доклиническая программа в области селективной регуляции иммунного ответа. Мишень участвует в передаче цитокиновых сигналов в иммунных клетках и рассматривается как перспективная точка вмешательства при аутоиммунных и воспалительных заболеваниях.\n\nПроект связан с поиском малой молекулы, способной избирательно воздействовать на JAK3-сигнал и при этом сохранять приемлемый профиль безопасности.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "JAK3",
+              "assetId": "image-8d42d50924831f8a8993ff74a46c6c594b6430e7",
+              "url": "/content/assets/images/8d42d50924831f8a8993ff74a46c6c594b6430e7-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "JAK3.svg",
+              "sourceAsset": "image@file://./images/8d42d50924831f8a8993ff74a46c6c594b6430e7-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-c6fa06e24cfb044962601eb1129fc4238969837a",
+              "url": "/content/assets/images/c6fa06e24cfb044962601eb1129fc4238969837a-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "JAK3.png",
+              "sourceAsset": "image@file://./images/c6fa06e24cfb044962601eb1129fc4238969837a-1260x1262.png"
+            },
+            "subtitle": "Preclinical",
+            "tags": [
+              {
+                "_key": "249db08a86c3",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "e58b2e37df29",
+                "_type": "tag",
+                "name": "Иммуновоспалительные заболевания",
+                "type": "pill"
+              }
+            ],
+            "title": "JAK3"
+          },
+          {
+            "_key": "b3a5a5d1e81c",
+            "_type": "portfolioProject",
+            "description": "IRAK4 – доклиническая программа в области регуляции врожденного иммунного ответа. Мишень участвует в ранней передаче сигнала от TLR/IL-1R-рецепторов и связана с запуском воспалительного каскада.\n\nПроект направлен на поиск малой молекулы, способной точечно воздействовать на IRAK4-зависимую сигнализацию. Такая стратегия может быть применима при воспалительных и аутоиммунных заболеваниях, где важно не просто подавить иммунный ответ, а снизить избыточную активацию врожденного иммунитета.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "IRAK4",
+              "assetId": "image-36c18c9c84fd1750754bcaf0bb4b624868f176c0",
+              "url": "/content/assets/images/36c18c9c84fd1750754bcaf0bb4b624868f176c0-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "IRAK4.svg",
+              "sourceAsset": "image@file://./images/36c18c9c84fd1750754bcaf0bb4b624868f176c0-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-17e7c411d17362a67b211623b4e91ff1a4d0e3fc",
+              "url": "/content/assets/images/17e7c411d17362a67b211623b4e91ff1a4d0e3fc-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "IRAK4.png",
+              "sourceAsset": "image@file://./images/17e7c411d17362a67b211623b4e91ff1a4d0e3fc-1260x1262.png"
+            },
+            "subtitle": "Preclinical",
+            "tags": [
+              {
+                "_key": "319b49438ed0",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "b4f3ac408385",
+                "_type": "tag",
+                "name": "Иммуновоспалительные заболевания",
+                "type": "pill"
+              }
+            ],
+            "title": "IRAK4"
+          },
+          {
+            "_key": "995008726573",
+            "_type": "portfolioProject",
+            "description": "DDR1 – доклиническая программа разработки ингибитора киназы, связанной с фиброзом и ремоделированием тканей. Проект стал одним из первых примеров применения генеративных моделей для быстрого поиска активных молекул против сложной мишени.\n\nПрограмма показывает, как вычислительная химия и методы ИИ могут использоваться не только для виртуального скрининга, но и для генерации новых химических гипотез.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "DDR1",
+              "assetId": "image-2c73fbba74258a95a7ac4a08837449fee4ecbd64",
+              "url": "/content/assets/images/2c73fbba74258a95a7ac4a08837449fee4ecbd64-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "DDR1.svg",
+              "sourceAsset": "image@file://./images/2c73fbba74258a95a7ac4a08837449fee4ecbd64-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-4f19eb02e62feeb06cfb31cec65471201afa70b2",
+              "url": "/content/assets/images/4f19eb02e62feeb06cfb31cec65471201afa70b2-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "DDR1.png",
+              "sourceAsset": "image@file://./images/4f19eb02e62feeb06cfb31cec65471201afa70b2-1260x1262.png"
+            },
+            "subtitle": "Preclinical",
+            "tags": [
+              {
+                "_key": "dc7c859bab94",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "fbeecd4a455d",
+                "_type": "tag",
+                "name": "фиброз",
+                "type": "pill"
+              }
+            ],
+            "title": "DDR1"
+          },
+          {
+            "_key": "2a4d9e8b7fa1",
+            "_type": "portfolioProject",
+            "description": "NS5A – программа разработки молекулы для терапии гепатита C. NS5A является одной из ключевых мишеней вируса гепатита C, а ингибиторы этого класса стали важной частью современных противовирусных комбинаций.\n\nПроект отражает опыт разработки малых молекул в конкурентной противовирусной области, где критичны активность, профиль резистентности и возможность сочетания с препаратами с другими механизмами действия.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "NS5A",
+              "assetId": "image-77c4235372f0999476164b0b42a8d89160ef48f9",
+              "url": "/content/assets/images/77c4235372f0999476164b0b42a8d89160ef48f9-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "NS5A.svg",
+              "sourceAsset": "image@file://./images/77c4235372f0999476164b0b42a8d89160ef48f9-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-4c4a1d2de59fb3598b919d0ac5c90c805dc4000b",
+              "url": "/content/assets/images/4c4a1d2de59fb3598b919d0ac5c90c805dc4000b-1260x1262.png",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "NS5A.png",
+              "sourceAsset": "image@file://./images/4c4a1d2de59fb3598b919d0ac5c90c805dc4000b-1260x1262.png"
+            },
+            "subtitle": "Phase I/II",
+            "tags": [
+              {
+                "_key": "51a9bf5a10a9",
+                "_type": "tag",
+                "name": "ChemDiv",
+                "type": "rectangle"
+              },
+              {
+                "_key": "219f298ec082",
+                "_type": "tag",
+                "name": "гепатит C",
+                "type": "pill"
+              }
+            ],
+            "title": "NS5A"
+          }
+        ],
+        "title": "разработка молекул"
+      },
+      {
+        "_key": "1d66245b4857",
+        "_type": "portfolioSectionItem",
+        "endImage": {
+          "_type": "imageWithAlt",
+          "alt": "+10 проектов",
+          "assetId": "image-33b492bad33b282b22452689230406f73cab6770",
+          "url": "/content/assets/images/33b492bad33b282b22452689230406f73cab6770-386x315.webp",
+          "width": 386,
+          "height": 315,
+          "originalFilename": "10.png",
+          "sourceAsset": "image@file://./images/33b492bad33b282b22452689230406f73cab6770-386x315.png"
+        },
+        "projects": [
+          {
+            "_key": "23541ddb286c",
+            "_type": "portfolioProject",
+            "description": "Xantir – AI-платформа для патентного анализа, извлечения данных и разработки новых структур малых молекул. Система превращает массив патентных документов в цифровое рабочее пространство для разработки: помогает находить релевантные документы, извлекать ключевые данные, видеть связи между компаниями, технологиями и структурами, а также анализировать патентную чистоту молекул.\n\nПродукт необходим командам, которым нужно использовать патентную информацию не как архив, а как источник направлений для разработки.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "Штуки",
+              "assetId": "image-03d1151b3cacb851c59861df88eb53666fd0d869",
+              "url": "/content/assets/images/03d1151b3cacb851c59861df88eb53666fd0d869-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Xantir.svg",
+              "sourceAsset": "image@file://./images/03d1151b3cacb851c59861df88eb53666fd0d869-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "глаз",
+              "assetId": "image-8e86b6aa47813105b9fb1a69a8e2012335634009",
+              "url": "/content/assets/images/8e86b6aa47813105b9fb1a69a8e2012335634009-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "Xantir.png",
+              "sourceAsset": "image@file://./images/8e86b6aa47813105b9fb1a69a8e2012335634009-1260x1262.png"
+            },
+            "subtitle": "Patent Intelligence Platform",
+            "tags": [
+              {
+                "_key": "0b37fd06bf40",
+                "_type": "tag",
+                "name": "expert systems",
+                "type": "rectangle"
+              },
+              {
+                "_key": "ab2e779946bc",
+                "_type": "tag",
+                "name": "Патентная аналитика",
+                "type": "pill"
+              },
+              {
+                "_key": "2219b9c41007",
+                "_type": "tag",
+                "name": "извлечение данных",
+                "type": "pill"
+              },
+              {
+                "_key": "daf1bcd8ed5e",
+                "_type": "tag",
+                "name": "новые молекулы",
+                "type": "pill"
+              }
+            ],
+            "title": "XANTIR"
+          },
+          {
+            "_key": "b92102bfcca4",
+            "_type": "portfolioProject",
+            "description": "Chemistry42 – first-in-class программная платформа для генеративного дизайна и оптимизации малых молекул. Она объединяет современные методы искусственного интеллекта с подходами вычислительной и медицинской химии для создания и новых молекулярных структур с заранее заданными свойствами.\n\nChemistry42 сокращает сроки ранней разработки новых лекарств до нескольких недель месяцев.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "CHEMISTRY42",
+              "assetId": "image-0de43048d0b8d48412a9c6ab9edc4fcc9cdd8bd0",
+              "url": "/content/assets/images/0de43048d0b8d48412a9c6ab9edc4fcc9cdd8bd0-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Chemistry42.svg",
+              "sourceAsset": "image@file://./images/0de43048d0b8d48412a9c6ab9edc4fcc9cdd8bd0-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321",
+              "assetId": "image-75763cb1623a5db6ebdf71666c5c5ed7285104ce",
+              "url": "/content/assets/images/75763cb1623a5db6ebdf71666c5c5ed7285104ce-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "Chemistry42.png",
+              "sourceAsset": "image@file://./images/75763cb1623a5db6ebdf71666c5c5ed7285104ce-1260x1262.png"
+            },
+            "subtitle": "Generative Chemistry",
+            "tags": [
+              {
+                "_key": "22747bd005da",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "c35304e4cd64",
+                "_type": "tag",
+                "name": "Молекулярный дизайн",
+                "type": "pill"
+              },
+              {
+                "_key": "1a9f0c0ab3b4",
+                "_type": "tag",
+                "name": "оптимизация структур",
+                "type": "pill"
+              },
+              {
+                "_key": "9b08fad957c5",
+                "_type": "tag",
+                "name": "малые молекулы",
+                "type": "pill"
+              }
+            ],
+            "title": "CHEMISTRY42"
+          },
+          {
+            "_key": "6b5ef718c3ba",
+            "_type": "portfolioProject",
+            "description": "Inventum.AI – платформа для генеративного дизайна малых молекул с учетом структуры белковой мишени. В основе подхода – модели глубокого обучения, обученные на кристаллографических данных о белок-лигандных комплексах. Она позволяет не просто генерировать химические структуры, а проектировать их в контексте конкретного сайта связывания – с учетом формы кармана, возможных взаимодействий и требований медицинской химии.\n\nПлатформа поддерживает ключевые этапы раннего дизайна: поиск и разметку сайта связывания, генерацию скаффолда и периферических групп молекулы, докинг и прогнозирование ADMET-свойств.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "INVENTUM.AI",
+              "assetId": "image-06f269b2b550b09dcac029844a745b4ccad93f96",
+              "url": "/content/assets/images/06f269b2b550b09dcac029844a745b4ccad93f96-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Inventum.AI.svg",
+              "sourceAsset": "image@file://./images/06f269b2b550b09dcac029844a745b4ccad93f96-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "глаз",
+              "assetId": "image-969a5d614a6ce85459ef31d235efbc36f8940e19",
+              "url": "/content/assets/images/969a5d614a6ce85459ef31d235efbc36f8940e19-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "Inventum.AI.png",
+              "sourceAsset": "image@file://./images/969a5d614a6ce85459ef31d235efbc36f8940e19-1260x1262.png"
+            },
+            "subtitle": "Generative Chemistry",
+            "tags": [
+              {
+                "_key": "807fd783c009",
+                "_type": "tag",
+                "name": "pocatom",
+                "type": "rectangle"
+              },
+              {
+                "_key": "8c5e16c8d637",
+                "_type": "tag",
+                "name": "иннополис",
+                "type": "pill"
+              },
+              {
+                "_key": "aaff3b111f79",
+                "_type": "tag",
+                "name": "Молекулярный дизайн",
+                "type": "pill"
+              },
+              {
+                "_key": "e9c7325e4623",
+                "_type": "tag",
+                "name": "оптимизация структур",
+                "type": "pill"
+              },
+              {
+                "_key": "63f790670cc0",
+                "_type": "tag",
+                "name": "малые молекулы",
+                "type": "pill"
+              }
+            ],
+            "title": "INVENTUM.AI"
+          },
+          {
+            "_key": "bc16b7ebb7d4",
+            "_type": "portfolioProject",
+            "description": "Generative Biologics – платформа генеративной биологии для дизайна и оптимизации биологических молекул. В отличие от малых молекул, биологические препараты требуют работы с крупными пространственными структурами, последовательностями и функциональными формами.\n\nПроект переносит принципы дизайна с применением ИИ в область пептидов, нанотел, антител и других биологических объектов, где форма и функция тесно связаны между собой.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "GENERATIVE BIOLOGICS",
+              "assetId": "image-0c572bbef49f9a1e51a9980a65fa7882397c2c17",
+              "url": "/content/assets/images/0c572bbef49f9a1e51a9980a65fa7882397c2c17-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Generative Biologics.svg",
+              "sourceAsset": "image@file://./images/0c572bbef49f9a1e51a9980a65fa7882397c2c17-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321",
+              "assetId": "image-86662b1ae88c302231a7e31d359714adb68fa9a4",
+              "url": "/content/assets/images/86662b1ae88c302231a7e31d359714adb68fa9a4-1260x1226.webp",
+              "width": 1260,
+              "height": 1226,
+              "originalFilename": "Generative Biologics.png",
+              "sourceAsset": "image@file://./images/86662b1ae88c302231a7e31d359714adb68fa9a4-1260x1226.png"
+            },
+            "subtitle": "Generative Biology",
+            "tags": [
+              {
+                "_key": "b1f8ee33121a",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "0743ebf9fc97",
+                "_type": "tag",
+                "name": "Молекулярный дизайн",
+                "type": "pill"
+              },
+              {
+                "_key": "035cbdfa5152",
+                "_type": "tag",
+                "name": "оптимизация структур",
+                "type": "pill"
+              },
+              {
+                "_key": "372274e42fd7",
+                "_type": "tag",
+                "name": "белковые молекулы",
+                "type": "pill"
+              }
+            ],
+            "title": "GENERATIVE BIOLOGICS"
+          },
+          {
+            "_key": "9caf108b8eb6",
+            "_type": "portfolioProject",
+            "description": "Golden Cubes – платформа для прогнозирования активности малых молекул в отношении заданной мишени. Продукт помогает оценивать перспективность соединений на ранних этапах, оценивать профиль селективности и приоритизировать их для дальнейшего анализа.\n\nИдея платформы – превратить большой набор химических объектов в понятную карту возможностей: какие молекулы вероятнее проявят активность, где стоит продолжать дизайн, а какие направления можно отсечь раньше.",
+            "image": {
+              "_type": "imageWithAlt",
+              "alt": "GOLDEN CUBES",
+              "assetId": "image-38d947af087ada98743f52322da552c0991407f2",
+              "url": "/content/assets/images/38d947af087ada98743f52322da552c0991407f2-129x129.svg",
+              "width": 129,
+              "height": 129,
+              "originalFilename": "Golden Cubes.svg",
+              "sourceAsset": "image@file://./images/38d947af087ada98743f52322da552c0991407f2-129x129.svg"
+            },
+            "innerImage": {
+              "_type": "imageWithAlt",
+              "alt": "321321321",
+              "assetId": "image-1a2a7f95fec0f2d7d64b38d7397c95c089f40439",
+              "url": "/content/assets/images/1a2a7f95fec0f2d7d64b38d7397c95c089f40439-1260x1262.webp",
+              "width": 1260,
+              "height": 1262,
+              "originalFilename": "Golden Cubes.png",
+              "sourceAsset": "image@file://./images/1a2a7f95fec0f2d7d64b38d7397c95c089f40439-1260x1262.png"
+            },
+            "subtitle": "AI-Assisted Workflow",
+            "tags": [
+              {
+                "_key": "32b399fd3271",
+                "_type": "tag",
+                "name": "Insilico Medicine",
+                "type": "rectangle"
+              },
+              {
+                "_key": "39b8288cc553",
+                "_type": "tag",
+                "name": "Малые молекулы",
+                "type": "pill"
+              },
+              {
+                "_key": "f9edc5f30064",
+                "_type": "tag",
+                "name": "мишени",
+                "type": "pill"
+              },
+              {
+                "_key": "192fef94c23b",
+                "_type": "tag",
+                "name": "ранжирование соединений",
+                "type": "pill"
+              }
+            ],
+            "title": "GOLDEN CUBES"
+          }
+        ],
+        "title": "цифровые продукты"
+      }
+    ]
+  },
+  "services": {
+    "_type": "servicesSection",
+    "serviceSlides": [
+      {
+        "_key": "f5ffa4d233d3",
+        "_type": "serviceSlide",
+        "bulletPointText": "A",
+        "desktopBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "1",
+          "assetId": "image-297e5a0bc9045f105de74e710cd8ba72de1c1cbb",
+          "url": "/content/assets/images/297e5a0bc9045f105de74e710cd8ba72de1c1cbb-2880x1620.webp",
+          "width": 2880,
+          "height": 1620,
+          "originalFilename": "1920.png",
+          "sourceAsset": "image@file://./images/297e5a0bc9045f105de74e710cd8ba72de1c1cbb-2880x1620.png"
+        },
+        "mobileBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "1",
+          "assetId": "image-300e1e33cd3443dc717c13261f23d720916b4789",
+          "url": "/content/assets/images/300e1e33cd3443dc717c13261f23d720916b4789-1170x2310.webp",
+          "width": 1170,
+          "height": 2310,
+          "originalFilename": "a_mobile.png",
+          "sourceAsset": "image@file://./images/300e1e33cd3443dc717c13261f23d720916b4789-1170x2310.png"
+        },
+        "services": [
+          {
+            "_key": "c8e2696405f4",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "c196f79f6ce4",
+                "_type": "tag",
+                "name": "target ID",
+                "type": "rectangle"
+              },
+              {
+                "_key": "52eeb1df4840",
+                "_type": "tag",
+                "name": "competitors",
+                "type": "pill"
+              }
+            ],
+            "title": "Выбор мишени и патентный анализ"
+          },
+          {
+            "_key": "13ed081674e9",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "d5a716bb68e9",
+                "_type": "tag",
+                "name": "AIDD",
+                "type": "rectangle"
+              },
+              {
+                "_key": "d34ec8777042",
+                "_type": "tag",
+                "name": "in silico",
+                "type": "pill"
+              }
+            ],
+            "title": "Дизайн молекул"
+          },
+          {
+            "_key": "a9bf2b524048",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "f7a4eea345b4",
+                "_type": "tag",
+                "name": "HITID",
+                "type": "rectangle"
+              },
+              {
+                "_key": "b283a28ffa15",
+                "_type": "tag",
+                "name": "H2L",
+                "type": "pill"
+              }
+            ],
+            "title": "Идентификация и оптимизация хита"
+          },
+          {
+            "_key": "9ee1df02b62b",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "b94d987d0521",
+                "_type": "tag",
+                "name": "LEADOPT",
+                "type": "rectangle"
+              },
+              {
+                "_key": "e52a5e9cf173",
+                "_type": "tag",
+                "name": "ADMET",
+                "type": "pill"
+              }
+            ],
+            "title": "Оптимизация лидера"
+          },
+          {
+            "_key": "dc59a93b3643",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "3ac8e4824182",
+                "_type": "tag",
+                "name": "PK",
+                "type": "rectangle"
+              },
+              {
+                "_key": "4d48bdd75ad7",
+                "_type": "tag",
+                "name": "PD",
+                "type": "pill"
+              }
+            ],
+            "title": "Разработка доклинического кандидата"
+          }
+        ],
+        "tabletBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "1",
+          "assetId": "image-6d0b07102e4ab50e687f72db4acfade4a80c2566",
+          "url": "/content/assets/images/6d0b07102e4ab50e687f72db4acfade4a80c2566-2560x1440.webp",
+          "width": 2560,
+          "height": 1440,
+          "originalFilename": "1280.png",
+          "sourceAsset": "image@file://./images/6d0b07102e4ab50e687f72db4acfade4a80c2566-2560x1440.png"
+        },
+        "title": "разработка молекул"
+      },
+      {
+        "_key": "318f7a4f533f",
+        "_type": "serviceSlide",
+        "bulletPointText": "B",
+        "desktopBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "2",
+          "assetId": "image-02c217bf5e38f5b6765d09c92d5480ff9005c261",
+          "url": "/content/assets/images/02c217bf5e38f5b6765d09c92d5480ff9005c261-3840x2160.webp",
+          "width": 3840,
+          "height": 2160,
+          "originalFilename": "1920.png",
+          "sourceAsset": "image@file://./images/02c217bf5e38f5b6765d09c92d5480ff9005c261-3840x2160.png"
+        },
+        "mobileBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "2",
+          "assetId": "image-53d6bbc63774236d14d9a31d2073f597187e0ce1",
+          "url": "/content/assets/images/53d6bbc63774236d14d9a31d2073f597187e0ce1-1170x2310.webp",
+          "width": 1170,
+          "height": 2310,
+          "originalFilename": "b_mobile.png",
+          "sourceAsset": "image@file://./images/53d6bbc63774236d14d9a31d2073f597187e0ce1-1170x2310.png"
+        },
+        "services": [
+          {
+            "_key": "83e1e9f98df0",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "9dd540ca4d65",
+                "_type": "tag",
+                "name": "Product concept",
+                "type": "rectangle"
+              },
+              {
+                "_key": "c16dfaabe425",
+                "_type": "tag",
+                "name": "roadmap",
+                "type": "pill"
+              }
+            ],
+            "title": "Концептуализация продукта"
+          },
+          {
+            "_key": "97fdc3f2250e",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "2ec131661b21",
+                "_type": "tag",
+                "name": "cheminformatics",
+                "type": "rectangle"
+              },
+              {
+                "_key": "a7ba054e2408",
+                "_type": "tag",
+                "name": "AI/LLM",
+                "type": "pill"
+              }
+            ],
+            "title": "Создание R&D-модулей"
+          },
+          {
+            "_key": "5ac7aaa30090",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "6cb151a74dc7",
+                "_type": "tag",
+                "name": "prototype",
+                "type": "rectangle"
+              },
+              {
+                "_key": "246cffe54b2e",
+                "_type": "tag",
+                "name": "poc",
+                "type": "pill"
+              }
+            ],
+            "title": "Разработка прототипа и MVP"
+          },
+          {
+            "_key": "2474027eda9d",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "423d2fc0e8ae",
+                "_type": "tag",
+                "name": "software development",
+                "type": "rectangle"
+              },
+              {
+                "_key": "bd2930677c42",
+                "_type": "tag",
+                "name": "AI platform",
+                "type": "pill"
+              }
+            ],
+            "title": "Построение R&D-платформы"
+          },
+          {
+            "_key": "7cd86d58c190",
+            "_type": "serviceItem",
+            "tags": [
+              {
+                "_key": "e3df282973c2",
+                "_type": "tag",
+                "name": "adoption",
+                "type": "rectangle"
+              },
+              {
+                "_key": "67c14471caac",
+                "_type": "tag",
+                "name": "support",
+                "type": "pill"
+              }
+            ],
+            "title": "Внедрение и поддержка"
+          }
+        ],
+        "tabletBackgroundImage": {
+          "_type": "imageWithAlt",
+          "alt": "2",
+          "assetId": "image-085abf420f37ed5fa120dafcb43bb624a9d51294",
+          "url": "/content/assets/images/085abf420f37ed5fa120dafcb43bb624a9d51294-2560x1440.webp",
+          "width": 2560,
+          "height": 1440,
+          "originalFilename": "1280.png",
+          "sourceAsset": "image@file://./images/085abf420f37ed5fa120dafcb43bb624a9d51294-2560x1440.png"
+        },
+        "title": "цифровые продукты"
+      }
+    ]
+  },
+  "team": {
+    "_type": "teamSection",
+    "bottomTags": [
+      {
+        "_key": "c21a8f61faa6",
+        "_type": "tag",
+        "name": "ученых",
+        "type": "rectangle"
+      },
+      {
+        "_key": "b744882eb4ed",
+        "_type": "tag",
+        "name": "и разработчиков",
+        "type": "trapezoid"
+      }
+    ],
+    "teamMembers": [
+      {
+        "_key": "ef311e02617c",
+        "_type": "teamMemberCard",
+        "description": "PhD\n20+ лет опыта\n250+ научных публикаций\n40 h-index",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Ян Иваненков",
+          "assetId": "image-db8d4977849e06f2e2ce1004920756c00bf0e202",
+          "url": "/content/assets/images/db8d4977849e06f2e2ce1004920756c00bf0e202-1431x1428.webp",
+          "width": 1431,
+          "height": 1428,
+          "originalFilename": "Y.png",
+          "sourceAsset": "image@file://./images/db8d4977849e06f2e2ce1004920756c00bf0e202-1431x1428.png"
+        },
+        "isBadge": true,
+        "tags": [
+          {
+            "_key": "7251359fee95",
+            "_type": "tag",
+            "name": "Основатель",
+            "type": "pill"
+          },
+          {
+            "_key": "296d4f8dbaf1",
+            "_type": "tag",
+            "name": "Директор по науке",
+            "type": "pill"
+          }
+        ],
+        "title": "Ян Иваненков"
+      },
+      {
+        "_key": "c4a1636cc7de",
+        "_type": "teamMemberCard",
+        "description": "MSc\n6+ лет опыта",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Анастасия Корженевская",
+          "assetId": "image-ee6371e43d52b8e8a374909c68999b5a09b23a17",
+          "url": "/content/assets/images/ee6371e43d52b8e8a374909c68999b5a09b23a17-1431x1428.webp",
+          "width": 1431,
+          "height": 1428,
+          "originalFilename": "N.png",
+          "sourceAsset": "image@file://./images/ee6371e43d52b8e8a374909c68999b5a09b23a17-1431x1428.png"
+        },
+        "isBadge": false,
+        "tags": [
+          {
+            "_key": "cc67080dba1b",
+            "_type": "tag",
+            "name": "Генеральный директор",
+            "type": "pill"
+          }
+        ],
+        "title": "Анастасия Корженевская"
+      },
+      {
+        "_key": "4926dc7c4e12",
+        "_type": "teamMemberCard",
+        "description": "PharmD\n9+ лет опыта",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Александр малышев",
+          "assetId": "image-f82e2cab605dc65a345b18947bfa8afa48d2cec2",
+          "url": "/content/assets/images/f82e2cab605dc65a345b18947bfa8afa48d2cec2-1431x1428.webp",
+          "width": 1431,
+          "height": 1428,
+          "originalFilename": "A.png",
+          "sourceAsset": "image@file://./images/f82e2cab605dc65a345b18947bfa8afa48d2cec2-1431x1428.png"
+        },
+        "isBadge": false,
+        "tags": [
+          {
+            "_key": "a1c884bbc42a",
+            "_type": "tag",
+            "name": "Директор по продукту",
+            "type": "pill"
+          }
+        ],
+        "title": "Александр малышев"
+      },
+      {
+        "_key": "aa3f1c42df12",
+        "_type": "teamMemberCard",
+        "description": "Талантливая и поддерживающая",
+        "image": {
+          "_type": "imageWithAlt",
+          "alt": "Белладонна",
+          "assetId": "image-ef99760a20d565d78cb1456eb1fb86c4d3ed9fba",
+          "url": "/content/assets/images/ef99760a20d565d78cb1456eb1fb86c4d3ed9fba-1431x1428.webp",
+          "width": 1431,
+          "height": 1428,
+          "originalFilename": "B.png",
+          "sourceAsset": "image@file://./images/ef99760a20d565d78cb1456eb1fb86c4d3ed9fba-1431x1428.png"
+        },
+        "isBadge": false,
+        "tags": [
+          {
+            "_key": "b1c145df17b3",
+            "_type": "tag",
+            "name": "Талисман команды",
+            "type": "pill"
+          }
+        ],
+        "title": "Белладонна"
+      }
+    ],
+    "title": "Эксперты, которые создают результат"
+  },
+  "title": "Страница",
+  "xantir": {
+    "_type": "xantirSection",
+    "buttonLink": "mailto:info@medchem.ltd",
+    "buttonText": "запросить доступ",
+    "description": "AI-платформа для патентного анализа, извлечения данных и разработки новых структур малых молекул",
+    "description2": "Для компаний в фармацевтике, агрохимии и ветеринарии, которые используют патентные данные для поиска новых направлений разработки.",
+    "image": {
+      "_type": "imageWithAlt",
+      "alt": "поле",
+      "assetId": "image-8e86b6aa47813105b9fb1a69a8e2012335634009",
+      "url": "/content/assets/images/8e86b6aa47813105b9fb1a69a8e2012335634009-1260x1262.webp",
+      "width": 1260,
+      "height": 1262,
+      "originalFilename": "Xantir.png",
+      "sourceAsset": "image@file://./images/8e86b6aa47813105b9fb1a69a8e2012335634009-1260x1262.png"
+    },
+    "tags": [
+      {
+        "_key": "651260d07532",
+        "_type": "tag",
+        "name": "pharma",
+        "type": "rectangle"
+      },
+      {
+        "_key": "64a84ff63476",
+        "_type": "tag",
+        "name": "agrochem",
+        "type": "trapezoid"
+      },
+      {
+        "_key": "d88c2df35d0f",
+        "_type": "tag",
+        "name": "animal care",
+        "type": "pill"
+      }
+    ],
+    "title": "Xantir"
+  }
+}

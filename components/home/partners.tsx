@@ -10,7 +10,7 @@ import {
 
 import type { HomePageData } from "@/types/home";
 
-import { SanityImageView } from "./sanity-image";
+import { ContentImageView } from "./content-image";
 
 const partnerGroups = [0, 1, 2];
 const marqueeSpeed = 1.2;
@@ -202,7 +202,7 @@ function PartnersItem({ partner }: { partner: PartnerData }) {
       className="flex flex-col items-center justify-start shrink-0 [--partner-logo-size:clamp(3.125rem,calc(0.8929rem_+_11.1607vw),6.25rem)] md:[--partner-logo-size:clamp(3.75rem,calc(10rem_-_7.8125vw),6.25rem)] xl:[--partner-logo-size:clamp(3.75rem,4.6875vw,4.5rem)] 2xl:[--partner-logo-size:clamp(4.5rem,4.6875vw,5.625rem)] 3xl:[--partner-logo-size:clamp(5.625rem,4.6875vw,7.5rem)] w-[calc(var(--partner-logo-size)*var(--partner-item-mobile-spacing))] xl:w-[calc(var(--partner-logo-size)*var(--partner-item-desktop-spacing))] gap-[clamp(0.75rem,calc(0.2143rem_+_2.6786vw),1.5rem)] md:gap-[clamp(1.25rem,calc(1.875rem_-_0.7813vw),1.5rem)] xl:gap-[clamp(1.25rem,1.5625vw,1.5rem)] 2xl:gap-[clamp(1.5rem,1.5625vw,1.875rem)] 3xl:gap-[clamp(1.875rem,1.5625vw,2.5rem)]"
     >
       <div className="relative w-[var(--partner-logo-size)] h-[var(--partner-logo-size)]">
-        <SanityImageView
+        <ContentImageView
           image={partner.image}
           fill
           sizes="12vw"

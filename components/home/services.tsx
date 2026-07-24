@@ -1,11 +1,11 @@
 "use client";
 
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag, SanityImage } from "@/types/home";
+import type { ContentImage, HomePageData, HomeTag } from "@/types/home";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 
-import { SanityImageView } from "./sanity-image";
+import { ContentImageView } from "./content-image";
 
 type ServicesData = NonNullable<HomePageData["services"]>;
 type ServiceSlide = NonNullable<
@@ -29,7 +29,7 @@ function normalizeTextBreaks(text: string | null | undefined) {
   return (text ?? "").replace(/[\u2028\u2029]/g, "\n");
 }
 
-function firstImage(...images: Array<SanityImage | null | undefined>) {
+function firstImage(...images: Array<ContentImage | null | undefined>) {
   return images.find((image) => image?.url) ?? null;
 }
 
@@ -114,7 +114,7 @@ function ServicesDesktop({ slides }: { slides: ServiceSlide[] }) {
             transition={servicesTransition}
             className="absolute inset-0 -z-20"
           >
-            <SanityImageView
+            <ContentImageView
               image={getServiceBackgroundImage(slide, "desktop")}
               fill
               sizes="100vw"
@@ -265,13 +265,13 @@ function ServicesSlideBackground({ slide }: { slide: ServiceSlide }) {
   return (
     <>
       <div aria-hidden className="absolute inset-0 z-0">
-        <SanityImageView
+        <ContentImageView
           image={mobileImage}
           fill
           sizes="100vw"
           className="object-cover object-left md:hidden"
         />
-        <SanityImageView
+        <ContentImageView
           image={tabletImage}
           fill
           sizes="100vw"

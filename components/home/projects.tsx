@@ -14,11 +14,11 @@ import {
 import { Logo } from "@/components/ui/logo";
 import { PlusIcon } from "@/components/ui/pattern-icons";
 import { Tag } from "@/components/ui/tag";
-import type { HomePageData, HomeTag, SanityImage } from "@/types/home";
+import type { ContentImage, HomePageData, HomeTag } from "@/types/home";
 
 import { numbers } from "./assets";
 import { CloseIcon } from "./icons";
-import { SanityImageView } from "./sanity-image";
+import { ContentImageView } from "./content-image";
 
 const MOBILE_VISIBLE_PROJECTS = 3;
 const MOBILE_PROJECTS_FIRST_REVEAL = 5;
@@ -159,7 +159,7 @@ function ProjectDesktopLane({
 }: {
   side: "left" | "right";
   projects: Project[];
-  endImage?: SanityImage | null;
+  endImage?: ContentImage | null;
   openProject: (project: Project) => void;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -315,7 +315,7 @@ function ProjectDesktopLane({
           />
         ))}
         {endImage?.url ? (
-          <SanityImageView
+          <ContentImageView
             image={endImage}
             className={desktopProjectEndImageClass}
             sizes="13vw"
@@ -537,7 +537,7 @@ function ProjectLane({
   onCollapseAnimationComplete: () => void;
   onCollapseAnimationStart: () => void;
   projects: Project[];
-  endImage?: SanityImage | null;
+  endImage?: ContentImage | null;
   visibleProjectCount: number;
   openProject: (project: Project) => void;
 }) {
@@ -612,13 +612,13 @@ function ProjectLaneEndImage({
   endImage,
 }: {
   align: ProjectLaneAlign;
-  endImage?: SanityImage | null;
+  endImage?: ContentImage | null;
 }) {
   const className = `${align === "left" ? "mr-auto" : "ml-auto"} ${mobileProjectEndImageClass}`;
 
   if (endImage?.url) {
     return (
-      <SanityImageView image={endImage} sizes="127px" className={className} />
+      <ContentImageView image={endImage} sizes="127px" className={className} />
     );
   }
 
@@ -659,7 +659,7 @@ function ProjectItem({
         }}
       >
         <div className="relative overflow-hidden w-[clamp(2.875rem,calc(1.9821rem_+_4.4643vw),4.125rem)] h-[clamp(2.875rem,calc(1.9821rem_+_4.4643vw),4.125rem)] md:w-[clamp(3.5rem,calc(-0.25rem_+_5.4688vw),5rem)] md:h-[clamp(3.5rem,calc(-0.25rem_+_5.4688vw),5rem)] 2xl:w-[clamp(5rem,5.2083vw,6.25rem)] 2xl:h-[clamp(5rem,5.2083vw,6.25rem)] 3xl:w-[clamp(6.25rem,5.2083vw,8.3333rem)] 3xl:h-[clamp(6.25rem,5.2083vw,8.3333rem)]">
-          <SanityImageView
+          <ContentImageView
             image={project.image}
             fill
             sizes="8vw"
@@ -890,7 +890,7 @@ function ProjectItemPopup({
                   {normalizeTextBreaks(project.description)}
                 </p>
                 <div className="relative aspect-square h-auto w-full bg-neutral-400">
-                  <SanityImageView
+                  <ContentImageView
                     image={project.innerImage}
                     fill
                     sizes="(min-width: 768px) 28rem, 100vw"
